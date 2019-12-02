@@ -1,0 +1,3 @@
+class BillCalculator::Hotel
+
+end

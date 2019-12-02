@@ -1,0 +1,6 @@
+- unless flash.empty?
+  - flash.each do |f|
+    - type = f.first.to_s.gsub('alert', 'error').gsub('notice', 'info')
+    - if f.last.present?
+      toastr["#{type}"]("#{f.last.html_safe}");
+  - flash.discard

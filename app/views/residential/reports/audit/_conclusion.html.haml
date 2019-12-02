@@ -1,0 +1,24 @@
+%h4
+  = t('reports.conclusion.title')
+.recomendation
+  %p 
+    = t('reports.conclusion.description')
+  %h4
+    = t('reports.conclusion.brief_analysis')
+  #energySavingBreakdown
+  %p.font-italic.underline-text.margin-left-10p
+    Total estimated savings of
+    %b #{@stats.total_bill_saving}%
+    of the current bill
+  #annualProjectSaving
+  %p.text-align-center.font-italic.underline-text
+    = t('reports.conclusion.bill_breakdown')
+  %p.text-align-center.font-italic.underline-text
+    By implementing the changes, you will have saved is
+    %b #{@stats.carbon_offset} Kg of CO²
+  %br
+  %br
+  = t('reports.conclusion.saving_description')
+  %br
+  %br
+  = t('reports.conclusion.basic_recommendation')

@@ -1,0 +1,26 @@
+.form-field-wrapper.row
+  .subheading-field
+    %h4
+      = t('property.occupants_details')
+    %span.people-main
+      = t('property.how_many_people')
+  .form-group.col-md-3.col-sm-3.col-xs-12
+    %label
+      = t('property.label.adults')
+    = form.select :adults, (1..100), {prompt: t('property.label.adults')}, class: 'form-control unit-select'
+  .form-group.col-md-3.col-sm-3.col-xs-12
+    %label
+      = t('property.label.senior_citizens')
+    = form.select :senior_citizens, (1..100), {prompt: t('property.label.senior_citizens')}, class: 'form-control unit-select'
+  .form-group.col-md-3.col-sm-3.col-xs-12
+    %label
+      = t('property.label.children')
+    = form.select :children, (1..100), {prompt: t('property.label.children')}, class: 'form-control unit-select'
+  .form-group.col-md-3.col-sm-3.col-xs-12
+    %label
+      = t('property.label.duration_of_stay')
+    .row
+      %div.col-6.padding-right-0
+        = form.select :duration_of_stay_year, (1..100).map {|year| [year.to_s + " year".pluralize(year), year]}, {prompt: t('property.input.select_year')}, class: 'form-control unit-select'
+      %div.col-6.padding-left-0
+        = form.select :duration_of_stay_month, (1..11).map {|month| [month.to_s + " month".pluralize(month), month]}, {prompt: t('property.input.select_month')}, class: 'form-control unit-select'

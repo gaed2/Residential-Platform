@@ -1,0 +1,224 @@
+html body {
+  background: #f5f6f8;
+}
+body .middle-profile-block {
+  background: #f5f6f8;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0
+}
+.audit-report {
+  padding: 40px 30px 40px 100px;
+}
+.audit-report h4 {
+  font-weight: 400;
+  padding-bottom: 12px;
+}
+body .audit-report .form-group label {
+  font-weight: 400;
+  font-size: 14px;
+}
+body .audit-report .form-group input {
+  height: 45px;
+  border-radius: 0;
+}
+body .audit-report .more-detail {
+  background-color: #24a449 !important;
+  border-radius: 30px;
+  border-color: #24a449;
+  padding: 15px 50px;
+  margin-top: 25px;
+  font-size: 16px;
+  border-width: 2px;
+}
+.audit-report input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #dcdcdc;
+  font-family: 'Roboto Lt';
+  font-size: 18px;
+  font-weight: 500;
+}
+.audit-report .col-d-3 {
+  width: 29%;
+  float: left;
+  padding: 0 15px;
+}
+.audit-report .select-field {
+  display: inline-block;
+  width: 100%;
+}
+.authnbtn-f {
+  display: table;
+  margin: 0 auto 30px;
+}
+.authnbtn-f button.btn-default {
+  background: #24a449 !important;
+  border-radius: 30px;
+  border-color: #24a449;
+  padding: 15px 50px;
+  font-size: 19px;
+  border-width: 2px;
+  margin-left: 30px;
+}
+.authnbtn-f button.btn-default {
+  background: none;
+  border-radius: 30px;
+  color: #b6bbc9;
+  border-color: #b6bbc9;
+  padding: 15px 50px;
+  font-size: 19px;
+  border-width: 2px;
+}
+.authnbtn-f button:hover {
+ background: none;
+ border-color: #24a449;
+ color: #24a449;
+ border-width: 2px;
+}
+.retailer-field {
+  border-top: 1px #dcdcde solid;
+  padding: 50px 40px 50px 100px;
+}
+.audit-report .select-field select {
+  display: block !important;
+  float: left;
+  width: 50%;
+  height: 45px !important;
+  border-radius: 0;
+  font-weight: 400;
+  font-family: roboto;
+  font-size: 17px;
+  color: rgba(42,42,49,0.5);
+}
+.retailer-field .table .thead-dark th {
+  background: #1a9c37;
+  border-color: #1a9c37;
+}
+.retailer-field .table .thead-dark th:first-child {
+  border-radius: 25px 0 0 0;
+}
+.retailer-field .table .thead-dark th:last-child {
+  border-radius: 0px 25px 0px 0;
+}
+.retailer-field .table tbody {
+  background: #fff;
+}
+body .retailer-field .table tbody tr td {
+  vertical-align: middle;
+  font-family: roboto;
+  font-weight: 400;
+}
+body .retailer-field .table tbody tr td a.btn {
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: #2a2a31 !important;
+  border: 1px #dcdcde solid !important;
+}
+.audit-report form .p-l-0 {
+  padding-left: 0;
+}
+.copyright {
+  background: #2a2a31;
+  display: inline-block;
+  padding: 9px 30px 9px 100px;
+  width: 100%;
+  color: #fff;
+}
+.copyright ul {
+  padding: 0;
+  margin: 0;
+}
+
+.user-block-form {
+  padding-bottom: 105px;
+}
+.copyright h3 {
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 30px;
+}
+.copyright ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0 5px;
+}
+.copyright ul li a {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+}
+.pad-none {
+  padding: 0;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .side-nav.fixed {
+    left: 0;
+  }
+  .double-nav .button-collapse {
+    display: none;
+  }
+  .audit-report .col-d-3 {
+    width: 27%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .user-block-form {
+    padding: 0 15px;
+  }
+
+  .user-block-form .img-thumbnail {
+    padding: 50px 20px;
+  }
+
+  body .middle-profile-block .copyright .float-left , body .middle-profile-block .copyright .float-right {
+    float: none !important;
+  }
+
+  .copyright {
+    padding: 15px;
+  }
+
+  .audit-report {
+    padding: 40px 30px 40px 26px;
+  }
+
+  .audit-report .col-d-3 {
+    width: 100%;
+    padding: 0;
+  }
+
+  .audit-report form .col-6 {
+    max-width: 100%;
+  }
+
+  .retailer-field {
+    padding: 15px;
+
+  }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .audit-report {
+    padding: 40px 6px 40px 30px;
+  }
+  .audit-report .col-d-3 {
+    width: 33%;
+  }
+
+  .audit-report form .col-6 {
+    max-width: 100%;
+    padding: 0 15px 0 0;
+  }
+
+  .retailer-field {
+    padding: 50px 20px 50px 20px;
+  }
+}
+
+
+

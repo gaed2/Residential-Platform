@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title= t('title')
+    = favicon_link_tag 'favicon.ico'
+    = csrf_meta_tags
+    = stylesheet_pack_tag 'styles/application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'javascripts/manifest', media: 'all', 'data-turbolinks-track': 'reload'
+
+  %body
+    = render 'layouts/header'
+    = render 'shared/flash'
+    = yield
+    = render 'layouts/footer'

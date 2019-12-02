@@ -1,0 +1,13 @@
+schedule:
+  property_import:
+    every: ['1h', first_in: '1m']   # Runs every hour
+    class:  PropertyImport
+    queue: 'blockchain'
+  property_poller:
+    every: ['15m', first_in: '5s']
+    class: PropertyPoller
+    queue: 'blockchain'
+
+:queues:
+  - [blockchain, 10]
+  - default

@@ -1,0 +1,52 @@
+.info-box {
+    margin: 5px;
+    position: relative;
+    width: 280px;
+}
+
+.info-box a img {
+    width: 27px;
+    padding-left: 7px;
+}
+
+.info-box span {
+	display: block;
+	position: absolute;
+	right: -150px;
+	bottom: 30px;
+	background: #fff;
+	padding: 10px;
+	box-shadow: 0 13px 8px #ccc;
+	border-radius: 4px;
+	max-width: 320px;
+}
+
+.a.info-box span:after, .info-box span:before {
+	top: 100%;
+	left: 9%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.info-box span:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-top-color: #fff;
+	border-width:10px;
+	margin-left: 0px;
+
+}
+.info-box span:before {
+	border-color: rgba(255, 255, 255, 0);
+	border-top-color: #fff;
+	border-width:10px;
+	margin-left: 0px;
+
+}
+
+.info-box span {
+	display: none;
+}

@@ -1,0 +1,16 @@
+.tab-content
+  #home.tab-pane.active
+    .inner-tabs-field
+      %ul.nav.nav-pills#secondary_tab_container
+        %li.nav-item.property-data{'data-tab' => 'general_details', 'data-url' => get_transaction_list_path}
+          %a.nav-link
+            = t('ledgers.general')
+        %li.nav-item.property-data{'data-tab' => 'energy_data_details'}
+          %a.nav-link
+            = t('ledgers.energy_data')
+        %li.nav-item.property-data{'data-tab' => 'provided_document'}
+          %a.nav-link
+            = t('ledgers.provided_document')
+        %li.nav-item.property-data{'data-tab' => 'checklist_details'}
+          %a.nav-link
+            = t('ledgers.checklist')

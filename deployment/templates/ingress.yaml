@@ -1,0 +1,20 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.ingress.name }}
+  {{- if .Values.ingress.ipPresent }}
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: {{ .Values.ingress.ipname }}
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+  {{- end}}
+  labels:
+    app: {{ .Values.ingress.name }}
+spec:
+  backend:
+    serviceName: {{ .Values.service.name }}
+    servicePort: {{ .Values.service.port }}
+{{- end}}

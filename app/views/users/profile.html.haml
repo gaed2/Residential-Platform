@@ -1,0 +1,48 @@
+%main.middle-profile-block
+  .text-center
+    %div
+      .profile-upload-section.img-thumbnail
+        .upload-btn-wrapper.custom-browse-field.row
+          .remove-field-block.col-md-12
+            .user-pic-block
+              = image_tag user_avatar(@user.avatar), class: 'user-img float-left', id: 'user_image'
+              .left-user-field
+                %h2.main-user-heading
+                  = @user.full_name
+                .change-password-field
+                  = link_to(t('modals.change_password'), '#change_password_modal', class: 'btn change-pass', "data-toggle" => "modal")
+            .option-field
+              %button.camera-block.btn
+                = t('button.update_image')
+                %input.upload-b-field{name: "myfile", type: "file", id: 'user_avatar_file'}/
+              = link_to t('button.remove_avatar'), remove_avatar_users_path, class: 'remove-image btn', method: :post, data: {confirm: t('are_you_sure')} if @user.avatar.file
+        %span.response_message
+    .user-block-form
+      .img-thumbnail
+        #response_message
+        = form_for @user, url: user_path(@user), html: {method: :put, id: 'update_user_profile'} do |f|
+          .custom-field-row
+            .float-left
+              %h3= t("user.general")
+          .user-full-form
+            .form-group
+              %label{for: "text"}
+                =  t('devise.input.first_name')
+              = f.text_field :first_name, placeholder: t('devise.input.first_name'), class: 'form-control'
+            .form-group
+              %label{for: "text"}
+                = t('devise.input.last_name')
+              = f.text_field :last_name, placeholder: t('devise.input.last_name'), class: 'form-control'
+            .form-group
+              %label{for: "email"}
+                = t('devise.input.email')
+              = f.email_field :email, placeholder: t('devise.input.email'), class: 'form-control', disabled: true
+            .form-group
+              %label{for: "text"}
+                = t('devise.input.phone_number')
+              = f.text_field :phone_number, class: 'form-control'  
+            .authnbtn-f
+              %button.btn.btn-primary.float-right{type: "submit"}
+                = t('button.update')
+= render 'change_password'
+= javascript_pack_tag 'javascripts/validations/profile_update'

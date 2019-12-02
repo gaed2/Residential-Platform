@@ -1,0 +1,17 @@
+%h4.electricity-consumption-heading
+  A.
+  = t('energy_data.electricity_consumption')
+  *
+  .add-details
+    %a.btn.icon-btn.btn-success{"data-target" => "#energy_consumption_modal", "data-toggle" => "modal", href: 'javascript:void(0)'}
+      %span.glyphicon.btn-glyphicon.glyphicon-plus.img-circle.text-success
+        = image_tag(asset_pack_path('packs/images/plus-icon.png'))
+      = t('button.add_details')
+.switch-field
+  .btnContainer
+    .btn.energy-consumption-view{ 'data-rel': 'list' }
+      = image_tag asset_pack_path('packs/images/list.png'), class: 'img-responsive'
+      = t('suggestions.label.list')
+    .btn.active.energy-consumption-view{ 'data-rel': 'grid' }
+      = image_tag asset_pack_path('packs/images/grid.png'), class: 'img-responsive'
+      = t('suggestions.label.grid')

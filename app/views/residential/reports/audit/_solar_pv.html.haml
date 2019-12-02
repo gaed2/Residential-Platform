@@ -1,0 +1,206 @@
+- length = @property.roof_length
+- width = @property.roof_breadth
+- solar_pv = SolarPvSystem.last      
+%li
+  = t('reports.solar_pv.install_solar')
+%br
+#solarGraphContainer{style: 'width: 1000px'}
+%br
+%p
+  The Average Monthly energy consumption is
+  %b #{@property.avg_monthly_electricity_consumption} kWh.
+  %br
+  Roof length is
+  %b
+  #{@property.roof_length} #{@property.roof_length_unit}
+  and width
+  %b #{@property.roof_breadth} #{@property.roof_breadth_unit}.
+  %br
+  If a Solar PV is installed, we can estimate the savings to be at
+  %b #{((@yearly_saving_with_solar/(@yearly_saving_with_solar + @yearly_saving_with_retailer_switch))*100).round(2)}%
+%br
+%h4.report-title
+  = t('reports.solar_pv.obstructed_roof_space')
+.table-block
+  %table{style: 'border-collapse: collapse;width: 80%; text-align: center'}
+    %thead
+      %tr
+        %th
+          = t('reports.solar_pv.output_parameters')
+        %th
+          = t('reports.solar_pv.output_parameters')
+        %th.blue-background{colspan: 2}
+          = t('reports.solar_pv.output')
+    %tbody          
+      %tr
+        %td
+          = t('reports.solar_pv.available_roof_space')
+        %td
+          m2
+        %td.blue-background{colspan: 2}
+          = solar_pv.roof_available(length, width)                        
+      %tr
+        %td                
+        %td  
+        %td.blue-background
+          = t('reports.solar_pv.min')
+        %td.blue-background
+          = t('reports.solar_pv.max')
+      %tr
+        %td
+          = t('reports.solar_pv.estimated_system_size')
+        %td
+          kWp
+        %td.blue-background
+          = estimated_system_size_min = solar_pv.estimated_system_size_min(length, width, '')
+        %td.blue-background
+          = estimated_system_size_max = solar_pv.estimated_system_size_max(length, width, '')              
+      %tr
+        %td
+          = t('reports.solar_pv.est_daily_energy_generated')
+        %td
+          kWh
+        %td.blue-background
+          = daily_energy_generated_min = solar_pv.daily_energy_generated_min(length, width, '')
+        %td.blue-background
+          = daily_energy_generated_max = solar_pv.daily_energy_generated_max(length, width, '')            
+      - yearly_energy_generated_min = daily_energy_generated_min*365
+      - yearly_energy_generated_max = daily_energy_generated_max*365
+      %tr
+        %td
+          = t('reports.solar_pv.est_monthly_energy_generated')
+        %td
+          kWh
+        %td.blue-background
+          = (yearly_energy_generated_min/12).round(2)
+        %td.blue-background
+          = (yearly_energy_generated_max/12).round(2)
+      %tr
+        %td
+          = t('reports.solar_pv.est_yearly_energy_generated')
+        %td
+          kWh
+        %td.blue-background
+          = (daily_energy_generated_min*365).round(2)
+        %td.blue-background
+          = (daily_energy_generated_max*365).round(2)              
+      %tr
+        %td
+          = t('reports.solar_pv.est_system_cost')
+        %td
+        %td.blue-background
+          - estimated_system_cost_min = (estimated_system_size_min*solar_pv.market_price_min*1000)
+          = "$#{estimated_system_cost_min.round(2)}"
+        %td.blue-background
+          - estimated_system_cost_max = estimated_system_size_max*solar_pv.market_price_min*1000
+          = "$#{estimated_system_cost_max.round(2)}"
+      %tr
+        %td
+          = t('reports.solar_pv.est_payback_period')
+        %td
+          = t('reports.solar_pv.years')
+        %td.blue-background
+          = (estimated_system_cost_min/(yearly_energy_generated_min*solar_pv.electricity_retailer_tariff)).round(2)
+        %td.blue-background
+          = (estimated_system_cost_max/(yearly_energy_generated_max*solar_pv.electricity_retailer_tariff)).round(2)
+      %tr
+        %td
+          = t('reports.solar_pv.est_roi')
+        %td
+        %td.blue-background
+          = "#{((((yearly_energy_generated_min*25*solar_pv.electricity_retailer_tariff)-estimated_system_cost_min)/estimated_system_cost_min)*100).round(2)}%"
+        %td.blue-background
+          = "#{((((yearly_energy_generated_max*25*solar_pv.electricity_retailer_tariff)-estimated_system_cost_max)/estimated_system_cost_max)*100).round(2)}%"
+%br
+%h4.report-title 
+  = t('reports.solar_pv.unobstructed_roof_space')
+.table-block
+  %table{style: 'border-collapse: collapse;width: 80%; text-align: center'}
+    %thead
+      %tr
+        %th
+          = t('reports.solar_pv.output_parameters')
+        %th
+          = t('reports.solar_pv.output_parameters')
+        %th.blue-background{colspan: 2}
+          = t('reports.solar_pv.output')
+    %tbody          
+      %tr            
+        %td
+          = t('reports.solar_pv.available_roof_space')
+        %td
+          m2
+        %td.blue-background{colspan: 2}
+          = solar_pv.actual_roof_available(length, width)              
+      %tr              
+        %td                
+        %td  
+        %td.blue-background
+          = t('reports.solar_pv.min')
+        %td.blue-background
+          = t('reports.solar_pv.max')            
+      %tr              
+        %td
+          = t('reports.solar_pv.estimated_system_size')
+        %td
+          kWp
+        %td.blue-background
+          = estimated_system_size_min_actual = solar_pv.estimated_system_size_min(length, width, 'actual')
+        %td.blue-background
+          = estimated_system_size_max_actual = solar_pv.estimated_system_size_max(length, width, 'actual')
+      %tr              
+        %td
+          = t('reports.solar_pv.est_daily_energy_generated')
+        %td
+          kWh
+        %td.blue-background
+          = daily_energy_generated_min_actual = solar_pv.daily_energy_generated_min(length, width, 'actual')
+        %td.blue-background
+          = daily_energy_generated_max_actual = solar_pv.daily_energy_generated_max(length, width, 'actual')
+      - yearly_energy_generated_min_actual = daily_energy_generated_min_actual*365
+      - yearly_energy_generated_max_actual = daily_energy_generated_max_actual*365
+      %tr              
+        %td
+          = t('reports.solar_pv.est_monthly_energy_generated')
+        %td
+          kWh
+        %td.blue-background
+          = (yearly_energy_generated_min_actual/12).round(2)
+        %td.blue-background
+          = (yearly_energy_generated_max_actual/12).round(2)
+      %tr              
+        %td
+          = t('reports.solar_pv.est_yearly_energy_generated')
+        %td
+          kWh
+        %td.blue-background
+          = (daily_energy_generated_min_actual*365).round(2)
+        %td.blue-background
+          = (daily_energy_generated_max_actual*365).round(2)
+      %tr              
+        %td
+          = t('reports.solar_pv.est_system_cost')
+        %td                
+        %td.blue-background
+          - estimated_system_cost_min_actual = estimated_system_size_min_actual*solar_pv.market_price_min*1000 
+          = "$#{estimated_system_cost_min_actual.round(2)}"
+        %td.blue-background
+          - estimated_system_cost_max_actual = estimated_system_size_max_actual*solar_pv.market_price_max*1000
+          = "$#{estimated_system_cost_max_actual.round(2)}"
+      %tr              
+        %td
+          = t('reports.solar_pv.est_payback_period')
+        %td
+          Years            
+        %td.blue-background
+          = (estimated_system_cost_min_actual/(yearly_energy_generated_min_actual*solar_pv.electricity_retailer_tariff)).round(2)
+        %td.blue-background
+          = (estimated_system_cost_max_actual/(yearly_energy_generated_max_actual*solar_pv.electricity_retailer_tariff)).round(2)
+      %tr              
+        %td
+          = t('reports.solar_pv.est_roi')
+        %td                
+        %td.blue-background
+          = "#{((((yearly_energy_generated_min_actual*25*solar_pv.electricity_retailer_tariff)-estimated_system_cost_min_actual)/estimated_system_cost_min_actual)*100).round(2)}%"
+        %td.blue-background
+          = "#{((((yearly_energy_generated_max_actual*25*solar_pv.electricity_retailer_tariff)-estimated_system_cost_max_actual)/estimated_system_cost_max_actual)*100).round(2)}%"

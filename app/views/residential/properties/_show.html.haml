@@ -1,0 +1,5 @@
+.container-fluid
+  .tab-pane.active
+    = render "residential/properties/details/#{@default_partial}", property: @property
+  .text-center.btn-chart
+    = link_to t('button.back'), :back, class: 'btn btn-back'

@@ -1,0 +1,28 @@
+.table-responsive
+  %table.table.table-bordered
+    %thead.thead-green-dark
+      %tr
+        %th= t('electricity_supplier.peak_and_off_peak_plan.heading.company')
+        %th= t('electricity_supplier.peak_and_off_peak_plan.heading.peak')
+        %th= t('electricity_supplier.peak_and_off_peak_plan.heading.off_peak')
+    %tbody
+      - suppliers.each do |supplier|
+        - peak_and_off_peak_plans = supplier.peak_and_off_peak_plans.order(:peak_price)
+        - if peak_and_off_peak_plans.present?
+          - peak_and_off_peak_plans.each_with_index do |plan, index|
+            %tr
+              - if index == 0
+                %td{ rowspan: peak_and_off_peak_plans.count }
+                  %span
+                    = image_tag supplier.logo, class: 'img-responsive'
+                  %p= supplier.name
+              %td #{plan.peak_price} #{plan.peak_price_in} (#{plan.peak_duration})
+              %td #{plan.peak_off_price} #{plan.peak_off_price_in} (#{plan.peak_off_duration})
+        - else
+          %tr
+            %td
+              %span
+                = image_tag supplier.logo, class: 'img-responsive'
+              %p= supplier.name
+            %td= t('electricity_supplier.peak_and_off_peak_plan.not_offer_peak_plan')
+            %td= t('electricity_supplier.peak_and_off_peak_plan.not_offer_off_peak_plan')

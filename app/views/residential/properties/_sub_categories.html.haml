@@ -1,0 +1,25 @@
+- sub_categories = @sub_categories || @categories.first&.property_sub_categories
+.error.subcategory-error
+  .container
+    %h6
+.container
+  .category-field-section
+    %h4
+      = t('category.select_sub_category')
+    %ul.row
+      - sub_categories&.each do |sub_category|
+        %li.img-thumbnail.text-center.cursor-pointer.select-sub-category{'data-id' => sub_category.id, class: @property&.property_sub_category_id == sub_category.id ? 'active' : ''}
+          %span
+            = sub_category.name
+    .authnbtn-f
+      - if @property&.id
+        %button.btn.btn-primary.float-right.confirm_preview.display-none{type: "submit", 'data-step' => 0,'data-action' => update_draft_property_path(id: @property.id), 'data-draft'=> true, 'data-id' => @property.id, 'data-draft' => 'draft'}
+          = t('button.save_as_draft')
+      - else
+        %button.btn.btn-primary.float-right.save-draft.display-none{type: "submit", 'data-step' => 0}
+          = t('button.save_as_draft')  
+      %button.btn.btn-primary.next-step.float-right{type: "submit", 'data-next_tab' => '#step_1', 'data-current_tab' => '#select_category', 'data-step' => 0}
+        = t('button.next')
+      %a{href: root_path}
+        %button.btn.btn-default.float-right{type: "submit"}
+          = t('button.back')

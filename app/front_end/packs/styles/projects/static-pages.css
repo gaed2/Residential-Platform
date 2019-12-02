@@ -1,0 +1,23 @@
+.term-condition-wrapper {
+  padding-left: 70px;
+}
+
+.term-field {
+  padding: 85px 15px;
+}
+
+.term-field h3 {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 767px) {
+  .term-condition-wrapper {
+    padding-left: 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .term-condition-wrapper {
+    padding-left: 0;
+  }
+}

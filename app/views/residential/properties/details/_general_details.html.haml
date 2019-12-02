@@ -1,0 +1,110 @@
+.table-responsive
+  %table.table
+    %tr
+      %td= t('property.input.owner_name')
+      %td= property.owner_name || '-'
+    %tr
+      %td= t('property.input.contact_email')
+      %td.green-text= property.owner_email || '-'
+    %tr
+      %td= t('property.input.contact_number')
+      %td= property.contact_number || '-'
+    %tr
+      %td= t('property.input.address')
+      %td.green-text= property.full_address || '-'
+    %tr
+      %td= t('property.label.adults')
+      %td= property.adults || '-'
+    %tr
+      %td= t('property.label.senior_citizens')
+      %td= property.senior_citizens || '-'
+    %tr
+      %td= t('property.label.children')
+      %td= property.children || '-'
+    %tr
+      %td= t('property.label.duration_of_stay')
+      %td.green-text= property.duration_of_stay || '-'
+    %tr
+      %td= t('property.label.bedrooms')
+      %td= property.bedrooms || '-'
+    %tr
+      %td= t('property.label.floors')
+      %td= property.floors || '-'
+    %tr
+      %td= t('property.label.bathrooms')
+      %td= property.bathrooms || '-'
+    %tr
+      %td= t('property.label.avg_room_size')
+      %td= property.avg_room_size ? "#{property.avg_room_size}  #{property.avg_room_unit}" : '-'
+    %tr
+      %td= t('property.label.living_room_size')
+      %td= property.living_room_size ? "#{property.living_room_size}  #{property.living_room_unit}" : '-'
+    %tr
+      %td= t('property.label.dining_room_size')
+      %td= property.dining_room_size ? "#{property.dining_room_size}  #{property.dining_room_unit}" : '-'
+    %tr
+      %td= t('property.label.total_house_size')
+      %td= property.total_house_size ? "#{property.total_house_size} #{property.total_house_unit}" : '-'
+    %tr
+      %td= t('property.label.floor_to_ceiling_height')
+      %td= property.floor_cieling_height ? "#{property.floor_cieling_height} #{property.floor_cieling_unit}" : '-'   
+    %tr
+      %td= t('property.label.has_solar_pv')
+      %td= property.has_solar_pv ? t('button.yes') : t('button.no')
+    - if property.has_solar_pv
+      %tr
+        %td= t('property.label.roof_length')
+        %td= "#{property.roof_length} #{property.roof_length_unit}"
+      %tr
+        %td= t('property.label.roof_breadth')
+        %td= "#{property.roof_breadth} #{property.roof_breadth_unit}"
+    - else
+      %tr
+        %td= t('property.label.solar_power_consumption')
+        %td= property.solar_power_consumption ? "#{property.solar_power_consumption} #{property.solar_power_consumption_unit}" : '-'
+    %tr
+      %td= t('property.label.full_time_occupancy')
+      %td= property.full_time_occupancy ? t('button.yes') : t('button.no')
+    - if property.full_time_occupancy  
+      %tr
+        %td= t('property.label.persons_always_at_home')
+        %td= property.people_at_home || '-'
+    - else    
+      %tr
+        %td= t('property.label.at_home_time')
+        %td= property.at_home_time || '-'
+    %tr
+      %td= t('property.label.has_ac')
+      %td= property.has_ac ? t('button.yes') : t('button.no')
+    - if property.has_ac
+      %tr
+        %td= t('property.input.ac_units')
+        %td= property.ac_units
+      %tr
+        %td= t('property.input.ac_in_use')
+        %td= property.ac_in_use 
+      %tr
+        %td= t('property.label.ac_temperature')
+        %td= property.ac_temperature
+      %tr
+        %td= t('property.label.ac_usage_time')
+        %td= property.ac_usage_time
+    %tr
+      %td= t('property.label.has_dryer')
+      %td= property.has_dryer ? t('button.yes') : t('button.no')
+    - if property.has_dryer
+      %tr
+        %td= t('property.input.daily_dryer_usage')
+        %td= property.daily_dryer_usage_time
+    %tr
+      %td= t('property.label.electricity')
+      %td= property.electricity_consumption ? "#{property.electricity_consumption} #{t('property.energy_per_year')}" : '-'
+    %tr
+      %td= t('property.label.water_used')
+      %td= property.water_consumption ? "#{property.water_consumption} #{t('property.gas_per_year')}" : '-'
+    %tr
+      %td= t('property.label.natural_gas')
+      %td= property.natural_gas_consumption ? "#{property.natural_gas_consumption} #{t('property.gas_per_year')}" : '-'       
+    %tr
+      %td= t('property.label.others')
+      %td= property.renewable_energy_sources.present? ? property.renewable_energy_sources.pluck(:name).to_sentence : '-'  

@@ -1,0 +1,330 @@
+.nobreak
+%h2.table-content 3. Recommendations
+.recomendation
+  %p
+    Based on the assessment of this building, the investment opportunities are separated into three categories of recommendations:
+  %ul.recommendation-block{style: "list-style: none;"}
+    %li A. Operations and Maintenance – Low Cost/No Cost Measures
+    %li B. Water Conservation Measures – Methods to reduce water and associated energy usage
+    %li C. Energy Conservation Measures – Higher cost upgrades with associated energy savings
+
+-
+%h3.table-content 3.1 Category A Recommendations: Operations and Maintenance
+- index = 1
+.recomendation
+  %ul.recommendation-block{style: "list-style: none;"}
+    - if !@property.has_smart_home_system?
+      %li
+        #{index}. Install Smart home and  plugs meter to monitor the energy usage of the appliances.(Saves around $30 a month or 10%)
+      - index = index + 1
+    - if @energy_save_recommendations['Windows'] == 'No'
+      %li #{index}. Apply dark tint to windows
+      - index = index + 1
+    %li #{index}. Adhere to appliance manual to optimise efficient use.
+    %li #{index + 1}. Employ Energy Saving tactics, if not already in practice
+    %ul{style: "list-style: none;"}
+      %li a. Use the Fan instead of Air-conditioner (Saves around $34 a month or 12%)
+      %li b. Switch off all power at the socket after use. (Saves around $2.50 a month or 1%)
+      %li c. Use a thermos flask instead of a kettle to reheat water (Saves around $25 a month or 8%)
+      %li
+        d. Turn off the electric water heater immediately after shower (Saves around $10 a month or 5%)
+      %li e. When purchasing appliances, the more Energy Ticks the better
+      - if @property.has_aircon?
+        %li
+          f. If you need to air condition the room, switch to fan after a short while (Saves around $28 a month or 10%)
+        %li
+          g. Set the temperature of the air conditioner at 24°C or higher (Saves around $2.50 or 1% monthly)
+    %li
+      #{index + 2}. Based on the Tariff rate and energy consumption, 
+      %b It is recommended to switch Energy Retailers that have lower cost than that of the current incumbent (Saves around 30% a month)
+      %br
+      %br
+      - unless @property.is_supplier_sp_group?
+        %b
+          Recommendation is available on the platform
+          %br
+      %br
+      - if @property.is_supplier_sp_group?
+        .table-block
+          %table{style: 'border-collapse: collapse;width: 100%; text-align: center'}
+            %thead
+              %tr
+                %th{colspan: 2}
+                  Current Electricity Supplier
+                %th{colspan: 2}         
+                  = @property&.current_electricity_supplier&.name
+              %tr      
+                %th{colspan: 4}         
+                  Recommendations
+              %tr
+                %th
+                  Retailer Name
+                %th
+                  Plan Type
+                %th
+                  Electricity Rate
+                %th
+                  Contract Duration
+            %tbody
+              - @top_three_retailers.each do |retailer|
+                %tr
+                  %td
+                    = retailer.name
+                  %td
+                    = retailer.plan_type.titleize
+                  %td
+                    = "#{retailer.price} #{retailer.price_in}"
+                  %td
+                    = "#{retailer.contract_duration} months"
+      - unless @property.is_supplier_sp_group?
+        “You are currently are on the best plan available for you at the moment. You can go through this process again after your current contract ends.”
+%h3.table-content 3.2 Category B Recommendations: Water Conservation Measures (WCMs)
+.recommendation
+  %ul.recommendation-block{style: "list-style: none;"}
+    - index = 1
+    - if @property.duration_of_stay_year.blank? || @property.duration_of_stay_year > 9
+      %li
+        #{index}. Retrofit existing cisterns to one with a WELS 2 or 3 rating to reduce the amount of water when flushing.
+        - index += 1
+      %li      
+        #{index}. Replace all taps with a WELS 2 or 3 standard tap or Install water saving inserts in all the taps.
+        - index += 1
+    - if @property.has_top_loading_washing_machine?    
+      %li
+        #{index}. Replace top loader washing machine to front loader with at least 2 WELS rating and 4 tick energy rating as it uses up to 50% less water
+    - if index == 1
+      %li
+        None
+
+.nobreak
+  %h3.table-content 3.3 Category C Recommendations: Energy Conservation Measures (ECMs)
+  %ul.recommendation-block{style: "list-style: none;"}
+    - appliance_to_upgrade = []
+    - index = 1
+    - if @property.fetch_not_upgraded('ac') || @property.fetch_not_upgraded('aircon')
+      - appliance_to_upgrade.push('AC')
+      %li
+        #{index}. The Air conditioning system ``#{@property.fetch_not_upgraded('ac')&.description || @property.fetch_not_upgraded('aircon').description}`` is installed before 1st Sept 2014 , therefore it is now revised to a 1-Tick Energy rating    
+        %br
+        %p.upgrade_paragraph
+          It is recommended to upgrade to a newer unit (More Energy Ticks) that has lower running costs. A 5-Tick rating can save around $25 a month (or 10%). Recommendation is available on the platform.        
+      - index += 1
+    - if @property.fetch_not_upgraded('tv')
+      - appliance_to_upgrade.push('TV')
+      %li
+        #{index}. The TV ``#{@property.fetch_not_upgraded('tv').description}`` and purchased before 1st Sept 2014.
+        %br     
+        %p.upgrade_paragraph
+          It is recommended to upgrade to a 5-Tick Energy rated TV. Recommendation is available on the platform
+      - index += 1
+    - if @property.fetch_not_upgraded('fridge')
+      - appliance_to_upgrade.push('Refrigerator')
+      %li
+        #{index}. The Refrigerator ``#{@property.fetch_not_upgraded('fridge').description}`` and purchased before 1st Sept 2014.
+        %br        
+        %p.upgrade_paragraph
+          It is recommended to replace it with a fridge with inverter cooling technology with 5-Tick Energy rating with savings around $25 a month (or 10%). Recommendation is available on the platform
+      - index += 1
+    - if @property.fetch_not_upgraded('wm')
+      - appliance_to_upgrade.push('Washing Machine')
+      %li
+        #{index}. Washing Machine is a ``#{@property.fetch_not_upgraded('wm').description}``.
+        %br        
+        %p.upgrade_paragraph
+          It is recommended to replace with a front loader type washing machine, depending on model. It saves up to 200 kWh per year (or 1.5%). Recommendation is available on the platform
+      - index += 1
+    - if appliance_to_upgrade.present?
+      %li
+        #{index}. #{appliance_to_upgrade.to_sentence} was purchased before September 2014. According to NEA, ONLY appliances rated 4 tick in the old system is revised as 1-ticks in the new system. Anything below 4-ticks (old system) is considered as no ticks in the new system.
+        %br
+        %p.upgrade_paragraph
+          With that it is recommended that #{appliance_to_upgrade.to_sentence} be replaced with a new model that has a 5-tick rating. This will generate savings between 1-10%. Recommendation is available on the platform
+    - index += 1
+    - if @property.display_solar_solution? && !@property.has_solar_pv && @property.roof_length && @property.roof_breadth
+      - length = @property.roof_length
+      - width = @property.roof_breadth
+      - solar_pv = SolarPvSystem.last      
+      %li #{index}. Install Solar PV System on the roof.
+      %h3 Estimated roof capacity
+      .table-block
+        %table{style: 'border-collapse: collapse;width: 100%; text-align: center'}
+          %thead
+            %tr
+              %th
+                OUTPUT PARAMETERS
+              %th
+                UNIT
+              %th.blue-background{colspan: 2}
+                OUTPUT          
+          %tbody          
+            %tr
+              %td
+                Available Roof Space for Solar
+              %td
+                m2
+              %td.blue-background{colspan: 2}
+                = solar_pv.roof_available(length, width)                        
+            %tr
+              %td                
+              %td  
+              %td.blue-background
+                Min.
+              %td.blue-background
+                Max.              
+            %tr
+              %td
+                Estimated System Size(Rated Capacity)
+              %td
+                kWp
+              %td.blue-background
+                = estimated_system_size_min = solar_pv.estimated_system_size_min(length, width, '')
+              %td.blue-background
+                = estimated_system_size_max = solar_pv.estimated_system_size_max(length, width, '')              
+            %tr
+              %td
+                Est. Daily Energy Generated
+              %td
+                kWh
+              %td.blue-background
+                = daily_energy_generated_min = solar_pv.daily_energy_generated_min(length, width, '')
+              %td.blue-background
+                = daily_energy_generated_max = solar_pv.daily_energy_generated_max(length, width, '')            
+            - yearly_energy_generated_min = daily_energy_generated_min*365
+            - yearly_energy_generated_max = daily_energy_generated_max*365            
+            %tr
+              %td
+                Est. Monthly Energy Generated
+              %td
+                kWh
+              %td.blue-background
+                = (yearly_energy_generated_min/12).round(2)
+              %td.blue-background
+                = (yearly_energy_generated_max/12).round(2)              
+            %tr
+              %td
+                Est. Yearly Energy Generated
+              %td
+                kWh
+              %td.blue-background
+                = (daily_energy_generated_min*365).round(2)
+              %td.blue-background
+                = (daily_energy_generated_max*365).round(2)              
+            %tr
+              %td
+                Est. System Cost
+              %td
+              %td.blue-background
+                - estimated_system_cost_min = (estimated_system_size_min*solar_pv.market_price_min*1000)
+                = "$#{estimated_system_cost_min.round(2)}"
+              %td.blue-background
+                - estimated_system_cost_max = estimated_system_size_max*solar_pv.market_price_min*1000
+                = "$#{estimated_system_cost_max.round(2)}"
+            %tr
+              %td
+                Est. Payback Period
+              %td
+                Years
+              %td.blue-background
+                = (estimated_system_cost_min/(yearly_energy_generated_min*solar_pv.electricity_retailer_tariff)).round(2)
+              %td.blue-background
+                = (estimated_system_cost_max/(yearly_energy_generated_max*solar_pv.electricity_retailer_tariff)).round(2)
+            %tr
+              %td
+                Est. ROI
+              %td
+              %td.blue-background
+                = "#{((((yearly_energy_generated_min*25*solar_pv.electricity_retailer_tariff)-estimated_system_cost_min)/estimated_system_cost_min)*100).round(2)}%"
+              %td.blue-background
+                = "#{((((yearly_energy_generated_max*25*solar_pv.electricity_retailer_tariff)-estimated_system_cost_max)/estimated_system_cost_max)*100).round(2)}%"
+
+      %h3 Unobstructed Roof Space
+      .table-block
+        %table{style: 'border-collapse: collapse;width: 100%; text-align: center'}
+          %thead
+            %tr              
+              %th
+                OUTPUT PARAMETERS
+              %th
+                UNIT
+              %th.blue-background{colspan: 2}
+                OUTPUT 
+          %tbody          
+            %tr            
+              %td
+                Available Roof Space for Solar
+              %td
+                m2
+              %td.blue-background{colspan: 2}
+                = solar_pv.actual_roof_available(length, width)              
+            %tr              
+              %td                
+              %td  
+              %td.blue-background
+                Min.
+              %td.blue-background
+                Max.             
+            %tr              
+              %td
+                Estimated System Size(Rated Capacity)
+              %td
+                kWp
+              %td.blue-background
+                = estimated_system_size_min_actual = solar_pv.estimated_system_size_min(length, width, 'actual')
+              %td.blue-background
+                = estimated_system_size_max_actual = solar_pv.estimated_system_size_max(length, width, 'actual')
+            %tr              
+              %td
+                Est. Daily Energy Generated
+              %td
+                kWh
+              %td.blue-background
+                = daily_energy_generated_min_actual = solar_pv.daily_energy_generated_min(length, width, 'actual')
+              %td.blue-background
+                = daily_energy_generated_max_actual = solar_pv.daily_energy_generated_max(length, width, 'actual')
+            - yearly_energy_generated_min_actual = daily_energy_generated_min_actual*365
+            - yearly_energy_generated_max_actual = daily_energy_generated_max_actual*365
+            %tr              
+              %td
+                Est. Monthly Energy Generated
+              %td
+                kWh
+              %td.blue-background
+                = (yearly_energy_generated_min_actual/12).round(2)
+              %td.blue-background
+                = (yearly_energy_generated_max_actual/12).round(2)
+            %tr              
+              %td
+                Est. Yearly Energy Generated
+              %td
+                kWh
+              %td.blue-background
+                = (daily_energy_generated_min_actual*365).round(2)
+              %td.blue-background
+                = (daily_energy_generated_max_actual*365).round(2)
+            %tr              
+              %td
+                Est. System Cost
+              %td                
+              %td.blue-background
+                - estimated_system_cost_min_actual = estimated_system_size_min_actual*solar_pv.market_price_min*1000 
+                = "$#{estimated_system_cost_min_actual.round(2)}"
+              %td.blue-background
+                - estimated_system_cost_max_actual = estimated_system_size_max_actual*solar_pv.market_price_max*1000
+                = "$#{estimated_system_cost_max_actual.round(2)}"
+            %tr              
+              %td
+                Est. Payback Period
+              %td
+                Years            
+              %td.blue-background
+                = (estimated_system_cost_min_actual/(yearly_energy_generated_min_actual*solar_pv.electricity_retailer_tariff)).round(2)
+              %td.blue-background
+                = (estimated_system_cost_max_actual/(yearly_energy_generated_max_actual*solar_pv.electricity_retailer_tariff)).round(2)
+            %tr              
+              %td
+                Est. ROI
+              %td                
+              %td.blue-background
+                = "#{((((yearly_energy_generated_min_actual*25*solar_pv.electricity_retailer_tariff)-estimated_system_cost_min_actual)/estimated_system_cost_min_actual)*100).round(2)}%"
+              %td.blue-background
+                = "#{((((yearly_energy_generated_max_actual*25*solar_pv.electricity_retailer_tariff)-estimated_system_cost_max_actual)/estimated_system_cost_max_actual)*100).round(2)}%"

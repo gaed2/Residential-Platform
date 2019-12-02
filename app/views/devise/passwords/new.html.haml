@@ -1,0 +1,30 @@
+.col-md-6.col-sm-12.col-xs-12.float-left.connect-us
+  .float-right
+    %ul.register-field
+      %li
+        %span
+          = t('devise.already_registered')
+      %li
+        = link_to t('button.login'), new_user_session_path, class: 'btn btn-outline-primary'
+  .main-auth-block.forgot-pass-f
+    = render 'devise/shared/navbar'
+    .tab-content
+      #home.container.tab-pane.active.auditor-field
+        %h2.login-f
+          = t('devise.forgot_password')
+        %h3.forgot-pass
+          = t('devise.please_enter_email')
+        .response-message#response_message
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: 'forgot_password_form' }) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.email_field :email, placeholder: t('devise.input.email'), class: 'form-control'
+            = image_tag asset_pack_path('packs/images/envelop-icon.png')
+          .authnbtn-f
+            %button.btn.btn-primary.float-right{type: "submit"}
+              = t('devise.submit')
+      = render 'devise/shared/advertisement'
+      = render 'devise/shared/tab_pane'
+  = render 'devise/shared/footer'
+
+= javascript_pack_tag 'javascripts/validations/reset_password'

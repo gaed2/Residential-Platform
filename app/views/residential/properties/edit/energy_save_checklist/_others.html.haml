@@ -1,0 +1,30 @@
+.form-field-wrapper.row.consumption-block.equipment_maintenances_section{class: @property.electricity_consumption_equipments.count > 0 ? '' :'display-none' }
+  .subheading-field.sbh-with-switch.padding-left-15
+    = render 'residential/properties/modals/add_details/other_equipments_title'
+  .energy-managemnets
+    %p
+      = t('energy_checklist.frequency_for_maintenance')
+  .form-group.installed-blocks-wrapper#other_consumption_data
+    - @property.equipment_maintenances.each_with_index do |equipment, index|
+      - dataTarget = index+1
+      .img-thumbnail.equipment-list.margin-top-10{'data-equipment' => dataTarget, 'data-id' => equipment.id}
+        .float-left
+          %span
+            =  t('modals.equipment_appliance')
+          %h2.equipment_name{'data-equipment' => dataTarget}
+            = equipment.name
+        .float-right
+          %span
+            = t('modals.last_upgraded')
+          %h2.equipment_upgrade_date{'data-equipment' => dataTarget}
+            = "#{equipment.last_upgraded_month}/#{equipment.last_upgraded_year}"
+        %div
+          .consumption-field
+            .kwh-f
+              %span
+                = t('modals.frequency')
+              %h2.equipment_frequency{'data-equipment' => dataTarget}
+                = equipment.frequency
+            = link_to image_tag(asset_pack_path('packs/images/delete.png')), 'javascript:void(0)', class: 'equipment_delete', 'data-equipment' => dataTarget
+            = link_to image_tag(asset_pack_path('packs/images/edit-icon.png')), 'javascript:void(0)', class: 'equipment_edit', 'data-equipment' => dataTarget
+  .table-responsive.checklist-field#other_consumption_data_list_view

@@ -1,0 +1,3 @@
+%label
+  = t('energy_data.current_plan')
+= select_tag 'suppliers_plan_id', options_for_select(@plans.order('name').collect{ |plan| [plan.name, plan.id]}), class: 'form-control height-45'

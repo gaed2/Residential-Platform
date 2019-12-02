@@ -1,0 +1,60 @@
+.form-field-wrapper.row
+  .subheading-field
+    %h4
+      = t('property.home_details')
+    %span.people-main
+      = t('property.how_many_rooms')
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.bedrooms')
+      *
+    = form.select :bedrooms, (1..50), {prompt: t('property.label.bedrooms')}, class: 'form-control unit-select'
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.floors')
+    = form.select :floors, (1..50), {prompt: t('property.label.floors')}, class: 'form-control unit-select'
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.bathrooms')
+    = form.select :bathrooms, (1..50), {prompt: t('property.label.bathrooms')}, class: 'form-control unit-select'
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.avg_room_size')
+    .row
+      %div.col-8.padding-right-0
+        = form.text_field :avg_room_size, placeholder: t('property.input.enter_number'), class: 'form-control before-unit-input'
+      %div.col-4.padding-left-0
+        = form.select :avg_room_unit, Constant::LENGTH_UNIT, {}, class: 'form-control unit-select'
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.living_room_size')
+    .row
+      %div.col-8.padding-right-0
+        = form.text_field :living_room_size, placeholder: t('property.input.enter_number'), class: 'form-control before-unit-input'
+      %div.col-4.padding-left-0
+        = form.select :living_room_unit, Constant::LENGTH_UNIT, {}, class: 'form-control unit-select'
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.dining_room_size')
+    .row
+      %div.col-8.padding-right-0
+        = form.text_field :dining_room_size, placeholder: t('property.input.enter_number'), class: 'form-control before-unit-input'
+      %div.col-4.padding-left-0
+        = form.select :dining_room_unit, Constant::LENGTH_UNIT, {}, class: 'form-control unit-select'
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.total_house_size')
+      *
+    .row
+      %div.col-8.padding-right-0
+        = form.text_field :total_house_size, placeholder: t('property.input.enter_number'), class: 'form-control before-unit-input'
+      %div.col-4.padding-left-0
+        = form.select :total_house_unit, Constant::LENGTH_UNIT, {}, class: 'form-control unit-select'
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.floor_to_ceiling_height')
+    .row
+      %div.col-8.padding-right-0
+        = form.text_field :floor_cieling_height, placeholder: t('property.input.enter_number'), class: 'form-control before-unit-input'
+      %div.col-4.padding-left-0
+        = form.select :floor_cieling_unit, Constant::LENGTH_UNIT_ONLY, {}, class: 'form-control unit-select'

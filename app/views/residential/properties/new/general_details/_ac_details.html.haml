@@ -1,0 +1,60 @@
+.form-field-wrapper.row
+  .subheading-field
+    %h4
+      = t('property.label.has_ac')
+    .switch-block
+      .form-group.col-md-4.col-sm-4.col-xs-12
+        %p
+          = t('property.label.ac_is_available')
+        %span.switch.switch-sm
+          %input#has-ac.switch{type: "checkbox", checked: @property&.has_ac}/
+          %label{for: "has-ac"}
+
+  .form-group.col-md-4.col-sm-4.col-xs-12.ac-fields.has-ac-block{class: @property&.has_ac ? '' : 'display-none'}
+    %label
+      = t('button.ac_from')
+      *
+    .input-group.date
+      = form.text_field :ac_start_time, value: @property&.ac_start_time&.strftime(Constant::TIME_PICKER_FORMAT), placeholder: t('property.input.start_time'), class: 'form-control jquery-timepicker'
+      = link_to image_tag(asset_pack_path('packs/images/watch.png'), 'data-target' => '#property_ac_start_time', class: 'input-group-addon'), 'javascript:void(0)'
+  .form-group.col-md-4.col-sm-4.col-xs-12.ac-fields{class: @property&.has_ac ? '' : 'display-none'}
+    %label= t('button.to')
+    *
+    .input-group.date
+      = form.text_field :ac_stop_time, value: @property&.ac_stop_time&.strftime(Constant::TIME_PICKER_FORMAT), placeholder: t('property.input.end_time'), class: 'form-control jquery-timepicker'
+      = link_to image_tag(asset_pack_path('packs/images/watch.png'), 'data-target' => '#property_ac_stop_time', class: 'input-group-addon'), 'javascript:void(0)'
+  .col-md-12.col-xs-12.col-sm-12.row
+    .form-group.col-md-4.col-sm-4.col-xs-12.ac-fields{class: @property&.has_ac ? '' : 'display-none'}
+      %label
+        = t('property.input.ac_unit')
+        *
+      = form.text_field :ac_units, placeholder: t('property.input.ac_unit'), class: 'form-control'
+    .form-group.col-md-4.col-sm-4.col-xs-12.ac-fields{class: @property&.has_ac ? '' : 'display-none'}
+      %label
+        = t('property.input.ac_in_use')
+        *
+      = form.text_field :ac_in_use, placeholder: t('property.input.ac_in_use'), class: 'form-control'
+    .form-group.col-md-4.col-sm-3.col-xs-12.ac-fields{class: @property&.has_ac ? '' : 'display-none'}
+      %label
+        = t('property.input.ac_temperature')
+        (&#8451)
+        *
+      = form.text_field :ac_temperature, placeholder: t('property.input.ac_temperature'), class: 'form-control'
+
+.form-field-wrapper.row
+  .subheading-field
+    %h4
+      = t('property.label.has_dryer')
+    .switch-block
+      .form-group.col-md-4.col-sm-4.col-xs-12
+        %p
+          = t('property.label.dryer_label')
+        %span.switch.switch-sm
+          %input#has-dryer.switch{type: "checkbox", checked: @property&.has_dryer}/
+          %label{for: "has-dryer"}
+
+  .form-group.col-md-4.col-sm-4.col-xs-12.dryer-fields{class: @property&.has_dryer ? '' : 'display-none'}
+    %label
+      = t('property.input.daily_dryer_usage')
+      *
+    = form.select :daily_dryer_usage, (1..24).map {|hour| [hour.to_s + " hour".pluralize(hour), hour]}, {prompt: t('property.label.dryer_availability_unit')}, class: 'form-control unit-select'

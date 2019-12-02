@@ -1,0 +1,150 @@
+html body {
+  background: #f5f6f8;
+}
+
+body header .side-nav{
+  width: 70px !important;
+  border: 1px #f5f6f8 solid;
+  box-shadow: none;
+}
+
+header .navbar {
+  box-shadow: none;
+}
+
+header .side-nav .collapsible li{
+  padding: 15px 0;
+}
+
+header .side-nav .logo-wrapper img  {
+  padding: 10px;
+}
+
+header .side-nav .logo-wrapper a{
+  border-color: #f5f6f8;
+}
+
+body .middle-profile-block {
+  background: #f5f6f8;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-bottom: 80px;
+}
+
+.user-field {
+  padding: 8px 27px;
+}
+
+.user-field ul {
+  padding: 0;
+  margin: 0;
+}
+
+.user-field ul li {
+  list-style-type: none;
+}
+
+.user-field ul li span {
+  padding-left: 10px;
+  color: #2a2a31;
+  font-size: 16px;
+  font-family: roboto;
+}
+
+main.fixed-price-block {
+  padding-right: 0;
+  padding-left: 70px;
+  padding-top: 69px;
+  padding-bottom: 90px;
+}
+
+.fixed-price-block h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 35px 0;
+}
+  /**/
+
+.thead-green-dark{
+  background:#1a9c37;
+  color:#fff;
+  font-size: 16px;
+}
+
+.fixed-price-block .table thead th:first-child {
+  border-radius: 10px 0 0 0;
+}
+
+.fixed-price-block .table thead th:last-child {
+  border-radius: 0 10px 0 0;
+}
+.fixed-price-block .table thead th:nth-child(3),
+.fixed-price-block .table thead th:nth-child(4){
+  text-align:right;
+}
+
+.fixed-price-block tr td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.fixed-price-block table tbody tr td span {
+  padding-left: 15px;
+  height: 34px;
+  display: block;
+}
+
+.fixed-price-block table tbody tr td:first-child p {
+  font-size: 14px;
+  font-weight: 400;
+  padding-top:2px;
+  padding-left:15px;
+}
+
+main.fixed-price-block .row:last-child table tr th:nth-child(2),
+main.fixed-price-block .row:last-child table tr th:nth-child(3){
+  text-align:right;
+}
+
+main.fixed-price-block .row:last-child table tr td:nth-child(2),
+main.fixed-price-block .row:last-child table tr td:nth-child(3) {
+  text-align:right;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+main.fixed-price-block .row:last-child table tr td:first-child p {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .side-nav.fixed {
+    left: 70px;
+  }
+  .double-nav .button-collapse {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .user-block-form {
+    padding: 0 15px;
+  }
+
+  .user-block-form .img-thumbnail {
+    padding: 50px 20px;
+  }
+
+  body .middle-profile-block .copyright .float-left , body .middle-profile-block .copyright .float-right {
+    float: none !important;
+  }
+
+  .copyright {
+    padding: 15px;
+  }
+}

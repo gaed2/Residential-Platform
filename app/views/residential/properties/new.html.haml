@@ -1,0 +1,39 @@
+:javascript
+  window.serverData = {}
+  window.serverData['checklist_ids'] = #{@energy_saving_checklists.collect(&:id)}
+  window.serverData['edit_image'] = "#{asset_pack_path('packs/images/edit-icon.png')}"
+  window.serverData['delete_image'] = "#{asset_pack_path('packs/images/delete_icon.png')}"
+  window.serverData['delete_transparent'] = "#{asset_pack_path('packs/images/delete.png')}"
+  window.serverData['remove_icon_source'] = "#{asset_pack_path('packs/images/remove-icon.png')}"
+.error_message
+= render 'residential/properties/categories'
+%section.step3-wrapper.general-wrapper-block
+  = hidden_field_tag 'property_id'
+  #loading.display-none
+    = image_tag(asset_pack_path("packs/images/ajax-loader-orange.gif"), id: '#loading-image', alt: "Loading...", style: 'height: 200px')
+    %p
+      = t('generating_report')
+  = render 'residential/properties/steps/header'
+  = render 'residential/properties/steps/step1_general_details'
+  = render 'residential/properties/steps/step2_energy_data'
+  = render 'residential/properties/steps/step3_energy_save_checklist'
+  #view-general-detail.modal
+    .modal-dialog.modal-lg
+      .modal-content#preview_general_details
+= javascript_pack_tag 'javascripts/properties/create'
+= javascript_pack_tag 'javascripts/properties/preview/general_info_preview'
+= javascript_pack_tag 'javascripts/properties/preview/energy_data_preview'
+= javascript_pack_tag 'javascripts/properties/preview/energy_checklist_preview'
+= javascript_pack_tag 'javascripts/properties/delete'
+= javascript_pack_tag 'javascripts/properties/installed_system'
+= javascript_pack_tag 'javascripts/properties/equipment_list'
+= javascript_pack_tag 'javascripts/properties/monthly_energy_data'
+= javascript_pack_tag 'javascripts/properties/renewable_sources'
+
+-#Validations
+= javascript_pack_tag 'javascripts/validations/properties/general_details'
+= javascript_pack_tag 'javascripts/validations/properties/monthly_energy_consumption'
+= javascript_pack_tag 'javascripts/validations/properties/installed_equipments'
+= javascript_pack_tag 'javascripts/validations/properties/other_equipments'
+= javascript_pack_tag 'javascripts/validations/properties/renewable_energy_sources'
+= javascript_pack_tag 'javascripts/validations/properties/prefilled_equipment'

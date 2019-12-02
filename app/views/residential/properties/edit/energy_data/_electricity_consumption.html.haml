@@ -1,0 +1,27 @@
+.form-field-wrapper.row.consumption-block
+  .subheading-field.sbh-with-switch.padding-left-15.width-100p
+    = render 'residential/properties/modals/add_details/monthly_consumption_title'
+  .form-group.installed-blocks-wrapper#energy_consumption_data
+    - @property.energy_data.ordered_by_date.each_with_index do |energy_data, index|
+      - dataTarget = index+1
+      .img-thumbnail.margin-top-10.energy-consumption-list{'data-consumption' => dataTarget, 'data-id' => energy_data.id}
+        .float-left
+          %span
+            = t('energy_checklist.cost_sgd')
+          %h2.energy_cost{'data-consumption' => dataTarget}
+            = energy_data.cost
+        .float-right
+          %span
+            = t('energy_checklist.month_year')
+          %h2.bill_date{'data-consumption' => dataTarget}
+            = "#{energy_data.month}/#{energy_data.year}"
+        %div
+          .consumption-field
+            .kwh-f
+              %span
+                = t('energy_checklist.consumption_kwh')
+              %h2.energy_consumption{'data-consumption' => dataTarget}
+                = energy_data.energy_consumption
+            = link_to image_tag(asset_pack_path('packs/images/delete.png')), 'javascript:void(0)', class: 'energy_consumption_delete', 'data-consumption' => dataTarget if @property.energy_data.count > 1
+            = link_to image_tag(asset_pack_path('packs/images/edit-icon.png')), 'javascript:void(0)', class: 'energy_consumption_edit', 'data-consumption' => dataTarget
+  .table-responsive.checklist-field#energy_consumption_data_list_view

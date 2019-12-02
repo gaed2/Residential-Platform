@@ -1,0 +1,17 @@
+.tab-content
+  #stepper-step-2.tab-pane.in.active{:role => "tabpanel"}
+    = render 'residential/properties/new/energy_data/current_supplier'
+    = render 'residential/properties/edit/energy_data/electricity_consumption'
+    = render 'residential/properties/edit/energy_data/installed_system'
+  = render 'residential/properties/edit/energy_data/upload_document'
+.authnbtn-f
+  %button.btn.btn-primary.float-right.update-energy-data-btn{type: "submit",
+                                                             'data-url'=> update_energy_data_property_path,
+                                                             'data-id' => @property.id}
+    = t('button.update')
+
+= javascript_pack_tag 'javascripts/validations/properties/monthly_energy_consumption'
+= javascript_pack_tag 'javascripts/validations/properties/installed_equipments'
+= javascript_pack_tag 'javascripts/validations/properties/prefilled_equipment'
+= render 'residential/properties/modals/monthly_electricity_consumption'
+= render 'residential/properties/modals/installation_systems'

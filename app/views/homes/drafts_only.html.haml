@@ -1,0 +1,32 @@
+%main.middle-profile-block
+  .text-center
+    - if @properties.present?
+      - @properties.each do |property|
+        .row-field-block
+          .img-thumbnail
+            .row
+              .col-sm.text-left
+                .left-residential
+                  .float-left.img-category
+                    = link_to image_tag(asset_pack_path('packs/images/home-img.png')), draft_property_path(property)
+                  .float-left.add-field
+                    %span
+                      = property.category_name
+                    = link_to property.address.html_safe, draft_property_path(property), class: 'break-word'
+              .col-sm.types-field
+                %div
+                  %span
+                    = t('property.listing.housing_type')
+                  %b
+                    = property.property_sub_category&.name
+              .col-sm
+                .edit-draft
+                  = link_to image_tag(asset_pack_path('packs/images/edit-draft.png')), draft_property_path(property)
+              .col-sm
+                .edit-draft
+                  = link_to image_tag(asset_pack_path('packs/images/delete_icon.png')), property_path(property), method: :delete,data: {confirm: t('are_you_sure')}
+
+    - else
+      %p{class: 'font-size-25'}
+        = t('no_draft_available')
+    = will_paginate @properties

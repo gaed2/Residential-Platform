@@ -1,0 +1,30 @@
+- if property.property_checklists.includes(:energy_saving_checklist).count > 0
+  %div
+    .energy-report
+      %h3= t('energy_checklist.checklist_for_energy_saving')
+      %div
+        - property.property_checklists.includes(:energy_saving_checklist).each do |checklist|
+          .checklist-que-field.img-thumbnail
+            %h4= checklist.energy_saving_checklist.heading
+            .fblock
+              %span.float-left= checklist.energy_saving_checklist.question
+              %span.float-right= checklist.answer
+- if property.equipment_maintenances.count > 0      
+  %div
+    .energy-report
+      %h3= t('model.others_consumption')
+      .table-responsive
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th
+              %th= t('modals.equipment_appliance')
+              %th= t('energy_checklist.upgrade')
+              %th= t('energy_checklist.frequency')
+          %tbody
+            - property.equipment_maintenances.each_with_index do |equipment, index|
+              %tr
+                %td.width-5p= (index + 1)
+                %td= equipment.name
+                %td= "#{equipment.last_upgraded_month}/#{equipment.last_upgraded_year}"
+                %td= equipment.frequency

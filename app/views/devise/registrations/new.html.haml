@@ -1,0 +1,41 @@
+.col-md-6.col-sm-12.col-xs-12.float-left.connect-us
+  .float-right.m-width
+    %ul.register-field
+      %li
+        %span
+          = t('devise.already_registered')
+      %li
+        = link_to t('button.login'), new_user_session_path, class: 'btn btn-outline-primary'
+  .main-auth-block.signup-blockf
+    = render 'devise/shared/navbar'
+    .tab-content
+      #home.container.tab-pane.active.auditor-field
+        %h2.login-f
+          = t('devise.sign_up')
+        #response_message
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {}) do |f|
+          .form-group
+            = f.text_field :first_name, placeholder: t('devise.input.first_name'), class: 'form-control'
+            = image_tag asset_pack_path('packs/images/firstname.png')
+          .form-group
+            = f.text_field :last_name, placeholder: t('devise.input.last_name'), class: 'form-control'
+            = image_tag asset_pack_path('packs/images/firstname.png')
+          .form-group
+            = f.email_field :email, placeholder: t('devise.input.email'), class: 'form-control'
+            = image_tag asset_pack_path('packs/images/envelop-icon.png')
+          .form-group
+            = f.password_field :password, placeholder: t('devise.input.password'), class: 'form-control'
+            = image_tag asset_pack_path('packs/images/lock.png')
+          .form-group
+            = f.password_field :password_confirmation, placeholder: t('devise.input.confirm_password'), class: 'form-control'
+            = image_tag asset_pack_path('packs/images/confirm-password.png')
+          .form-group.display-none#confirmation_link
+            = link_to t('devise.confirmation_not_received'), new_user_confirmation_path
+          .authnbtn-f
+            %button.btn.btn-primary.float-right{type: "submit"}
+              = t('button.sign_up')
+      = render 'devise/shared/advertisement'
+      = render 'devise/shared/tab_pane'
+  = render 'devise/shared/footer'
+
+= javascript_pack_tag 'javascripts/validations/signup'

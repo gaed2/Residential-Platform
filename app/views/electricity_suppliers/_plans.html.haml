@@ -1,0 +1,15 @@
+%main.fixed-price-v2-block
+  .container-fluid
+    .row
+      .col-sm-12
+        %h4= t("electricity_supplier.heading.best_suggested_plans")
+      - if suggested_plans.blank?
+        .no-plans= t('no_plan_available')
+      - else
+        - suggested_plans.each do |suggested_plan|
+          .col-sm-3
+            .item-inner
+              = link_to suggested_plan.electricity_supplier.website_link, target: '_blank' do
+                %div
+                  = image_tag suggested_plan.electricity_supplier.logo
+                  %p= suggested_plan.electricity_supplier.name

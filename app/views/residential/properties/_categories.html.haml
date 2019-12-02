@@ -1,0 +1,16 @@
+#select_category.row-category-block
+  .category-wrapper
+    .container
+      .category-field-b
+        %h4
+          = t('category.select_category')
+        %ul
+          - @categories.each do |category|
+            %li.select-category.cursor-pointer.background-grays.active-category{ 'data-id' => category.id, 'data-url' => get_sub_categories_path }
+              = image_tag(asset_pack_path('packs/images/home-icon.png', class: "img-responsive"))
+              %span
+                = category.name
+  .category-wrapper#sub_category_wrapper
+    = render 'residential/properties/sub_categories'
+
+= javascript_pack_tag 'javascripts/property_categories/category'

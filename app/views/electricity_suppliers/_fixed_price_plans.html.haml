@@ -1,0 +1,21 @@
+.table-responsive
+  %table.table.table-bordered
+    %thead.thead-green-dark
+      %tr
+        %th= t('electricity_supplier.fixed_price_plan.heading.retailer')
+        %th= t('electricity_supplier.fixed_price_plan.heading.plan_name')
+        %th= t('electricity_supplier.fixed_price_plan.heading.price')
+        %th= t('electricity_supplier.fixed_price_plan.heading.contract_duration')
+    %tbody
+    - suppliers.each do |supplier|
+      - fixed_price_plan = supplier.suppliers_plans.order(:price).fixed
+      - fixed_price_plan.each_with_index do |plan, index|
+        %tr
+          - if index == 0
+            %td{ rowspan: fixed_price_plan.count }
+              %span
+                = image_tag supplier.logo, class: 'img-responsive'
+              %p= supplier.name
+          %td= plan.name
+          %td.text-right= plan.price
+          %td.text-right= plan.contract_duration

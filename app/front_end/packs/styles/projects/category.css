@@ -1,0 +1,165 @@
+header {
+  display: inline-block;
+  width: 100%;
+  background: #fff;
+}
+
+
+html body {
+  font-family: 'Roboto';
+  background: #f5f6f8;
+}
+
+.logo {
+  float: left;
+  border-right: 2px #f5f6f8 solid;
+  padding: 10px;
+}
+
+.user-field {
+  padding: 15px 27px;
+}
+
+.user-field ul {
+  padding: 0;
+  margin: 0;
+}
+
+.user-field ul li {
+  list-style-type: none;
+}
+
+.user-field ul li span {
+  padding-left: 10px;
+  color: #2a2a31;
+  font-size: 16px;
+  font-family: roboto;
+}
+
+.category-wrapper {
+  background: #f5f6f8;
+  padding: 30px 0;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+
+.category-field-b h4,.category-field-section h4 {
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.category-field-b ul {
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding-top: 50px;
+  border-bottom: 1px #c3c7d2 solid;
+}
+
+
+.category-field-b ul li {
+  list-style-type: none;
+  background: #fba919;
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  padding: 24px 24px 16px;
+}
+
+.category-field-b ul li span {
+  display: inline-block;
+  width: 100%;
+  padding: 6px 0;
+}
+
+.category-wrapper .container {
+  max-width: 1800px;
+}
+
+.category-field-section ul {
+  padding: 0;
+  margin: 0;
+}
+
+.category-field-section ul li {
+  list-style-type: none;
+  margin: 0 15px 23px 0;
+  padding: 10px 47px;
+  border-radius: 6px;
+  color: #747780;
+  border-color: #747780;
+}
+
+.category-field-section ul li.active {
+  background: #fba919;
+  color: #fff;
+  border-color: #fba919;
+}
+
+.category-field-section h4 {
+  padding-bottom: 25px;
+}
+
+.authnbtn-f {
+  display: table;
+  margin: 119px auto;
+}
+
+.authnbtn-f button.btn-primary {
+  background: #24a449;
+  border-radius: 30px;
+  border-color: #24a449;
+  padding: 15px 50px;
+  font-size: 19px;
+  border-width: 2px;
+  margin-left: 30px;
+}
+
+.authnbtn-f button.btn-default {
+  background: none;
+  border-radius: 30px;
+  color: #b6bbc9;
+  border-color: #b6bbc9;
+  padding: 15px 50px;
+  font-size: 19px;
+  border-width: 2px;
+}
+
+.authnbtn-f button:hover {
+ background: none;
+ border-color: #24a449;
+ color: #24a449;
+ border-width: 2px;
+}
+
+@media screen and (max-width: 767px) {
+  .category-field-section ul li {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+
+  .category-field-b ul {
+    display: inline-block;
+    text-align: center;
+  }
+
+  .authnbtn-f {
+    margin: 30px auto;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .category-field-section ul li {
+    min-width: 252px;
+    margin-right: 17px;
+  }
+
+  .authnbtn-f {
+    margin: 120px auto;
+  }
+}

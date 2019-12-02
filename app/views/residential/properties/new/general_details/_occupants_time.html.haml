@@ -1,0 +1,36 @@
+.form-field-wrapper.row
+  .subheading-field
+    %h4
+      = t('property.label.occupants_time')
+    .switch-block
+      .form-group.col-md-4.col-sm-4.col-xs-12
+        %p
+          = t('property.label.full_time_occupancy')
+        %span.switch.switch-sm
+          %input#switch-occupancy.switch{type: "checkbox", checked: @property&.full_time_occupancy}/
+          %label{for: "switch-occupancy"}
+        .info-box
+          %a{href: "javascript:void(0)"}
+            = image_tag asset_pack_path('packs/images/info-icon.png'), id: 'occupants_tooltip'
+          %span
+            = t('property.occupancy_tooltip')
+
+  .form-group.col-md-4.col-sm-4.col-xs-12#occupancy_start_time{class: @property&.full_time_occupancy ? 'display-none' : ''}
+    %label
+      = t('button.from')
+      *
+    .input-group.date
+      = form.text_field :start_time, value: @property&.start_time&.strftime(Constant::TIME_PICKER_FORMAT), placeholder: t('property.input.start_time'), class: 'form-control jquery-timepicker'
+      = link_to image_tag(asset_pack_path('packs/images/watch.png'), 'data-target' => '#property_start_time', class: 'input-group-addon'), 'javascript:void(0)'
+  .form-group.col-md-4.col-sm-4.col-xs-12#occupancy_end_time{class: @property&.full_time_occupancy ? 'display-none' : ''}
+    %label= t('button.to')
+    *
+    .input-group.date
+      = form.text_field :end_time, value: @property&.end_time&.strftime(Constant::TIME_PICKER_FORMAT), placeholder: t('property.input.end_time'), class: 'form-control jquery-timepicker'
+      = link_to image_tag(asset_pack_path('packs/images/watch.png'), 'data-target' => '#property_end_time', class: 'input-group-addon'), 'javascript:void(0)'
+
+  .form-group.col-md-4.col-sm-4.col-xs-12#how_many_persons{class: @property&.full_time_occupancy ? '' : 'display-none'}
+    %label
+      = t('property.label.number_of_people')
+      *
+    = form.text_field :people_at_home, placeholder: t('property.label.number_of_people'), class: 'form-control'

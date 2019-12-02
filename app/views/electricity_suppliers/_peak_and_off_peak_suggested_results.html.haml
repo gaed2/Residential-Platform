@@ -1,0 +1,34 @@
+.retailer-field
+  .table-responsive
+    %table.table
+      %thead.thead-dark
+        %tr
+          %th{ scope: 'col' }= t('suggestions.table.heading.retailer')
+          %th{ scope: 'col' }= t('suggestions.table.heading.peak_electricity_rate')
+          %th{ scope: 'col' }= t('suggestions.table.heading.peak_off_electricity_rate')
+          %th{ scope: 'col' }= t('suggestions.table.heading.estimated_monthly_bill')
+          %th{ scope: 'col' }
+      %tbody
+        - if suggested_plans.blank?
+          %tr
+            %td{ colspan: 5, class: 'no-record' }= t('no_plan_available')
+        - else
+          - suggested_plans.each do |suggested_plan|
+            %tr
+              %th{ scope: 'row' }
+                = image_tag suggested_plan.electricity_supplier.logo, class: 'img-responsive'
+                %br/
+                %p= suggested_plan.electricity_supplier.name
+              %td
+                #{suggested_plan.peak_price} #{suggested_plan.peak_price_in}
+                %br/
+                .duration ( #{suggested_plan.peak_duration} )
+              %td
+                #{suggested_plan.peak_off_price} #{suggested_plan.peak_off_price_in}
+                %br/
+                .duration ( #{suggested_plan.peak_off_duration} )
+                - expected_peak_monthly_bill = @property.estimated_peak_monthly_bill(suggested_plan.peak_price, suggested_plan.peak_price_type)
+                - expected_peak_off_monthly_bill = @property.estimated_peak_off_monthly_bill(suggested_plan.peak_off_price, suggested_plan.peak_off_price_type)
+              %td $ #{round_two(expected_peak_monthly_bill + expected_peak_off_monthly_bill)}
+              %td
+                = link_to t('suggestions.table.visit_website'), suggested_plan.electricity_supplier.website_link, target: '_blank', class: 'btn btn-outline-secondary'

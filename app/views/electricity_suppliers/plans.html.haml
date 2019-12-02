@@ -1,0 +1,15 @@
+/ Main layout
+%main.fixed-price-block
+  .container-fluid
+    .row
+      .col-sm-12
+        %h4= t('electricity_supplier.heading.fixed_price_plan')
+        = render 'fixed_price_plans', suppliers: @suppliers
+    .row
+      .col-sm-12
+        %h4= t('electricity_supplier.heading.discount_off_plan')
+        = render 'discount_off_plans', suppliers: @suppliers
+    .row
+      .col-sm-12
+        %h4= t('electricity_supplier.heading.peak_and_off_peak_plan')
+        = render 'peak_and_off_peak_plans', suppliers: @suppliers

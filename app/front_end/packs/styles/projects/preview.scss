@@ -1,0 +1,163 @@
+.white-bg {
+   background: #fff;
+}
+
+.detail-bg {
+  background: #f5f6f8;
+  padding: 15px;
+  color: #999;
+}
+
+.black-color {
+  color: #000;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #ced4da;
+}
+
+.popup-title {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: roboto;
+  padding-bottom: 27px;
+  padding: 15px;
+}
+
+.btn-popup-next {
+  background: #24a449;
+  border-radius: 30px;
+  border-color: #24a449;
+  padding: 10px 25px;
+  font-size: 19px;
+  border-width: 2px;
+  margin-left: 30px;
+  color: #fff;
+}
+.btn-popup-cancel {
+  background: none;
+  border-radius: 30px;
+  color: #b6bbc9;
+  border-color: #b6bbc9;
+  padding: 10px 25px;
+  font-size: 19px;
+  border-width: 2px;
+}
+
+.provider-heading {
+  border-radius: 5px 5px 0 0;
+  background: #DDDDDD;
+  padding: 12px;
+  color: #2a2a31;
+  font-size: 14px;
+}
+
+.popup-table thead tr th  {
+  color: #2a2a31;
+  border-top: 0;
+  background: #DDDDDD;
+}
+
+.popup-table thead tr th:first-child {
+  border-radius: 5px 0 0 0;
+}
+
+.popup-table thead tr th:last-child {
+  border-radius: 0 5px 0 0;
+}
+
+
+/********view general detail**********/
+
+#view-general-detail {
+  border-radius: 10px;
+  border: none;
+}
+
+#view-general-detail .modal-header .modal-title {
+  font-family: roboto;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+}
+
+#view-general-detail .modal-body {
+  padding: 0;
+}
+
+#view-general-detail p {
+  margin:10px 0;
+  font-size: 14px;
+}
+
+/********* view energy data **********/
+
+#view-energy-data {
+  border-radius: 10px;
+  border: none;
+}
+
+#view-energy-data .modal-header .modal-title {
+  font-family: roboto;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+}
+
+#view-energy-data .modal-body {
+  padding: 0;
+}
+
+#view-energy-data p {
+  margin:10px 0;
+  font-size: 14px;
+}
+
+.provider-document ul {
+  padding-left: 0;
+  overflow-x: auto;
+}
+
+.provider-document ul li {
+  display: table-cell;
+  padding: 15px;
+}
+
+/********* Energy Savings **********/
+
+#energy-savings {
+  border-radius: 10px;
+  border: none;
+}
+
+#energy-savings .modal-header .modal-title {
+  font-family: roboto;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+}
+
+#energy-savings .modal-body {
+  padding: 0;
+}
+
+#energy-savings p {
+  margin:10px 0;
+  font-size: 14px;
+}
+
+.energy-yes {
+  color: #24a449;
+  text-transform: capitalize;
+}
+
+.energy-no {
+  color: #f11818;
+  text-transform: capitalize;
+}
+
+.energy-other {
+  color: #fba919;
+  text-transform: capitalize;
+}

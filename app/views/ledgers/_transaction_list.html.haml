@@ -1,0 +1,12 @@
+%ul
+  - if @data_hash.present?
+    - @data_hash.each do |data|
+      %li.row.property-details{'data-url' => get_transaction_info_path, 'data-tab' => @data_tab, 'data-uuid'=> data[:uuid]}
+        %a{href: "javascript:void(0)"}
+          .col-md-6.col-sm-6.col-xs-12
+            %p.width-330
+              %span
+                = t('ledgers.tx')
+              = data[:txn_hash]
+  - else
+    = t('no_data_available')

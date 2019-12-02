@@ -1,0 +1,5 @@
+%main.audit_report-block
+  = render 'audit_report_header', property: @property
+  = render 'audit_report_details'
+  .text-center
+    = link_to t('button.back'), :back, class: 'btn btn-back waves-effect waves-light'

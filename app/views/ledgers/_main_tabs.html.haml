@@ -1,0 +1,23 @@
+.ledger-dashboard
+  %h4
+    = t('ledgers.ledger_dashboard')
+  .data-ledger
+    %ul.nav.nav-tabs
+      %li.nav-item.main-tab-list.cursor-pointer{'data-tab' => t('ledgers.data')}
+        %a.nav-link.active{"data-toggle" => "tab"}
+          %span.data
+          %h5
+            = t('ledgers.data')
+      %li.nav-item.main-tab-list.cursor-pointer{'data-tab' => t('ledgers.report')}
+        %a.nav-link{"data-toggle" => "tab"}
+          %span.report
+          %h5
+            = t('ledgers.report')
+      %li.nav-item.main-tab-list.cursor-pointer{'data-tab' => t('ledgers.recommendation')}
+        %a.nav-link{"data-toggle" => "tab"}
+          %span.recommendation
+          %h5
+            = t('ledgers.recommendation')
+      .col-md-3.audit-category-field.view-sheet
+        .btn-bar          
+          = link_to t('button.back'), :back, class: 'active'      

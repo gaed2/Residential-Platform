@@ -1,0 +1,137 @@
+.report-details
+  .container-fluid
+    -#Capital improvements
+    %h3.report-title
+      = t('reports.analysis_of_improvements')  
+    %h4    
+    = t('reports.operations_and_maintenance')
+    %ul
+      - if !@property.has_smart_home_system?
+        %li
+          = t('reports.operations_and_maintenances.install_smart_home')
+      - if @energy_save_recommendations['Windows'] == 'No'
+        %li
+          = t('reports.operations_and_maintenances.apply_dark_tint')
+      %li 
+        = t('reports.operations_and_maintenances.adhere_to_appliance')
+      %li
+        = t('reports.operations_and_maintenances.energy_saving_tactics')
+      %ul
+        %li
+          = t('reports.operations_and_maintenances.use_the_fan')
+        %li
+          = t('reports.operations_and_maintenances.switch_all_power_socket')
+        %li
+          = t('reports.operations_and_maintenances.use_thermos_flask')
+        %li
+          = t('reports.operations_and_maintenances.turn_off_heater')
+        %li
+          = t('reports.operations_and_maintenances.when_purchasing_appliance')
+        - if @property.has_aircon?
+          %li
+            = t('reports.operations_and_maintenances.switch_to_fan')
+          %li
+            = t('reports.operations_and_maintenances.set_ac_temperature')
+      %li{style: 'list-style: none'}
+        #householdEnergyPieChart{style: 'width: 49%;border: 1px solid #e6dfdf;'}
+    -#Water consumption
+    %h4
+      = t('reports.water_conservation')
+    %ul
+      - index = 1
+      - if @property.duration_of_stay_year.blank? || @property.duration_of_stay_year > 9
+        %li
+          = t('reports.water_conservations.retrofit_cisterns')          
+          - index += 1
+        %li      
+          = t('reports.water_conservations.replace_taps')          
+          - index += 1
+      - if @property.has_top_loading_washing_machine?    
+        %li
+          = t('reports.water_conservations.replace_top_loader_machine')          
+      - if index == 1
+        %li
+          None
+    #householdWaterPieChart      
+    %h4
+      = t('reports.energy_conservation')
+    %p
+      = t('reports.total_energy_consumed', month: pluralize(@property.count_energy_data,'month'))
+      %b= @property.total_energy_consumption
+    - if @property.supplier_electricity_rate
+      %p
+        = t('reports.local_electricity_rate')
+        %b= "$#{(@property.supplier_electricity_rate/100).round(2)}"
+    %p
+      = t('reports.total_cost_energy_consumed', month: pluralize(@property.count_energy_data,'month'))
+      %b= "$#{@property.total_energy_consumption_cost} #{@property.electricity_consumption_unit}"
+    - if @property.max_energy_consumption_month
+      %p
+        The month consuming the most was in #{Date::MONTHNAMES[@property.max_energy_consumption_month]} at
+        %b= @property.max_energy_consumption
+    %p
+      = t('reports.hotest_month')
+    - if @property.min_energy_consumption_month
+      %p
+        The month consuming the least was in #{Date::MONTHNAMES[@property.min_energy_consumption_month]} at
+        %b= @property.min_energy_consumption
+    %p The last #{@property.energy_data.count > 2 ? @property.energy_data.count : 12} months of utility bills can be seen in the chart below.
+    - if @property.energy_data.count < 3
+      %property
+        %b
+          = t('reports.not_enough_information')
+    #energyBarChart
+    %ul
+      - appliance_to_upgrade = []
+      - if @property.fetch_not_upgraded('ac') || @property.fetch_not_upgraded('aircon')
+        - appliance_to_upgrade.push('AC')
+        %li
+          The Air conditioning system ``#{@property.fetch_not_upgraded('ac')&.description || @property.fetch_not_upgraded('aircon').description}`` is installed before 1st Sept 2014 , therefore it is now revised to a 1-Tick Energy rating    
+          %br
+          %p.upgrade_paragraph
+            = t('reports.energy_conservations.upgrade_ac')
+      - if @property.fetch_not_upgraded('tv')
+        - appliance_to_upgrade.push('TV')
+        %li
+          The TV ``#{@property.fetch_not_upgraded('tv').description}`` and purchased before 1st Sept 2014.
+          %br     
+          %p.upgrade_paragraph
+            = t('reports.energy_conservations.upgrade_tv')
+      - if @property.fetch_not_upgraded('fridge')
+        - appliance_to_upgrade.push('Refrigerator')
+        %li
+          The Refrigerator ``#{@property.fetch_not_upgraded('fridge').description}`` and purchased before 1st Sept 2014.
+          %br        
+          %p.upgrade_paragraph
+            = t('reports.energy_conservations.upgrade_fridge')
+      - if @property.fetch_not_upgraded('wm')
+        - appliance_to_upgrade.push('Washing Machine')
+        %li
+          Washing Machine is a ``#{@property.fetch_not_upgraded('wm').description}``.
+          %br        
+          %p.upgrade_paragraph
+            = t('reports.energy_conservations.upgrade_washing_machine')
+      - if appliance_to_upgrade.present?
+        %li
+          #{appliance_to_upgrade.to_sentence} was purchased before September 2014. According to NEA, ONLY appliances rated 4 tick in the old system is revised as 1-ticks in the new system. Anything below 4-ticks (old system) is considered as no ticks in the new system.
+          %br
+          %p.upgrade_paragraph
+            With that it is recommended that #{appliance_to_upgrade.to_sentence} be replaced with a new model that has a 5-tick rating. This will generate savings between 1-10%. Recommendation is available on the platform
+      - if @property.display_solar_solution? && !@property.has_solar_pv && @property.roof_length && @property.roof_breadth      
+        = render 'residential/reports/audit/solar_pv'
+    = render 'residential/reports/audit/conclusion'
+  #tariffPieChart.display-none
+
+= render 'residential/reports/audit/load_report_data'
+= javascript_include_tag "library/highcharts"
+= javascript_include_tag "pie_chart"
+= javascript_include_tag "bar_graph"
+= javascript_include_tag "annual_projected_saving"
+= javascript_include_tag "energy_saving_breakdown"
+= javascript_include_tag "solar_saving_graph"
+:javascript
+  show_charts();
+  show_graphs();
+  show_annual_report();
+  show_energy_saving_breakdown();
+  loadSolarSavingGraph();

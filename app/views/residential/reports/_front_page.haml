@@ -1,0 +1,18 @@
+.display-center
+  = image_tag image_url(asset_pack_path('packs/images/logo-new-big.png'))
+  %h2.title Residential Energy Assessment
+  %p
+    %b For
+  %p
+    %b= @property.owner_name&.capitalize
+  %p
+    %b= @property.full_address
+  %p
+    %b= @property.zip
+  %p
+    %b
+      Email:
+      = link_to @property.owner_email, "mailto:#{@property.owner_email}", target: '_blank'
+  - if @property.contact_number.present?
+    %p
+      %b Mobile: #{@property.contact_number}

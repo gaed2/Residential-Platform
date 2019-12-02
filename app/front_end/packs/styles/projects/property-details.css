@@ -1,0 +1,399 @@
+html body {
+  background: #f5f6f8;
+}
+
+body header .side-nav{
+  width: 70px !important;
+  border: 1px #f5f6f8 solid;
+  box-shadow: none;
+}
+
+header .navbar {
+  box-shadow: none;
+}
+
+header .side-nav .collapsible li{
+  padding: 15px 0;
+}
+
+header .side-nav .logo-wrapper img  {
+  padding: 10px;
+}
+
+header .side-nav .logo-wrapper a{
+  border-color: #f5f6f8;
+}
+
+body .middle-profile-block {
+  background: #f5f6f8;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0
+}
+
+.user-field {
+  padding: 8px 27px;
+}
+
+.user-field ul {
+  padding: 0;
+  margin: 0;
+}
+
+.user-field ul li {
+  list-style-type: none;
+}
+
+.user-field ul li span {
+  padding-left: 10px;
+  color: #2a2a31;
+  font-size: 16px;
+  font-family: roboto;
+}
+
+main.report-block {
+  padding-right: 0;
+  padding-left: 0;
+  margin: 0 0 0 68px;
+  padding-top: 80px;
+}
+
+.top-bar {
+  padding-bottom: 15px;
+}
+
+.icon-box a {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: -15px;
+}
+
+.tab-tool-bar {
+  padding: 15px 0 0;
+}
+
+.icon-box {
+  position: relative;
+}
+
+.report-header {
+  background: #dcdcde;
+  padding: 15px 15px 0 15px;
+}
+.adderss-box span:last-child{
+  padding-top: 15px;
+  padding-left:20px;
+}
+
+.adderss-box span {
+  display: inline-block;
+  vertical-align:top;
+}
+
+.adderss-box span h4{
+  font-size: 18px;
+  font-weight:400;
+  color:#727272;
+  margin-bottom: 0;
+}
+
+.adderss-box span small {
+  color:#2a2a31;
+  font-size:16px;
+  font-weight:600;
+}
+
+.btn-bar {
+  float: right;
+}
+
+.btn-bar a {
+  background: #fff;
+  margin: 5px;
+  font-size: 14px;
+  color: #727272;
+  width: 148px;
+  display: inline-block;
+  text-align: center;
+  height: 31px;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #b6bbc9;
+}
+
+.btn-bar a:hover,
+.btn-bar a.active {
+  background: #1a9c37;
+  color: #fff;
+  border: 1px solid #1a9c37;
+}
+
+.report-tabs ul li a {
+  width: auto;
+  padding: 0 24px;
+  display: block;
+  text-align: center;
+  border-bottom: 2px solid #dcdcde;
+  margin: -2px;
+  color: #2a2a31;
+  font-weight: 400;
+  font-size: 15px;
+
+}
+
+.report-tabs .nav-tabs a:hover,
+.report-tabs .nav-tabs a:focus,
+.report-tabs .nav-tabs a:visited{
+  border-top:none;
+  border-left:none;
+  border-right:none;
+}
+
+.report-tabs .nav-tabs a:hover,
+.report-tabs .nav-tabs a.active {
+  background: none;
+  border: none;
+  color: #3db54a;
+  border-bottom: 2px solid #3db54a;
+}
+
+.report-block .fade {
+  opacity: 0;
+  transition: opacity .15s linear;
+  display: none;
+}
+
+.report-block .fade.show {
+  opacity: 1;
+  display: block;
+}
+
+.report-block table tr td {
+  font-size: 14px;
+  font-weight: 400;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #757575;
+}
+
+.report-block table tr td:first-child {
+  width: 35%;
+}
+
+.green-text{
+  color:#3db54a;
+}
+
+.btn-back,
+.btn-back:hover {
+  background: #24a449;
+  border-radius: 50px;
+  color:#fff;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .side-nav.fixed {
+    left: 0;
+  }
+  .double-nav .button-collapse {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width:1024px) {
+  main.report-block {
+    margin:0;
+  }
+
+  .btn-bar a{ margin: 5px 0;}
+}
+
+@media screen and (max-width:992px) {
+  main.report-block {
+    margin:0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .user-block-form {
+    padding: 0 15px;
+  }
+
+  .user-block-form .img-thumbnail {
+    padding: 50px 20px;
+  }
+
+  body .middle-profile-block .copyright .float-left , body .middle-profile-block .copyright .float-right {
+    float: none !important;
+  }
+
+  main.report-block {
+    margin:0;
+  }
+
+  .report-header {
+    background: #dcdcde;
+    padding: 15px 0 15px 0;
+  }
+
+.adderss-box{ margin-bottom: 15px;}
+.adderss-box span:first-child {
+    width: 53px;
+    height: 50px;
+}
+
+.adderss-box span img{ width:100%; }
+
+.adderss-box span:last-child {
+  padding-top: 3px;
+  padding-left: 9px;
+  width: 80%;
+}
+
+.adderss-box span h4 {
+  font-size:15px;
+}
+
+.adderss-box span small {
+  color: #2a2a31;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn-bar {
+    float:inherit;
+}
+
+.btn-bar a {
+    background: #fff;
+    margin:1px;
+    font-size: 12px;
+    width:inherit;
+    height: inherit;
+    padding: 5px 9px;
+
+}
+
+.report-tabs ul li a {
+    width: auto !important;
+    padding: 0;
+}
+
+.icon-box a {
+    top: -27px;
+}
+  .copyright {
+    padding: 15px;
+  }
+}
+
+/*energy data css*/
+
+.electricity-supp ul {
+  padding: 0;
+}
+
+.electricity-supp ul li{
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px #e8e8ea solid;
+  padding-bottom: 10px;
+}
+
+
+.electricity-supp ul li span:last-child {
+  width: 30%;
+  text-align: right;
+}
+
+.checklist-field table {
+  background: #fff;
+}
+
+.checklist-field table thead tr th {
+  font-weight: 700;
+}
+
+.tab-content .installed-energy span:last-child {
+  width: 15%;
+}
+
+.upload-report-img h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.upload-report-img  .img-thumbnail {
+  padding: 15px;
+  text-align: center;
+}
+
+.upload-report-img span {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0;
+  min-height: 36px;
+}
+
+.upload-report-img {
+  padding: 10px;
+}
+
+
+@media screen and (max-width: 767px) {
+  .electricity-supp span {
+    font-size: 12px;
+    padding-left: 13px;
+  }
+
+  .checklist-field table thead tr th {
+    font-size: 12px;
+  }
+}
+
+/*check list data css*/
+
+.energy-report h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.energy-report table thead tr th{
+  background: #dcdcde;
+  color: #2a2a31;
+  font-weight: 700;
+}
+
+.energy-report table tbody tr {
+  background: #fff;
+}
+
+body .energy-report table tbody tr td {
+  background: #f5f6f8;
+  font-weight: 400;
+}
+
+.btns-wrapper {
+  padding: 10px 0;
+}
+
+.fblock {
+  display: inline-block;
+  width: 41%;
+}
+
+.checklist-que-field {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.checklist-que-field h4 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.energy-report {
+  padding-bottom: 20px;
+}

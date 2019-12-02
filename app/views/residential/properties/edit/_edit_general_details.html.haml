@@ -1,0 +1,17 @@
+= form_for @property, method: :put, url: "#{properties_path}/#{@property.id}", html: {id: 'user_property_new'} do |form|
+  .tab-content
+    #stepper-step-1.tab-pane.in.active{role: "tabpanel"}
+      = render 'residential/properties/new/general_details/property_information', form: form
+      = render 'residential/properties/new/general_details/number_of_people', form: form
+      = render 'residential/properties/new/general_details/number_of_rooms', form: form
+      = render 'residential/properties/new/general_details/solar_pv_details', form: form
+      = render 'residential/properties/new/general_details/occupants_time', form: form
+      = render 'residential/properties/new/general_details/ac_details', form: form
+      = render 'residential/properties/new/general_details/energy_sources', form: form
+  .authnbtn-f
+    %button.btn.btn-primary.float-right.update-property-btn{type: "submit"}
+      = t('button.update')
+= render 'residential/properties/modals/renewable_energy_sources'
+
+= javascript_pack_tag 'javascripts/validations/properties/general_details'
+= javascript_pack_tag 'javascripts/validations/properties/renewable_energy_sources'

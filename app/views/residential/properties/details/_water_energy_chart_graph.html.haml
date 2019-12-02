@@ -1,0 +1,17 @@
+.chart-section
+  #householdEnergyPieChart
+.chart-section
+  #energyBarChart
+.chart-section
+  #householdWaterPieChart
+#tariffPieChart.display-none
+
+= javascript_include_tag "library/highcharts"
+= javascript_include_tag "pie_chart"
+= javascript_include_tag "bar_graph"
+:javascript
+  window.serverData = {}
+  window.serverData['energy_consumptions'] = #{@property.energy_data.order(:month).select(:month, :energy_consumption).to_json.html_safe}
+  window.serverData['has_dryer'] = #{@property.has_dryer.to_json.html_safe}
+  show_charts();
+  show_graphs();

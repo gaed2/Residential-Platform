@@ -1,0 +1,43 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ .Values.sidekiq.name }}
+  labels:
+    app: {{ .Values.sidekiq.name }}
+    chart: {{ include "rails-app.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.sidekiq.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.sidekiq.name }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.sidekiq.name }}
+        release: {{ .Release.Name }}
+    spec:
+      volumes:
+      - name: {{ .Values.secret.dbInstance }}
+        secret:
+          secretName: {{ .Values.secret.dbInstance }}
+      containers:
+        - name: {{ .Values.sidekiq.name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+          - /bin/sh
+          - -c
+          - |
+            echo "======= STARTING SIDEKIQ ======="
+            sidekiq -C config/sidekiq.yml
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          env:
+          {{- include "helpers.list-env-variables" . | indent 10 }}
+        {{- include "cloudsql.proxy" . | indent 8 }}
+

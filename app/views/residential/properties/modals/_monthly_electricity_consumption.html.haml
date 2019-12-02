@@ -1,0 +1,34 @@
+#energy_consumption_modal.modal.electricty-consumption-modal.fades{"aria-hidden" => "true", "aria-labelledby" => "modalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header.text-center
+        %h4#modalLabel.modal-title
+          = t('modals.electricity_consumption')
+      = form_tag '#', id: 'energy_consumption_form' do
+        .modal-body
+          .form-group.col-12
+            %label{class: 'width-100p'}
+              = t('energy_checklist.month_year')
+              *
+            = select_tag 'energy_year', options_for_select(Date.today.year.downto Date.today.year - 1), {class: 'form-control width-48p pull-left margin-right-10', include_blank: true}
+            = select_tag 'energy_month', options_for_select(Constant::MONTHS), class: 'form-control width-50p display-none'
+          .clear-both  
+          .form-group.col-12
+            %label
+              = t('energy_checklist.consumption_kwh')
+              *
+            = text_field_tag 'energy_consumption', nil, class: 'form-control'
+          .form-group.col-12
+            %label
+              = t('energy_checklist.cost_sgd')
+              *
+            = text_field_tag 'cost_sgd', nil, class: 'form-control', placeholder: t('energy_checklist.cost_sgd'), disabled: true
+        .authnbtn-f
+          %button.btn.btn-primary.float-right.save_electricity_consumption#save_electricity_consumption{type: "submit"}
+            = t('button.save_next')
+          %button.btn.btn-primary.float-right#save_and_close_electricity_consumption{type: "submit"}
+            = t('button.save_close')
+          %button.btn.btn-primary.float-right{type: "submit", 'data-dismiss' => "modal"}
+            = t('button.cancel')
+
+= javascript_pack_tag 'javascripts/bootstrap/datepicker'

@@ -1,0 +1,23 @@
+.col-md-6.col-sm-12.col-xs-12.float-left.connect-us
+  .main-auth-block.forgot-pass-f
+    = render 'devise/shared/navbar'
+    .tab-content
+      #home.container.tab-pane.active.auditor-field
+        %h2.login-f
+          = t('devise.change_your_password')
+        #response_message
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, id: 'reset_password_form' }) do |f|
+          = f.hidden_field :reset_password_token
+          .form-group
+            = f.password_field :password, placeholder: t('devise.input.new_password'), class: 'form-control'
+            = image_tag asset_pack_path('packs/images/lock.png')
+          .form-group
+            = f.password_field :password_confirmation, placeholder: t('devise.input.confirm_new_password'), class: 'form-control'
+            = image_tag asset_pack_path('packs/images/confirm-password.png')
+          .authnbtn-f
+            %button.btn.btn-primary.float-right{type: "submit"}
+              = t('devise.submit')
+      = render 'devise/shared/tab_pane'
+  = render 'devise/shared/footer'
+
+= javascript_pack_tag 'javascripts/validations/change_password'

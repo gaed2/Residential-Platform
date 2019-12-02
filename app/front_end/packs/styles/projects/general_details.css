@@ -1,0 +1,311 @@
+header {
+  display: inline-block;
+  width: 100%;
+  background: #fff;
+}
+
+
+html body {
+  font-family: 'Roboto';
+  background: #f5f6f8;
+}
+
+.logo {
+  float: left;
+  border-right: 2px #f5f6f8 solid;
+  padding: 10px;
+  width: 100px;
+}
+
+.user-field {
+  padding: 15px 27px;
+}
+
+.user-field ul {
+  padding: 0;
+  margin: 0;
+}
+
+.pl-0 {
+  padding-left: 0;
+}
+
+.user-field ul li {
+  list-style-type: none;
+}
+
+.user-field ul li span {
+  padding-left: 10px;
+  color: #2a2a31;
+  font-size: 16px;
+  font-family: roboto;
+}
+
+.general-details {
+  padding: 20px 105px;
+}
+
+.electricity-consumption-heading {
+  line-height: 80px;
+}
+
+.electricity-consumption-heading .add-details {
+  float: right;
+}
+
+
+.people-main {
+  font-weight: 700;
+  padding-bottom: 12px;
+  display: inline-block;
+
+}
+
+.subheading-field {
+  display: inline-block;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.subheading-field h4 {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  font-family: roboto;
+  padding-bottom: 13px;
+  margin-bottom: 0;
+}
+
+.form-field-wrapper {
+  padding: 25px 0 0;
+}
+
+.form-field-wrapper input {
+  height: 45px;
+}
+
+.tab-content label {
+  color: #2a2a31;
+  min-height: 20px;
+  font-size: 14px;
+}
+
+.form-field-wrapper .form-group {
+  position: relative;
+  z-index: 9;
+}
+
+
+.form-field-wrapper .form-group input::-webkit-input-placeholder{
+  /* Chrome/Opera/Safari */
+  color: rgba(42, 42, 49, 0.2);
+  font-size: 14px;
+}
+
+
+.form-field-wrapper .form-group input::-webkit-input-value{
+  /* Chrome/Opera/Safari */
+  color: rgba(42, 42, 49, 0.2);
+  font-size: 14px;
+}
+
+.tab-content .form-group input::-webkit-input-placeholder {
+  font-size: 14px;
+  color: rgba(42, 42, 49, 0.2);
+}
+
+.form-field-wrapper .form-group .input-group-addon {
+  position: absolute;
+  right: 15px;
+  top: 9px;
+  z-index: 9999;
+}
+
+.authnbtn-f {
+  display: table;
+  margin: 49px auto 0;
+}
+
+.authnbtn-f button.btn-primary {
+  background: #24a449;
+  border-radius: 30px;
+  border-color: #24a449;
+  padding: 10px 39px;
+  font-size: 19px;
+  border-width: 2px;
+  margin-left: 30px;
+}
+
+.user-full-form .authnbtn-f button.btn-primary,.user-full-form .authnbtn-f button.btn-primary:focus {
+   background-color: #24a449 !important;
+}
+
+.authnbtn-f button.btn-default {
+  background: none;
+  border-radius: 30px;
+  color: #b6bbc9;
+  border-color: #b6bbc9;
+  padding: 10px 39px;
+  font-size: 19px;
+  border-width: 2px;
+}
+
+.tab-content .form-field-wrapper .form-group.col-md-6 {
+    max-width: 53% !important;
+    flex: 0 0 53%;
+  }
+
+
+.consumption-block .installed-blocks-wrapper {
+  display: inline-block;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.consumption-block .installed-blocks-wrapper .img-thumbnail {
+  margin-right: 5px;
+  width: 32.33% !important;
+  float: left;
+}
+
+@media screen and (max-width: 767px) {
+
+  .general-details {
+    padding: 16px;
+  }
+
+  .authnbtn-f {
+    margin: 0 auto;
+  }
+
+  .subheading-field h4 {
+    font-size: 14px;
+    padding-bottom: 9px;
+  }
+
+  .tab-content .form-field-wrapper .form-group.col-md-6 {
+     max-width: 100% !important;
+     flex: 0 0 100%;
+   }
+
+  .other-field-blocks {
+    margin: 0;
+  }
+
+  .other-field-blocks .col-md-11 {
+    flex: 0 0 65%;
+    padding: 0;
+    max-width: 65%;
+  }
+
+  .other-field-blocks .col-md-1 {
+    flex: 0 0 25%;
+    padding: 0;
+    max-width: 25%;
+  }
+
+  .consumption-block .sbh-with-switch {
+    width: 100%;
+    display: inline-block !important;
+    text-align: center;
+  }
+
+  .form-field-wrapper {
+    padding: 0;
+  }
+
+  .sbh-with-switch .add-details {
+    margin: 20px auto;
+  }
+
+
+  body .consumption-block .installed-blocks-wrapper .img-thumbnail {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+  .general-details {
+    padding: 15px;
+  }
+  .form-field-wrapper label {
+    font-size: 12px;
+  }
+
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+ .tab-content .form-field-wrapper .form-group.col-md-6 {
+    max-width: 65% !important;
+    flex: 0 0 65%;
+  }
+.other-field-blocks a {
+  background: #24a449;
+  border-color: #24a449;
+}
+
+.other-field-blocks .col-md-11 {
+  padding-right: 0;
+}
+
+.other-field-blocks .col-md-11 input {
+  border-radius: .25rem 0 0px .25rem;
+}
+
+.other-field-blocks .col-md-1 {
+  padding-left: 0;
+}
+
+.other-field-blocks .col-md-1 a {
+  border-radius: 0;
+  color: #fff;
+  font-size: 18px;
+  padding: 9px 18px;
+}
+
+.other-field-blocks a:hover,.other-field-blocks a:focus,
+.other-field-blocks .btn-primary:not(:disabled):not(.disabled):active {
+  color: #fff;
+  background: #24a449;
+  border-color: #24a449;
+  box-shadow: 0 0 0 0.2rem rgba(36, 164, 73, .5);
+}
+
+
+}
+
+.other-field-blocks .add-field-b .btn, .other-field-blocks .add-field-b .btn:active,.other-field-blocks .add-field-b .btn:hover {
+  background: #24a449;
+  border-radius: 0;
+  border: 0;
+  color: #fff;
+  font-size: 18px;
+  padding: 9px 18px;
+}
+
+.other-field-blocks select {
+  border-radius: 4px 0 0px 4px;
+}
+
+.other-field-blocks .col-md-1 {
+  padding: 0;
+}
+
+.other-field-blocks .col-md-11 {
+  padding-right: 0;
+}
+
+.other-field-blocks .col-md-11 input {
+  border-radius: .25rem 0 0px .25rem;
+}
+
+
+.roof-details {
+  padding-left: 0;
+}
+
+
+.general-wrapper-block {
+  padding: 50px 0px;
+}

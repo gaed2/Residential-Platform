@@ -1,0 +1,28 @@
+%h4
+  = t('ledgers.transaction_information')
+#info-transact.transaction-data.tab-pane.active
+  %ul
+    %li.row
+      .col-md-3.col-sm-3.col-xs-3
+        = t('ledgers.txn_hash')
+      .col-md-9.col-sm-9.col-xs-9.word-break
+        = @data[:txn_hash]
+    %li.row
+      .col-md-3.col-sm-3.col-xs-3
+        = t('ledgers.tx_receipt_status')
+      .col-md-9.col-sm-9.col-xs-9.green-color
+        = @data[:status]&.upcase
+    %li.row
+      .col-md-3.col-sm-3.col-xs-3
+        = t('ledgers.input_data')
+      .col-md-9.col-sm-9.col-xs-9
+        .grey-block
+          .method-block
+            %span.pb15{style: 'word-break: break-all;'}
+              - if @data_url
+                - if @tab == 'report' || @data_url.match('.pdf')
+                  = link_to @data_url, @data_url, 'target' => "_blank"
+                - else
+                  = link_to image_tag(@data_url, style: 'width: 250px'), @data_url, 'target' => "_blank"
+              - else
+                = @data_json

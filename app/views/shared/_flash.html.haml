@@ -1,0 +1,7 @@
+- unless flash.empty?
+  %script{ type: 'text/javascript' }
+    - flash.each do |f|
+      - type = f.first.to_s.gsub('alert', 'error').gsub('notice', 'info')
+      - next unless f.last.is_a? String
+      toastr["#{type}"]("#{f.last.html_safe}");
+    - flash.discard

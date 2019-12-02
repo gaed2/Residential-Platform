@@ -1,0 +1,20 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+    - 'config/routes.rb'
+  TargetRubyVersion: 2.4.1
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

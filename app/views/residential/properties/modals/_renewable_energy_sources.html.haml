@@ -1,0 +1,25 @@
+#renewable_energy_modal.modal.renewable-energy-modal.electricty-consumption-modal.fades{"aria-hidden" => "true", "aria-labelledby" => "modalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header.text-center
+        %h4#modalLabel.modal-title
+          = t('modals.renewable_energy_source')
+      = form_tag '#', id: 'renewable_energy_source_form' do
+        .modal-body        
+          .form-group.col-12
+            %label
+              = t('renewable_energy_source.source_name')
+              *
+            = text_field_tag 'renewable_source_name', nil, class: 'form-control', placeholder: t('renewable_energy_source.source_name')
+          .form-group.col-12
+            %label
+              = t('renewable_energy_source.unit')
+              *
+            = text_field_tag 'renewable_source_unit', nil, class: 'form-control', placeholder: t('renewable_energy_source.unit')
+        .authnbtn-f
+          %button.btn.btn-primary.float-right.save_renewable_energy_source#save_renewable_energy_source{type: "submit"}
+            = t('button.save_next')
+          %button.btn.btn-primary.float-right#save_and_close_renewable_energy_source{type: "submit"}
+            = t('button.save_close')
+          %button.btn.btn-primary.float-right{type: "submit", 'data-dismiss' => "modal"}
+            = t('button.cancel')

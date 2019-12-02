@@ -1,0 +1,274 @@
+html body {
+  background: #f5f6f8;
+}
+body header .side-nav{
+  width: 70px !important;
+  border: 1px #f5f6f8 solid;
+  box-shadow: none;
+}
+header .navbar {
+  box-shadow: none;
+}
+header .side-nav .collapsible li{
+  padding: 15px 0;
+}
+header .side-nav .logo-wrapper img  {
+  padding: 10px;
+}
+header .side-nav .logo-wrapper a{
+  border-color: #f5f6f8;
+}
+body .middle-profile-block {
+  background: #f5f6f8;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0
+}
+.user-field {
+  padding: 8px 27px;
+}
+.user-field ul {
+  padding: 0;
+  margin: 0;
+}
+.user-field ul li {
+  list-style-type: none;
+}
+.user-field ul li span {
+  padding-left: 10px;
+  color: #2a2a31;
+  font-size: 16px;
+  font-family: roboto;
+}
+.user-profile-section {
+  background: #fff;
+  margin-top: 82px;
+}
+.user-profile-section .cam-field {
+  position: absolute;
+
+}
+.custom-browse-field {
+  /*display: inline-block;*/
+  position: relative;
+}
+
+.custom-browse-field .user-img {
+    border-radius: 50%;
+    height: 116px;
+    border: 2px #1a9c37 solid;
+    width: 116px;
+}
+.camera-block {
+  color: #fff;
+  background: #1a9c37;
+  font-size: 14px;
+  position: relative;
+  padding: 7px 21px;
+  border-radius: 20px;
+}
+.upload-btn-wrapper .upload-b-field {
+ opacity: 0;
+ width: 68px;
+ position: absolute;
+ top: 0;
+ left: 0;
+ height: 37px;
+}
+
+.main-user-heading {
+  font-weight: 700;
+  font-size: 20px;
+  padding-top: 12px;
+  position: relative;
+}
+.user-block-form .img-thumbnail {
+  display: inline-block;
+  margin: 50px 0;
+  border: 0;
+  width: 590px;
+  padding: 50px 26px 20px;
+  border-radius: 10px;
+}
+.custom-field-row h3 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+}
+.user-full-form {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+}
+.user-full-form input {
+  border-radius: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  font-size: 17px;
+  color: #192033;
+  padding-left: 0;
+}
+.user-full-form input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #192033;
+  font-family: 'Roboto Lt';
+  font-size: 18px;
+  font-weight: 500;
+}
+.custom-field-row {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 18px;
+}
+.user-full-form label {
+  font-family: 'Roboto Cn';
+  font-size: 16px;
+  font-weight: 400;
+}
+.copyright {
+  background: #2a2a31;
+  display: inline-block;
+  padding: 9px 30px 9px 100px;
+  width: 100%;
+  color: #fff;
+}
+.copyright ul {
+  padding: 0;
+  margin: 0;
+}
+.user-block-form {
+  padding-bottom: 105px;
+}
+.copyright h3 {
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 30px;
+}
+.copyright ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0 5px;
+}
+.copyright ul li a {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+}
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .side-nav.fixed {
+    left: 0;
+  }
+  .double-nav .button-collapse {
+    display: none;
+  }
+
+  .profile-upload-section {
+    width: 42% !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .user-block-form {
+    padding: 0 15px;
+  }
+
+  .user-block-form .img-thumbnail {
+    padding: 50px 20px;
+  }
+
+  body .middle-profile-block .copyright .float-left , body .middle-profile-block .copyright .float-right {
+    float: none !important;
+  }
+
+  .copyright {
+    padding: 15px;
+  }
+
+  .profile-upload-section {
+    width: 100% !important;
+  }
+
+  .option-field {
+    width: 94% !important;
+  }
+}
+
+
+.profile-upload-section {
+  display: inline-block;
+  width: 32%;
+  padding: 30px 0;
+  border: 0;
+}
+
+.change-password-field .change-pass {
+  color: #1a9c37;
+  background: none;
+  border: 1px solid #1a9c37;
+  border-radius: 25px;
+  font-size: 14px;
+  padding: 7px 21px;
+}
+
+.custom-field-row .change-password-field .change-pass:hover,.custom-field-row .change-password-field .change-pass:focus {
+  background: #1a9c37 !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 0.2rem rgba(26, 156, 55, .25);
+}
+
+.modal-open .modal {
+  background: rgba(0,0,0,0.5);
+  z-index: 99999;
+}
+
+.modal-open .modal .modal-dialog {
+  transform: translate(0px, 130px) !important;
+  transition: transform 200ms ease-out 0s !important;
+}
+
+
+.modal-open .modal .modal-dialog .modal-content {
+  border-radius: 25px;
+}
+
+.remove-image {
+  color: #fff;
+  border-radius: 20px;
+  background: #1a9c37;
+  font-size: 14px;
+  padding: 7px 21px;
+}
+
+.remove-image:hover {
+  color: #fff;
+}
+
+.option-field {
+  padding-top: 15px;
+  display: inline-block;
+  width: 66%;
+  text-align: left;
+}
+
+.option-field .btn {
+  width: 28%;
+}
+
+.left-user-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+   .profile-upload-section {
+    width: 61%;
+  }
+}
+
+.user-pic-block {
+  display: inline-block;
+}

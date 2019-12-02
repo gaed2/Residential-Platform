@@ -1,0 +1,137 @@
+.stepper {
+  background: #dcdcde;
+  padding: 30px 0 20px;
+}
+
+.stepper ul {
+  display: table;
+  margin: 0 auto;
+  border: 0;
+}
+
+.stepper ul li {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
+
+.stepper ul li a{
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  border: 1px #b6bbc9 solid;
+  border-radius: 50%;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 60px;
+  display: inline-block;
+  line-height: 34px;
+  position: relative;
+}
+
+.stepper ul li:first-child a:before {
+  display: none;
+}
+
+.stepper ul li a:before {
+  width: 187px;
+  height: 1px;
+  background: #b6bbc9;
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 16px;
+  right: 53px;
+}
+
+.stepper ul li.active a,.stepper ul li.active a:before{
+  background: #3db54a;
+}
+
+.stepper ul li .step-content {
+  display: inline-block;
+  width: 100%;
+  color: #b6bbc9;
+  padding-top: 15px;
+}
+
+.stepper ul li.active .step-content {
+  color: #3db54a;
+}
+
+.stepper ul li.active a {
+  color: #fff;
+}
+
+
+.stepper ul li a {
+  color: #b6bbc9;
+
+}
+
+
+@media screen and (max-width: 767px) {
+  .stepper ul li a {
+    margin: 0;
+  }
+
+  .stepper ul li .step-content {
+    font-size: 10px;
+  }
+
+  .stepper ul li a:after {
+    width: 51px;
+    left: 43px;
+  }
+
+  .stepper ul li {
+      width: 33%;
+  }
+
+  .stepper ul li a:before {
+      width:65px;
+      top: 16px;
+      right: 32px;
+  }
+}
+
+@media screen and (min-width:360px) and (max-width: 475px){
+
+  .stepper ul li a:before {
+      width:75px;
+      top: 16px;
+      right: 32px;
+  }
+}
+
+@media screen and (max-width:320px) {
+
+  .stepper ul li a:before {
+      width:65px !important;
+      top: 16px;
+      right: 32px;
+  }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .stepper ul li a {
+    margin: 0 25px;
+  }
+
+  .stepper ul li a:after {
+    width: 127px;
+    left: 45px;
+  }
+
+  .stepper ul li {
+      width: 33%;
+  }
+
+  .stepper ul li a:before {
+      width:167px;
+      top: 16px;
+      right:31px;
+  }
+
+}

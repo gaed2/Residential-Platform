@@ -1,0 +1,27 @@
+:css
+  .report-block table tr td:first-child{
+    width: 15%;
+  }
+%h4
+  = t('property.average_appliance_consumption')
+.table-responsive
+  %table.table.energy-form-table
+    %thead
+      %th= t('property.appliance')
+      %th= t('property.minimum')
+      %th= t('property.maximum')
+      %th= t('property.standby')
+      %th= t('property.other_names') 
+    %tbody
+      - Constant::AVERAGE_APPLIANCE_CONSUMPTION.each do |appliance|
+        %tr
+          %td
+            = appliance[:name]
+          %td
+            = appliance[:min_consumption]
+          %td
+            = appliance[:max_consumption]
+          %td
+            = appliance[:standby]
+          %td
+            = appliance[:other_name]    

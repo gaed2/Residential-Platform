@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title= t('title')
+    = favicon_link_tag 'favicon.ico'
+    = csrf_meta_tags
+    = stylesheet_pack_tag 'styles/registration', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'javascripts/manifest', media: 'all', 'data-turbolinks-track': 'reload'
+  %body
+    %section.authentication-wrapper
+      .col-md-6.col-xs-12.col-sm-12.left-wall-field.float-left
+        -#TODO need to image path issue for webpacker
+        .side-wrapper
+          = image_tag asset_pack_path('packs/images/text.png'), class: 'img-responsive left-bg-image'
+          .logo
+            %h1
+              = link_to image_tag(asset_pack_path('packs/images/logo-new.svg'),class: 'img-responsive'), user_session_path
+      = render 'shared/flash'
+      = yield
+:javascript
+  $(document).ready(function(){
+    $('.side-wrapper').css("height",$(document).height()+'px');
+  });
+
+  $(window).resize(function(){
+    $('.side-wrapper').css("height",$(document).height()+'px');
+  });

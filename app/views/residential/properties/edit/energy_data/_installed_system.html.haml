@@ -1,0 +1,45 @@
+.form-field-wrapper.consumption-block
+  .subheading-field.sbh-with-switch.width-100p
+    = render 'residential/properties/modals/add_details/installed_system_title'
+  .form-field-wrapper.row.pb-0
+    .col-sm-12
+      .table-responsive
+        = form_tag '', class: 'installed_system_form' do 
+          %table.table.energy-form-table
+            = render 'residential/properties/prefilled_systems/table_headings'
+            - defaultSystems = Constant::EQUIPMENTS
+            %tbody#installed_system_list_view_container
+              - dataTarget = 1
+              - @property.electricity_consumption_equipments.group_by{ |equipment| equipment.name}.each do |data|
+                - data[1].each_with_index do |equipment, index|
+                  - defaultSystems = defaultSystems - [equipment.name]
+                  %tr.installed-system-list-td.added.selected-row{'data-installed-system' => dataTarget, 'data-id' => equipment.id, 'data-parent-name' => equipment.name}
+                    %td.background-white{rowspan: data[1].count, class: index == 0 ? '' : 'display-none'}  
+                      %div.installed_equipment_name_td{'data-installed-system' => dataTarget}
+                        = equipment.name
+                    %td
+                      - if[Constant::EQUIPMENTS_HASH[:tv], Constant::EQUIPMENTS_HASH[:wm]].include? equipment.name
+                        .table-select
+                          = select_tag '', options_for_select(equipment.name == Constant::EQUIPMENTS_HASH[:tv] ? Constant::TV_TYPES : Constant::WASHING_MACHINE_TYPES, equipment.equipment_type), class: 'form-control installed_equipment_type_td', 'data-installed-system' => dataTarget, disabled: true
+                      - else
+                        = text_field_tag '', equipment.equipment_type, name: 'model', class: 'form-control installed_equipment_type_td', 'data-installed-system' => dataTarget, disabled: true
+                    %td
+                      .table-select
+                        = select_tag '', options_for_select(1..5, equipment.rating), class: 'form-control installed_equipment_rating_td', prompt: t('energy_data.select_rating'), name: 'rating', 'data-installed-system' => dataTarget, disabled: true
+                    //%td
+                    //= text_field_tag '', equipment.quantity, name: 'quantity', class: 'form-control installed_equipment_quantity_td', 'data-installed-system' => dataTarget, disabled: true
+                    %td
+                      = text_field_tag '', equipment.rated_kw, name: 'rated_kw', class: 'form-control installed_equipment_rated_kw_td', 'data-installed-system' => dataTarget, disabled: true
+                    %td
+                      .table-select
+                        = select_tag '', options_for_select(2000.. Date.today.year, equipment.year_installed), class: 'form-control year_installed_td', name: 'year_installed', prompt: t('energy_data.select_year'), 'data-installed-system' => dataTarget, disabled: true
+                    %td
+                      = text_field_tag '', equipment.electricity_consumption, name: 'consumption', class: 'form-control installed_equipment_consumption_td', 'data-installed-system' => dataTarget, disabled: true
+                    %td
+                      .table-select
+                        = select_tag '', options_for_select(Constant::EQUIPMENT_LOCATION, equipment.location), class: 'form-control installed_equipment_location_td', name: 'location', prompt: t('energy_data.select_location'), 'data-installed-system' => dataTarget, disabled: true
+                    %td
+                      = link_to t('button.remove'), 'javascript:void(0)', class: 'installed_system_delete site-btn-small', 'data-installed-system' => dataTarget
+                  - dataTarget += 1
+              - installedSystemCount = @property.electricity_consumption_equipments.count
+              = render 'residential/properties/prefilled_systems/table_data', equipments: defaultSystems, last_index: installedSystemCount

@@ -1,0 +1,201 @@
+/*Highchart*/
+.highcharts-title{
+  font-size: 25px !important;
+  font-weight: bold;
+}
+.highcharts-subtitle{
+  font-size: 20px !important;
+  font-weight: bold;
+}
+/*End*/
+.tariff-heading{
+  color: #51BFB7;
+  border-bottom: 2px solid;
+  width:230px;
+  margin: 0 auto;
+  font-size:28px;
+  white-space: nowrap;
+  padding: 5px;
+}
+.text-align-center{
+  text-align: center;
+}
+.tariff-subheading{
+  color: #A197B4;
+  font-size: 15px !important;
+  padding: 5px;
+}
+.main-pdf-section ol li, .main-pdf-section ul li {
+  padding-bottom: 10px;
+}
+.main-pdf-section h2 {
+  font-size: 30px;
+  color: #4285f4;
+}
+.main-pdf-section h3 {
+  font-size: 23px;
+  color: #4285f4;
+}
+.main-pdf-section p {
+  font-size: 20px;
+  line-height: 30px;
+}
+.table-content {
+  font-weight: 500 !important;
+  color: #2e74b5 !important;
+  font-size: 28px !important;
+  padding-bottom: 25px;
+}
+.main-pdf-section ul li,.main-pdf-section ol li {
+  font-size: 19px;
+  padding-bottom: 8px;
+  line-height: 30px;
+}
+.display-center {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+}
+.display-center img {
+  width: 100%;
+  max-width: 50%;
+  padding-left: 40px;
+}
+.display-center h2 {
+  padding: 15px 0;
+}
+.display-center h3 {
+  padding: 25px 0;
+}
+.main-pdf-section .nobreak:before {
+  clear: both;
+}
+.main-pdf-section .nobreak {
+  padding-top: 40px;
+  page-break-before: always;
+  page-break-inside: avoid;
+}
+.header-img {
+  float: right;
+  max-width: 5%;
+  display: inline-block;
+  padding-bottom: 30%;
+  margin-bottom: 50%;
+  line-height: 50px;
+}
+.main-pdf-section .front-page {
+  padding-top: 150px;
+  margin: 100px auto;
+}
+img.header-img {
+  padding-bottom: 50%;
+}
+.page-no {
+  float: right;
+  font-size: 20px;
+}
+.display-center .title, .table-of-content .title {
+  color: black;
+  padding-bottom: 5px;
+}
+.main-pdf-section .recommendation-cat {
+  list-style-type: upper-alpha;
+}
+.img-align {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 80%;
+  width: 100%;
+}
+.header-img {
+  padding-bottom: 100px;
+}
+.display-none{
+  display: none;
+}
+.graph {
+  display: block;
+  margin: 0 auto;
+}
+.content-field-block {
+  padding: 0 15px !important;
+}
+.content-field-block ul {
+  padding: 0 !important;
+}
+.content-field-block li {
+  font-size: 20px !important;
+  padding: 0px !important;
+  margin-left: 5px !important;
+}
+.object-assetment p{
+  font-size: 18px !important;
+}
+.object-assetment ul li,.nobreak p {
+  font-size: 20px !important;
+}
+.nobreak img {
+  max-width: 100%;
+}
+.img-f {
+  max-width: 50%;
+}
+.recomendation p,.recommendation ul li {
+  font-size: 19px !important;
+  line-height: 22px;
+}
+.table-block table,.table-block table td,.table-block table th {
+  border: 1px #a0a0a0 solid;
+}
+.table-block table td,.table-block table th {
+  padding: 8px;
+}
+.house-img{
+  width: 2000px;
+  height: 500px;
+}
+.assessment-block li{
+  margin: 20px;
+}
+.sub-content-fields-block li{
+  margin: 12px;
+  font-family: calibri;
+}
+.table-content-txt {
+  font-weight: 500 !important;
+  color: #2e74b5 !important;
+  font-size: 35px !important;
+}
+.sub-content-fields-block span{
+  margin-left: 30px;
+}
+.object-assetment p{
+  line-height: 40px !important;
+}
+.recommendation-block li{
+  margin: 12px;
+}
+.blue-background{
+  background: #5b9bd5;
+  border: 1px solid #5b9bd5;
+}
+.inner-content-no {
+  padding-right: 25px;
+  float: left;
+}
+.ul-inner-block .inner-content-no{
+  padding-left: 20px !important;
+
+}
+.upgrade_paragraph{
+  font-weight: 600;
+  font-size: 12px;
+}
+.main-font{
+  color: black !important;
+}
+.padding-none{
+  padding: 0px;
+}

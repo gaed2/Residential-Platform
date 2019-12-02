@@ -1,0 +1,18 @@
+.stepper.display-none#steps_header
+  .container
+    %ul.nav.nav-tabs{role: "tablist"}
+      %li.step_header.active#step_1_header{role: "presentation", 'data-next_tab' => '#step_1', 'data-current_tab' => '#step_2, #step_3', 'data-step' => 1}
+        %a.persistant-disabled{"aria-controls" => "stepper-step-1", "data-toggle" => "tab", :href => "#stepper-step-1", role: "tab", title: "Step 1"}
+          %span.round-tab 1
+        %span.step-content
+          = t('property.steps.general_details')
+      %li.step_header#step_2_header{role: "presentation", 'data-next_tab' => '#step_2', 'data-current_tab' => '#step_1, #step_3', 'data-step' => 2}
+        %a.persistant-disabled{"aria-controls" => "stepper-step-2", "data-toggle" => "tab", :href => "#stepper-step-2", role: "tab", title: "Step 2"}
+          %span.round-tab 2
+        %span.step-content
+          = t('property.steps.energy_data')
+      %li.step_header#step_3_header{role: "presentation", 'data-next_tab' => '#step_3', 'data-current_tab' => '#step_1, #step_2', 'data-step' => 3}
+        %a.persistant-disabled{"aria-controls" => "stepper-step-3", "data-toggle" => "tab", :href => "#stepper-step-3", role: "tab", title: "Step 3"}
+          %span.round-tab 3
+        %span.step-content
+          = t('property.steps.engergy_checklist').html_safe

@@ -1,0 +1,60 @@
+/ start installation model
+#installed_system_modal.modal.electricty-consumption-modal.fades{"aria-hidden" => "true", "aria-labelledby" => "modalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header.text-center
+        %h4#modalLabel.modal-title
+          = t('modals.installed_systems')
+      = form_tag '#', id: 'installed_equipments_form' do
+        .modal-body
+          .form-group.col-12
+            %label
+              = t('modals.equipment_appliance')
+              *
+            = select_tag 'installed_equipment_name', options_for_select(Constant::EQUIPMENTS), {class: 'form-control other_equipment display-none', include_blank: true}
+          .form-group.col-12
+            = text_field_tag 'other_equipment_name', nil, class: 'form-control display-nones', placeholder: t('modals.enter_equipment_name')
+          .form-group.col-12.display-none#model_type_div
+            %label
+              = t('modals.type_of_model')
+            = select_tag 'equipment_type', options_for_select(Constant::TV_TYPES), {class: 'form-control', include_blank: true}
+          .form-group.col-12.display-nones#other_model_type_div
+            %label        
+              = t('modals.type_of_model')
+            = text_field_tag 'other_equipment_type', nil, class: 'form-control', include_blank: true, placeholder: t('modals.type_of_model')
+          .form-group.col-12
+            %label
+              = t('modals.star_rating')
+            = select_tag 'star_rating', options_for_select(1.. 5), {class: 'form-control', include_blank: true}
+          .form-group.col-12
+            %label
+              = t('modals.quantity')
+              *
+            = text_field_tag 'quantity', nil, class: 'form-control'
+          .form-group.col-12
+            %label
+              = t('modals.rated_kw')
+            = text_field_tag 'rated_kw', nil, class: 'form-control'
+          .form-group.col-12
+            %label
+              = t('modals.year_of_purchase')
+              *
+            = select_tag 'year_installed', options_for_select(Date.today.year.downto 2000), {class: 'form-control', include_blank: true}
+          .form-group.col-12
+            %label
+              = t('energy_checklist.consumption_kwh')
+            = text_field_tag 'installed_equipment_consumption', nil, class: 'form-control'
+          .form-group.col-12
+            %label
+              = t('modals.location')
+              *
+            = select_tag 'equipment_location', options_for_select(Constant::EQUIPMENT_LOCATION), {class: 'form-control', include_blank: true}
+        .authnbtn-f
+          %button.btn.btn-primary.float-right.save_installed_system#save_installed_system{type: "submit"}
+            = t('button.save_next')
+          %button.btn.btn-primary.float-right#save_and_close_installed_systems{type: "submit"}
+            = t('button.save_close')
+          %button.btn.btn-primary.float-right{type: "submit", 'data-dismiss' => "modal"}
+            = t('button.cancel')
+
+= javascript_pack_tag 'javascripts/bootstrap/datepicker'

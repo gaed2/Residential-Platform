@@ -1,0 +1,2 @@
+- partial = params['view_type'].eql?('list') ? 'peak_and_off_peak_suggested_results' : 'plans'
+$('.suggested-result').html("#{ j render(partial, suggested_plans: @suggested_plans)}")

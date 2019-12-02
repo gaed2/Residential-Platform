@@ -1,0 +1,14 @@
+.form-field-wrapper.consumption-block.pb-0
+  .subheading-field.sbh-with-switch.width-100p
+    = render 'residential/properties/modals/add_details/installed_system_title'
+  // TODO  
+  //.form-group.installed-blocks-wrapper#installed_system_data
+  //.table-responsive.checklist-field#installed_system_data_list_view
+.form-field-wrapper.row.pb-0
+  .col-sm-12
+    .table-responsive
+      = form_tag '', class: 'installed_system_form' do 
+        %table.table.energy-form-table
+          = render 'residential/properties/prefilled_systems/table_headings'
+          %tbody#installed_system_list_view_container
+            = render 'residential/properties/prefilled_systems/table_data', equipments: Constant::EQUIPMENTS, last_index: 0

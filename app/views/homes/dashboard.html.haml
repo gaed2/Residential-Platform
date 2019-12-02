@@ -1,0 +1,43 @@
+%main.middle-profile-block
+  .text-center
+    - if @properties.present?
+      - @properties.each do |property|
+        .row-field-block
+          .img-thumbnail
+            .row
+              .col-sm
+                .left-residential
+                  .img-category
+                    = link_to image_tag(asset_pack_path('packs/images/home-img.png')), property_path(property)
+                  .add-field
+                    %span
+                      = property.category_name
+                    = link_to property.address.html_safe, property_path(property), class: 'break-word'
+              .col-sm.types-field
+                %div
+                  %span
+                    = t('property.listing.housing_type')
+                  %b
+                    = property.property_sub_category&.name
+                  %p.assessment-text
+                    = t('property.listing.last_assessment_on')
+                    = property.updated_at.strftime(Constant::ASSESSMENT_DATE_TIME_FORMAT)
+              .col-sm
+                .col-sm.types-field
+                  %div
+                    %span
+                      = t('property.listing.typical_average_appliance_consumption')
+                      .kw-c
+                        = t('property.listing.energy_unit')
+                    %b
+                      = image_tag asset_pack_path('packs/images/kw-img.png')
+                      = "#{property.avg_monthly_electricity_consumption} #{t('electricity_unit')}"
+              .col-sm.button-field.button-block-f.dashboard-btn-container
+                = link_to t('button.recommendations'), retailers_electricity_suppliers_path(property_id: property.id), class: 'btn btn-3d btn-blue audit-report audit-report-btn'
+                = link_to t('button.energy_saving'), audit_report_path(property), class: 'btn btn-3d btn-blue audit-report audit-report-btn'
+                = link_to t('button.view_report'), generate_reports_path(property_id: property.id, format: :pdf), target: '_blank', class: 'btn btn-3d btn-blue audit-report audit-report-btn'
+                = link_to t('button.retailer_proposed'), suggestions_electricity_suppliers_path(property_id: property.id), class: 'btn btn-3d btn-blue audit-report audit-report-btn'
+    - else
+      %p{class: 'font-size-25'}
+        = t('no_property_available')
+    = will_paginate @properties

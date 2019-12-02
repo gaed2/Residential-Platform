@@ -1,0 +1,40 @@
+- equipments.each_with_index do |equipment, index|
+  - dataTarget = index + 1 + last_index
+  - display_class = ''
+  - if equipment == 'Air conditioning system' && !@property&.has_ac
+    - display_class = 'display-none'
+  - elsif equipment == 'Aircon' && @property&.has_ac
+    - display_class = 'display-none'
+  %tr.installed-system-list-td{class: display_class, 'data-installed-system' => dataTarget, 'data-parent-name' => equipment}
+    %td.background-white{rowspan: 1}
+      %div.installed_equipment_name_td.pull-left.width-120{'data-installed-system' => dataTarget}
+        = equipment
+      .table-select.pull-right.width-40
+        = select_tag '', options_for_select(1..10), class: 'form-control select_equipment_quantity', 'data-installed-system' => dataTarget, 'data-name' => equipment
+      .clear-both
+      = link_to t('button.add_more'), 'javascript:void(0)', class: 'add-more-system-link', 'data-installed-system' => dataTarget, 'data-name' => equipment
+    %td
+      - if[Constant::EQUIPMENTS_HASH[:wm]].include? equipment
+        .table-select
+          = select_tag '', options_for_select(Constant::WASHING_MACHINE_TYPES), class: 'form-control installed_equipment_type_td', 'data-installed-system' => dataTarget
+      - elsif[Constant::EQUIPMENTS_HASH[:tv]].include? equipment
+        = text_field_tag '', nil, name: 'model', class: 'form-control installed_equipment_type_td', 'data-installed-system' => dataTarget, placeholder: Constant::TV_TYPES_PLACEHOLDER
+      - else
+        = text_field_tag '', nil, name: 'model', class: 'form-control installed_equipment_type_td', 'data-installed-system' => dataTarget
+    %td
+      .table-select
+        = select_tag '', options_for_select(1..5), class: 'form-control installed_equipment_rating_td', prompt: t('energy_data.select_rating'), name: 'rating', 'data-installed-system' => dataTarget
+    / %td
+    //= text_field_tag '', nil, name: 'quantity', class: 'form-control installed_equipment_quantity_td', 'data-installed-system' => dataTarget
+    %td
+      = text_field_tag '', nil, name: 'rated_kw', class: 'form-control installed_equipment_rated_kw_td', 'data-installed-system' => dataTarget
+    %td
+      .table-select
+        = select_tag '', options_for_select(Date.today.year.downto 2000), class: 'form-control year_installed_td', name: 'year_installed', prompt: t('energy_data.select_year'), 'data-installed-system' => dataTarget
+    %td
+      = text_field_tag '', nil, name: 'consumption', class: 'form-control installed_equipment_consumption_td', 'data-installed-system' => dataTarget
+    %td
+      .table-select
+        = select_tag '', options_for_select(Constant::EQUIPMENT_LOCATION), class: 'form-control installed_equipment_location_td', name: 'location', prompt: t('energy_data.select_location'), 'data-installed-system' => dataTarget
+    %td
+      = link_to t('button.add'), 'javascript:void(0)', class: 'install_equipment_add_td site-btn-small', 'data-installed-system' => dataTarget

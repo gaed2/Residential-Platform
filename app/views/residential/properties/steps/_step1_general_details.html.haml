@@ -1,0 +1,23 @@
+.general-details.audit-steps.display-none#step_1
+  = form_for :property, url: properties_path, html: {id: 'user_property_new'} do |form|
+    .tab-content
+      %button.btn.btn-primary.set-values-btn.display-none{type: "button"}
+        = t('button.set')
+      #stepper-step-1.tab-pane.in.active{role: "tabpanel"}
+        = render 'residential/properties/new/general_details/property_information', form: form
+        = render 'residential/properties/new/general_details/number_of_people', form: form
+        = render 'residential/properties/new/general_details/number_of_rooms', form: form
+        = render 'residential/properties/new/general_details/solar_pv_details', form: form
+        = render 'residential/properties/new/general_details/occupants_time', form: form
+        = render 'residential/properties/new/general_details/ac_details', form: form
+        = render 'residential/properties/new/general_details/energy_sources', form: form
+    .authnbtn-f
+      %button.btn.btn-primary.float-right.general_preview_button.display-none{type: "button"}
+        = t('button.preview')
+      %button.btn.btn-primary.float-right.save-draft{type: "submit", 'data-step' => 1}
+        = t('button.save_as_draft')
+      %button.btn.btn-primary.float-right.next-step{type: "submit", 'data-next_tab' => '#step_2', 'data-current_tab' => '#step_1', 'data-step' => 1}
+        = t('button.next')
+      %button.btn.btn-default.float-right.next-step.back-btn{type: "submit", 'data-next_tab' => '#select_category', 'data-current_tab' => '#step_1'}
+        = t('button.back')
+= render 'residential/properties/modals/renewable_energy_sources'

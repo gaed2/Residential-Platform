@@ -1,0 +1,98 @@
+:javascript
+  window.serverData = {}
+  window.serverData['currect_step'] = #{@property.current_step}
+  window.serverData['checklist_ids'] = #{@energy_saving_checklists.collect(&:id)}
+  window.serverData['edit_image'] = "#{asset_pack_path('packs/images/edit-icon.png')}"
+  window.serverData['delete_image'] = "#{asset_pack_path('packs/images/delete_icon.png')}"
+  window.serverData['delete_transparent'] = "#{asset_pack_path('packs/images/delete.png')}"
+  window.serverData['remove_icon_source'] = "#{asset_pack_path('packs/images/remove-icon.png')}"
+  window.serverData['property_id'] = "#{@property.id}"
+  window.serverData['action'] = "#{update_draft_property_path(id: @property.id)}"
+.error_message
+= render 'residential/properties/categories'
+%section.step3-wrapper.general-wrapper-block
+  = hidden_field_tag 'property_id', @property.id
+  #loading.display-none
+    = image_tag(asset_pack_path("packs/images/ajax-loader-orange.gif"), id: '#loading-image', alt: "Loading...", style: 'height: 200px')
+    %p
+      = t('generating_report')
+  = render 'residential/properties/steps/header'
+  -#Step1
+  .general-details.audit-steps.display-none#step_1
+    = form_for @property, url: properties_path, html: {id: 'user_property_new'} do |form|
+      .tab-content
+        #stepper-step-1.tab-pane.in.active{role: "tabpanel"}
+          = render 'residential/properties/new/general_details/property_information', form: form
+          = render 'residential/properties/new/general_details/number_of_people', form: form
+          = render 'residential/properties/new/general_details/number_of_rooms', form: form
+          = render 'residential/properties/new/general_details/solar_pv_details', form: form
+          = render 'residential/properties/new/general_details/occupants_time', form: form
+          = render 'residential/properties/new/general_details/ac_details', form: form
+          = render 'residential/properties/new/general_details/energy_sources', form: form
+      .authnbtn-f
+        %button.btn.btn-primary.float-right.confirm_preview{type: "submit", 'data-step' => 1,'data-action' => update_draft_property_path(id: @property.id), 'data-draft'=> true, 'data-id' => @property.id, 'data-draft' => 'draft'}
+          = t('button.save_as_draft')
+        %button.btn.btn-primary.float-right.next-step{type: "submit", 'data-next_tab' => '#step_2', 'data-current_tab' => '#step_1', 'data-step' => 1}
+          = t('button.next')
+        %button.btn.btn-default.float-right.next-step.back-btn{type: "submit", 'data-next_tab' => '#select_category', 'data-current_tab' => '#step_1'}
+          = t('button.back')
+
+  -#Step2
+  .general-details.audit-steps.display-none#step_2
+    .tab-content
+      #stepper-step-2.tab-pane.in.active{role: "tabpanel"}
+        = render 'residential/properties/new/energy_data/current_supplier'
+        = render 'residential/properties/edit/energy_data/electricity_consumption'
+        = render 'residential/properties/edit/energy_data/installed_system'
+      = render 'residential/properties/edit/energy_data/upload_document'
+    .authnbtn-f
+      %button.btn.btn-primary.float-right.confirm_preview{type: "submit", 'data-step' => 2,'data-action' => update_draft_property_path(id: @property.id), 'data-draft'=> true, 'data-id' => @property.id, 'data-draft' => 'draft'}
+        = t('button.save_as_draft')
+      %button.btn.btn-primary.float-right.next-step{type: "submit", 'data-next_tab' => '#step_3', 'data-current_tab' => '#step_2', 'data-step' => 2}
+        = t('button.next')
+      %button.btn.btn-default.float-right.next-step.back-btn{type: "submit", 'data-next_tab' => '#step_1', 'data-current_tab' => '#step_2'}
+        = t('button.back')
+  = render 'residential/properties/modals/monthly_electricity_consumption'
+  = render 'residential/properties/modals/installation_systems'
+  = render 'residential/properties/modals/renewable_energy_sources'
+
+
+  -#Step3
+  .error.response-error
+  .general-details.audit-steps.display-none#step_3
+    .checklist-heading
+      %h2
+        = t("energy_checklist.checklist_for_energy_saving")
+    %form{role: "form"}
+      .tab-content
+        #stepper-step-2.tab-pane.in.active{role: "tabpanel"}
+        = render 'residential/properties/edit/energy_save_checklist/checklist'
+        = render 'residential/properties/edit/energy_save_checklist/others'
+        .authnbtn-f
+          %button.btn.btn-primary.float-right.confirm_preview{type: "submit", 'data-step' => 3,'data-action' => update_draft_property_path(id: @property.id), 'data-draft'=> true, 'data-id' => @property.id, 'data-draft' => 'draft'}
+            = t('button.save_as_draft')
+          %button.btn.btn-primary.float-right.next-step{type: "submit", 'data-next_tab' => '#step_2', 'data-current_tab' => '#step_3', 'data-action' => update_draft_property_path(id: @property.id), 'data-step' => 3,
+                                                               'data-id' => @property.id, 'data-draft' => 'true'}
+            = t('button.save')
+          %button.btn.btn-default.float-right.next-step.back-btn{type: "submit", 'data-next_tab' => '#step_2', 'data-current_tab' => '#step_3'}
+            = t('button.back')
+  = render 'residential/properties/modals/other_consumptions'
+  #view-general-detail.modal
+    .modal-dialog.modal-lg
+      .modal-content#preview_general_details
+
+= javascript_pack_tag 'javascripts/properties/create'
+= javascript_pack_tag 'javascripts/properties/delete'
+= javascript_pack_tag 'javascripts/properties/draft'
+= javascript_pack_tag 'javascripts/properties/installed_system'
+= javascript_pack_tag 'javascripts/properties/equipment_list'
+= javascript_pack_tag 'javascripts/properties/monthly_energy_data'
+= javascript_pack_tag 'javascripts/properties/renewable_sources'
+
+-#Validations
+= javascript_pack_tag 'javascripts/validations/properties/general_details'
+= javascript_pack_tag 'javascripts/validations/properties/monthly_energy_consumption'
+= javascript_pack_tag 'javascripts/validations/properties/installed_equipments'
+= javascript_pack_tag 'javascripts/validations/properties/other_equipments'
+= javascript_pack_tag 'javascripts/validations/properties/renewable_energy_sources'
+= javascript_pack_tag 'javascripts/validations/properties/prefilled_equipment'

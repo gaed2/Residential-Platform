@@ -1,0 +1,34 @@
+- checklist_answer = @property.checklist_answer
+- checklist_ids = @property.checklist_ids
+- @energy_saving_checklists.each_with_index do |checklist, index|
+  - other = checklist_answer[checklist.id.to_s] && !['Yes', 'No'].include?(checklist_answer[checklist.id.to_s])
+  .form-field-wrapper.row.pt30
+    .subheading-field
+      %h4
+        = "#{Constant::CHECKLIST_SEQUENCE[index]}."
+        = checklist.heading
+    .energy-managemnets
+      %p
+        = checklist.question
+    .radio-btn.row
+      .col-6
+        .radio-one
+          %input{name: checklist.id, type: "radio", id: "radio_1#{index}", value: 'Yes', class:'checklist_options',
+                checked: checklist_answer[checklist.id.to_s] == 'Yes', 'data-option' => index, 'data-id' => checklist_ids[checklist.id.to_s]}/
+          %label{for: "radio_1#{index}"}
+            Yes
+            %span
+        .radio-one
+          %input{name: checklist.id, type: "radio", id: "radio_2#{index}", value: 'No', class:'checklist_options',
+                 checked: checklist_answer[checklist.id.to_s] == 'No', 'data-option' => index, 'data-id' => checklist_ids[checklist.id.to_s]}/
+          %label{for: "radio_2#{index}"}
+            No
+            %span
+        .radio-one
+          %input{name: checklist.id, type: "radio", id: "radio_3#{index}", value: 'Other', class:'checklist_options',
+                 checked: other, 'data-option' => index, 'data-id' => checklist_ids[checklist.id.to_s]}/
+          %label{for: "radio_3#{index}"}
+            Other
+            %span
+      .form-group.col-6.float-left{id: "radio_3#{index}"}
+        %input.form-control{placeholder: t('checklist.enter_answer'), value: other ? checklist_answer[checklist.id.to_s] : '',  type: "text", class: "other_option_input #{other ? '' : 'display-none'}", 'data-option' => index}/

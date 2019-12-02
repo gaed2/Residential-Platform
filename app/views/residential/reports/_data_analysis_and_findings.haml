@@ -1,0 +1,183 @@
+%h2.table-content 2. Data Analysis & Findings
+%h3.table-content 2.1 Historical Energy Consumption
+.table-block
+  %table{style: 'border-collapse: collapse;width: 100%; text-align: center'}
+    %thead
+      %tr
+        %th
+          No.
+        %th
+          Date
+        %th
+          Energy Consumption(kWh)
+        %th
+          Cost(SGD)
+    %tbody
+      - @property.energy_data.ordered_by_date.last(6).each_with_index do |bill, index|
+        %tr
+          %td
+            = index + 1
+          %td
+            = "#{bill.month}/#{bill.year}"
+          %td
+            = "#{bill.energy_consumption} kWh"
+          %td
+            = "$#{bill.cost}"
+%p
+  The total energy consumed for the past #{pluralize(@property.count_energy_data,'month')} was
+  %b= @property.total_energy_consumption
+%p
+  Total cost of energy consumed for the past #{pluralize(@property.count_energy_data,'month')} was
+  %b= "$#{@property.total_energy_consumption_cost} #{@property.electricity_consumption_unit}"
+- if @property.supplier_electricity_rate
+  %p
+    Current retailer electricity rate was
+    %b= "$#{(@property.supplier_electricity_rate/100).round(2)}"
+- if @property.max_energy_consumption_month
+  %p
+    The month consuming the most was in #{Date::MONTHNAMES[@property.max_energy_consumption_month]} at
+    %b= @property.max_energy_consumption
+%p This was attributed to it being a very hot month.
+- if @property.min_energy_consumption_month
+  %p
+    The month consuming the least was in #{Date::MONTHNAMES[@property.min_energy_consumption_month]} at
+    %b= @property.min_energy_consumption
+%p The last #{@property.energy_data.count > 2 ? @property.energy_data.count : 12} months of utility bills can be seen in the chart below.
+- if @property.energy_data.count < 3
+  %p.text-align-center
+    %b “Not enough information given, showing average HDB data”
+.graph
+  #energyBarChart{ width: '1000', height: '500' }
+.nobreak
+  %h3.table-content.padding-none 2.2 Tariff Analysis
+  %p
+    As part of the utility bill analysis, the current utility rates and tariffs were evaluated. Tariffs are typically assigned to buildings based on the amount of consumption. There were also an increase in tariff rates last year.
+    .graph.text-align-center
+      #tariffPieChart
+  %h3.table-content 2.2.1 Electricity Tariff rates
+  - if electricity_tarrif.present?
+    .text-align-center
+      %div.tariff-heading
+        #{electricity_tarrif.rate} cents/#{electricity_tarrif.cost_per_unit}
+      %div.tariff-subheading
+        #{rate_with_gst(electricity_tarrif.rate, electricity_tarrif.gst)} cents/#{electricity_tarrif.cost_per_unit} [w GST]
+        %br
+        #{electricity_tarrif.name}
+        %br
+        (wef #{electricity_tarrif.valid_from.strftime("%e %b")} - #{electricity_tarrif.valid_to.strftime("%e %b%y")})
+  %h3.table-content.padding-none 2.2.2 Water Tariff rates
+  %p
+    As part of the initial analysis, the water tariffs were also evaluated. Tariffs are typically assigned to buildings based on the amount of consumption.
+  - if water_tarrif.present?  
+    .text-align-center
+      %div.tariff-heading
+        $#{water_tarrif.rate/100} or $#{water_tarrif.rate2/100}/#{water_tarrif.cost_per_unit}
+      %div.tariff-subheading
+        $#{rate_with_gst(water_tarrif.rate/100, water_tarrif.gst)} or $#{rate_with_gst(water_tarrif.rate2/100, water_tarrif.gst)}/#{water_tarrif.cost_per_unit} [w GST]
+        %br
+        #{water_tarrif.name}
+        %br
+        (<#{water_tarrif.water_consumption_limit.to_i}#{water_tarrif.cost_per_unit} or > #{water_tarrif.water_consumption_limit.to_i}#{water_tarrif.cost_per_unit})
+  %h3.table-content.padding-none 2.2.3 Gas Tariff rates
+  - if gas_tarrif.present?
+    .text-align-center
+      %div.tariff-heading
+        #{gas_tarrif.rate} cents/#{gas_tarrif.cost_per_unit}
+      %div.tariff-subheading
+        #{rate_with_gst(gas_tarrif.rate, gas_tarrif.gst)} cents/#{gas_tarrif.cost_per_unit} [w GST]
+        %br
+        #{gas_tarrif.name}
+        %br
+        (wef #{gas_tarrif.valid_from.strftime("%e %b")} - #{gas_tarrif.valid_to.strftime("%e %b%y")})
+  .nobreak
+  %h3.table-content 2.3 Existing building and systems condition
+  - if @property.electricity_consumption_equipments.count > 0
+    .table-block
+      %table{style: 'border-collapse: collapse;width: 100%; text-align: center'}
+        %thead
+          %tr
+            %th
+              No.
+            %th
+              Name
+            %th
+              Quantity
+            %th
+              Star Rating
+            %th
+              Year
+            %th
+              Model(Optional)
+        %tbody
+          - @property.electricity_consumption_equipments.each_with_index do |equipment, index|
+            %tr
+              %td
+                = index + 1
+              %td
+                = equipment.name
+              %td
+                = equipment.quantity
+              %td
+                = equipment.star_rating
+              %td
+                = equipment.year_installed
+              %td
+                = equipment.equipment_type
+  - else
+    %h3.main-font None
+
+  %h3.table-content.padding-none 2.3.1 Cooling
+  - if @property.cooling_systems.count > 0
+    - @property.cooling_systems.each do |equipment|
+      %p
+        = equipment.data
+  - else
+    %h3.main-font None
+  %h3.table-content.padding-none 2.3.2 Smart Home system
+  - if @property.smart_home_systems.count > 0
+    - @property.smart_home_systems.each do |equipment|
+      %p
+        = equipment.data
+  - else
+    %h3.main-font None
+  %h3.table-content.padding-none 2.3.3 Domestic Hot Water
+  - if @property.hot_water_systems.count > 0
+    - @property.hot_water_systems.each do |equipment|
+      %p
+        = equipment.data
+  - else
+    %h3.main-font None
+
+  %h3.table-content.padding-none 2.3.4 Lighting
+  - if @property.lightning_systems.count > 0
+    - @property.lightning_systems.each do |equipment|
+      %p
+        = equipment.data
+  - else
+    %h3.main-font None
+
+  %h3.table-content.padding-none 2.3.5 Others
+  - if @property.other_systems.count > 0
+    - @property.other_systems.each do |equipment|
+      %p
+        = equipment.data
+  - else
+    %h3.main-font None
+
+  - if !@property.has_solar_pv && @property.is_landed?
+    .nobreak
+      %h3.table-content 2.4 Renewable Energy Assessment
+      %p This section is meant to provide general information regarding existing conditions and is not meant to serve as a guarantee regarding the feasibility of installing any of these systems.
+      #solarGraphContainer{style: 'width: 1000px'}
+      %p
+        The Average Monthly energy consumption is
+        %b #{@property.avg_monthly_electricity_consumption} kWh.
+        %br
+        Roof length is
+        %b
+          #{@property.roof_length} #{@property.roof_length_unit}
+        and width
+        %b #{@property.roof_breadth} #{@property.roof_breadth_unit}.
+        %br
+        If a Solar PV is installed, we can estimate the savings to be at
+        %b #{((@yearly_saving_with_solar/(@yearly_saving_with_solar + @yearly_saving_with_retailer_switch))*100).round(2)}%

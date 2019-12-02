@@ -1,0 +1,14 @@
+.error.response-error
+%form{role: "form"}
+  .tab-content
+    #stepper-step-2.tab-pane.in.active{role: "tabpanel"}
+      = render 'residential/properties/edit/energy_save_checklist/checklist'
+      = render 'residential/properties/edit/energy_save_checklist/others'
+      .authnbtn-f
+        %button.btn.btn-primary.float-right.update-energy-checklist-btn{type: "submit",
+                                                                        'data-url'=> update_energy_checklist_property_path,
+                                                                        'data-id' => @property.id}
+          = t('button.update')
+
+= javascript_pack_tag 'javascripts/validations/properties/other_equipments'
+= render 'residential/properties/modals/other_consumptions'

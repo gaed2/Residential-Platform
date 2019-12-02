@@ -1,0 +1,19 @@
+.retailer-field
+  .table-responsive
+    %table.table
+      %thead.thead-dark
+        %tr
+          %th{ scope: 'col' }= t('suggestions.table.heading.retailer')
+          %th.sorting.cursor-pointer{scope: 'col', 'data-column' => 'name', 'data-url' => suggestions_electricity_suppliers_path(property_id: @property.id)}
+            = t('suggestions.table.heading.price_plan')
+          %th.sorting.cursor-pointer{ scope: 'col', 'data-column' => 'plan_type' }
+            = t('suggestions.table.heading.type')
+          %th.sorting.cursor-pointer{ scope: 'col', 'data-column' => 'price' }
+            = t('suggestions.table.heading.electricity_rate')
+          %th.sorting.cursor-pointer{ scope: 'col', scope: 'col', 'data-column' => 'estimated_cost' }
+            = t('suggestions.table.heading.estimated_monthly_bill')
+          %th.sorting.cursor-pointer{ scope: 'col', 'data-column' => 'contract_duration' }
+            = t('suggestions.table.heading.contract_duration')
+          %th{ scope: 'col' }
+      %tbody#plan_listing
+        = render 'suggested_results', suggested_plans: suggested_plans

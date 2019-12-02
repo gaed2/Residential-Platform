@@ -1,0 +1,92 @@
+%h2.table-content-txt Table of Contents
+%ol.content-field-block
+  .page-no 3
+  %li Introduction
+  %ul.sub-content-fields-block{style: "list-style: none;"}
+    .page-no 3
+    %li
+      .inner-content-no 1.1
+      Objectives of Assessment
+    .page-no 4
+    %li
+      .inner-content-no 1.2
+      Brief Description of Building / Facility
+    .page-no 5
+    %li
+      .inner-content-no 1.3
+      Occupancy and Use Schedules
+    .page-no 5-6
+    %li
+      .inner-content-no 1.4
+      Scope of Assessment
+  / .page-no 7
+  %li Data Analysis & Findings
+  %ul.sub-content-fields-block{style: "list-style: none;"}
+    .page-no 7
+    %li
+      .inner-content-no 2.1
+      Historical Energy Consumption
+    .page-no 8
+    %li
+      .inner-content-no 2.2
+      Tariff Analysis
+    %ul.ul-inner-block{style: "list-style: none;"}
+      .page-no 8
+      %li
+        .inner-content-no 2.2.1
+        %span Electricity Tariff rates
+      .page-no 8
+      %li
+        .inner-content-no 2.2.2
+        %span Water Tariff
+      .page-no 8
+      %li
+        .inner-content-no 2.2.3
+        %span Gas Tariff
+    .page-no 9
+    %li
+      .inner-content-no 2.3
+      Existing building and systems condition
+    %ul.ul-inner-block{style: "list-style: none;"}
+      .page-no 9
+      %li
+        .inner-content-no 2.3.1
+        %span Cooling
+      .page-no 9
+      %li
+        .inner-content-no 2.3.2
+        %span Smart Home system
+      .page-no 9
+      %li
+        .inner-content-no 2.3.3
+        %span Domestic Hot Water
+      .page-no 9
+      %li
+        .inner-content-no 2.3.4
+        %span Lighting
+      .page-no 9
+      %li
+        .inner-content-no 2.3.5
+        %span Others
+    - if !@property.has_solar_pv
+      .page-no 10
+      %li
+        .inner-content-no 2.4
+        Renewable Energy Assessment
+  //.page-no #{!@property.has_solar_pv && @property.is_landed? ? '11-12' : '10-11'}
+  %li Recommendations
+  %ul.sub-content-fields-block{style: "list-style: none;"}
+    .page-no 11
+    %li
+      .inner-content-no 3.1
+      Category A Recommendations: Capital Improvements
+    .page-no 12
+    %li
+      .inner-content-no 3.2
+      Category B Recommendations: Water Conservation Measures (WCMs)
+    .page-no 12
+    %li
+      .inner-content-no 3.3
+      Category C Recommendations: Energy Conservation Measures (ECMs)
+  .page-no 13
+  %li Conclusion

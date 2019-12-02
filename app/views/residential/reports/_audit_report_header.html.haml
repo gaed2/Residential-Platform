@@ -1,0 +1,51 @@
+.report-header
+  .container-fluid
+    .top-bar
+      .row
+        .col-md-12.col-lg-12.col-xl-5.audit-category-field
+          .adderss-box
+            %span
+              = image_tag property.property_sub_category.property_category.icon
+            %span
+              %h4= property.category_name
+              %small= property.address.html_safe
+        .col-md-4.col-lg-4.col-xl-2.audit-category-field
+          .top-bar-inner
+            %h4= t('suggestions.label.housing_type')
+            %p= property.property_sub_category&.name
+        .col-md-5.col-lg-4.col-xl-3.audit-category-field
+          .top-bar-inner
+            %h4= t('suggestions.label.average_monthly_consumption')
+            %small= t('property.listing.energy_unit')
+            %p= "#{property.avg_monthly_electricity_consumption} #{t('electricity_unit')}"
+        .col-md-3.col-lg-4.col-xl-2.audit-category-field.view-sheet
+          .btn-bar
+            = link_to t('button.back'), property_path(@property), class: 'active'
+            = link_to t('button.generate_report'), generate_reports_path(property_id: property.id, format: :pdf), target: '_blank', class: 'active'
+
+.energy-saving-recommendation
+  %ul.row
+    %li.col-md-3.col-sm-3.col-xs-12
+      .img-thumbnail
+        %h6
+          = t('suggestions.label.type')
+        %h3
+          = property.property_sub_category&.name
+    %li.col-md-3.col-sm-3.col-xs-12
+      .img-thumbnail
+        %h6
+          = t('suggestions.label.average_monthly_consumption')
+        %h3
+          = "#{property.avg_monthly_electricity_consumption} #{t('electricity_unit')}"
+    %li.col-md-3.col-sm-3.col-xs-12
+      .img-thumbnail
+        %h6
+          = t('suggestions.label.current_retailer')
+        %h3
+          = property&.current_electricity_supplier&.name || 'NA'
+    %li.col-md-3.col-sm-3.col-xs-12
+      .img-thumbnail
+        %h6
+          = t('suggestions.label.avg_monthly_bill')
+        %h3
+          = "$#{property.avg_monthly_electricity_bill}"

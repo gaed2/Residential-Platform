@@ -1,0 +1,38 @@
+%header
+  #slide-out.side-nav.fixed
+    %ul.custom-scrollbar
+      %li
+        .logo-wrapper
+          = link_to image_tag(asset_pack_path('packs/images/gaed-logo.svg', class: 'img-fluid flex-center')), root_path
+      %li
+        %ul.collapsible.collapsible-accordion
+          %li{title: t('nav_bar.dashboard')}
+            - dashboard_img = ((params[:controller] == 'homes' && params[:action] != 'drafts_only') || (params[:controller] == 'residential/properties' && params[:action] == 'show') || params[:controller] == 'ledgers') ? 'dashboard_selected' : 'dashboard'
+            = link_to image_tag(asset_pack_path("packs/images/#{dashboard_img}.png")), root_path, class: 'collapsible-header '
+          %li{title: t('nav_bar.plans')}
+            - plan_icon = params[:controller] == 'electricity_suppliers' ? 'tasks_selected' : 'tasks'
+            = link_to image_tag(asset_pack_path("packs/images/#{plan_icon}.png")), plans_electricity_suppliers_path, class: 'collapsible-header'
+          %li{title: t('nav_bar.draft_properties')}
+            - draft_icon = params[:action] == 'drafts_only' ? 'draft-active' : 'draft'
+            = link_to image_tag(asset_pack_path("packs/images/#{draft_icon}.png")), draft_path, class: 'collapsible-header '
+          %li{title: t('nav_bar.add_property')}
+            = link_to '/properties/new', class: 'collapsible-header padding-left-25' do
+              = image_tag(asset_pack_path('packs/images/plus-img.png'))
+              %span abc
+    .sidenav-bg.mask-strong.white-background
+  %nav.navbar.fixed-top.navbar-toggleable-md.navbar-expand-lg.scrolling-navbar.double-nav.header-overwrite
+    .float-left.mob-button
+      = link_to image_tag(asset_pack_path('packs/images/menu-mob-icon.png')), 'javascript:void(0)', class: 'button-collapse black-text', "data-activates" => "slide-out"
+      .close-btn
+        X
+    .breadcrumb-dn.mr-auto
+    .user-field.float-right
+      %ul
+        %li.user-profile-field
+          .user-image.float-left
+            = image_tag user_avatar(current_user.avatar), class: 'header-profile-img'
+          %a#dropdownMenuButton.dropdown-toggle.username-font.dropdown-list{"data-toggle" => "dropdown", href: 'javascript:void(0)'}
+            = current_user.full_name
+          .dropdown-menu#menu_items{"aria-labelledby" => "dropdownMenuButton"}
+            = link_to t('button.my_profile'), profile_path, class: 'dropdown-item'
+            = link_to t('button.logout'), destroy_user_session_path, method: :delete, class: 'dropdown-item'

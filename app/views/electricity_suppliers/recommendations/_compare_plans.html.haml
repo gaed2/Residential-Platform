@@ -1,0 +1,26 @@
+%main.fixed-price-block.padding-top-0
+  .container-fluid
+    .row
+      .col-sm-12
+        .table-responsive
+          %table.table.table-bordered
+            %thead.thead-green-dark
+              %tr
+                %th= t('electricity_supplier.fixed_price_plan.heading.retailer')
+                %th= t('electricity_supplier.fixed_price_plan.heading.plan_name')
+                %th= t('electricity_supplier.fixed_price_plan.heading.price')
+                %th= t('electricity_supplier.fixed_price_plan.heading.contract_duration')
+                %th
+            %tbody#myTable
+              - SuppliersPlan.order(:price).each do |plan, index|
+                - supplier = plan.electricity_supplier
+                %tr
+                  %td
+                    %span
+                      = image_tag supplier.logo, class: 'img-responsive'
+                    %p= supplier.name
+                  %td= plan.name
+                  %td.text-right= plan.price
+                  %td.text-right= plan.contract_duration
+                  %td
+                    = link_to t('button.compare'), 'javascript:void(0)', class: 'btn compare-plan', 'data-plan-id' => plan.id

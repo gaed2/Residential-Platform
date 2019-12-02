@@ -1,0 +1,20 @@
+- if suggested_plans.blank?
+  %tr
+    %td{ colspan: 7, class: 'no-record' }= t('no_plan_available')
+- else
+  - suggested_plans.each do |suggested_plan|
+    %tr
+      %th{ scope: 'row' }
+        = image_tag suggested_plan.electricity_supplier.logo, class: 'img-responsive'
+        %br/
+        %p= suggested_plan.electricity_supplier.name
+      %td= suggested_plan.name
+      %td= suggested_plan.plan_type.humanize
+      %td #{suggested_plan.price} #{suggested_plan.price_in}
+      %td
+        $ #{round_two(suggested_plan.estimated_cost)}
+        -#TODO need to discuss
+        //$ #{round_two(@property.estimated_monthly_bill(suggested_plan.price, suggested_plan.plan_type))}
+      %td #{suggested_plan.contract_duration} Months
+      %td
+        = link_to t('suggestions.table.visit_website'), suggested_plan.electricity_supplier.website_link, target: '_blank', class: 'btn btn-outline-secondary'

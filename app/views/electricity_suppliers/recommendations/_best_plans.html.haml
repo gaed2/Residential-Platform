@@ -1,0 +1,108 @@
+.retailer-bill.row.retailer-bill-margin
+  .recommendation-title.width-100p
+    = t('retailers.best_recommendations')
+  .img-thumbnail.col-md-6.col-sm-6.col-xs-12
+    .float-left
+      = t('retailers.best_recommendations')
+    %b.float-right.font-size-14
+      = "#{@best_plan.electricity_supplier.name} - #{@best_plan.name}"
+  .img-thumbnail.col-md-6.col-sm-6.col-xs-12
+    .float-left
+      = t('retailers.saving_per_month')
+    %b.float-right
+      $#{round_two(@best_plan.estimated_cost.round(2))}
+.recommendation-title
+  = t('retailers.top_three_recommendations')
+.table-responsive.retailer-table
+  %table.table.table-striped
+    %thead
+      %tr
+        %th
+          = t('retailers.retailer_name')
+        -Constant::DEFAULT_PLAN_LIMIT.times do |index|
+          %th{class: @best_plan.id == @plans[index].id ? 'recommended-plan' : ''}
+            = @plans[index]&.electricity_supplier&.name
+        %th.display-none#compare_supplier_name.compare-plan-selected
+    %tbody
+      %tr
+        %td
+          = t('retailers.price_plan')
+        - Constant::DEFAULT_PLAN_LIMIT.times do |index|
+          %td.bg-light{class: @best_plan.id == @plans[index].id ? 'recommended-plan' : ''}
+            %b
+              = @plans[index]&.name
+        %td.bg-light.display-none#compare_plan_name.compare-plan-selected
+      %tr
+        %td
+          = t('retailers.type_of_plan')
+        - Constant::DEFAULT_PLAN_LIMIT.times do |index|
+          %td.bg-light{class: @best_plan.id == @plans[index].id ? 'recommended-plan' : ''}
+            %b
+              = @plans[index]&.plan_type&.titleize
+        %td.bg-light.display-none#compare_plan_type.compare-plan-selected
+      %tr
+        %td
+          = t('retailers.contact_duration')
+        - Constant::DEFAULT_PLAN_LIMIT.times do |index|
+          %td.bg-light{class: @best_plan.id == @plans[index].id ? 'recommended-plan' : ''}
+            %b              
+              = "#{@plans[index].contract_duration} months" if @plans[index]
+        %td.bg-light.display-none#compare_plan_duration.compare-plan-selected
+      %tr
+        %td
+          = t('retailers.current_regulated_rate')
+        - current_regulated_price = "#{regulated_price} #{t('price_unit')}"
+        - Constant::DEFAULT_PLAN_LIMIT.times do |index|
+          %td.bg-light{class: @best_plan.id == @plans[index].id ? 'recommended-plan' : ''}
+            %b
+              = current_regulated_price
+        %td.bg-light.display-none.compare-plan-selected
+          %b
+            = current_regulated_price
+      %tr
+        %td
+          = t('retailers.electricity_rate')
+        - Constant::DEFAULT_PLAN_LIMIT.times do |index|
+          %td.bg-light{class: @best_plan.id == @plans[index].id ? 'recommended-plan' : ''}
+            %b
+              = "#{@plans[index].price} #{@plans[index].price_in}" if @plans[index]
+        %td.bg-light.display-none#compare_plan_rate.compare-plan-selected      
+      %tr
+        %td
+          = t('retailers.estimated_bill')
+        - Constant::DEFAULT_PLAN_LIMIT.times do |index|
+          %td.bg-light{class: @best_plan.id == @plans[index].id ? 'recommended-plan' : ''}
+            - if @plans[index]
+              %b
+                $#{round_two(@property.avg_monthly_electricity_bill - @plans[index].estimated_cost.round(2))}
+        %td.display-none#compare_plan_estimated_cost.compare-plan-selected
+      %tr
+        %td
+          = t('retailers.average_monthly_saving')
+        - Constant::DEFAULT_PLAN_LIMIT.times do |index|
+          %td.bg-light{class: @best_plan.id == @plans[index].id ? 'recommended-plan' : ''}
+            %b
+              $#{round_two(@plans[index].estimated_cost)}
+        %td.bg-light.display-none#compare_est_bill.compare-plan-selected
+      %tr
+        %td
+          = t('retailers.early_termination_charges')
+        %td.bg-light.recommended-plan
+          %b
+            = t('retailers.customer_note1')
+        %td.bg-light
+          %b
+            = t('retailers.customer_note2')
+        %td.bg-light
+          %b
+            = t('retailers.customer_note3')
+        %td.bg-light.display-none.compare-plan-selected
+          %b
+            = t('retailers.customer_note3')
+      %tr.display-none
+        %td
+          %b
+            = t('retailers.other_fee_and_charges')
+        %td
+        %td
+        %td

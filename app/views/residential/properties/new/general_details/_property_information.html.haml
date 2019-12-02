@@ -1,0 +1,38 @@
+.form-field-wrapper.row
+  .subheading-field
+    %h4
+      = t('property.general_information')
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.input.owner_name')
+      *
+    = form.text_field :owner_name, placeholder: t('property.input.owner_name'), class: 'form-control'
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.input.contact_email')
+      *
+    = form.email_field :owner_email, placeholder: t('property.input.contact_email'), class: 'form-control'
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.input.contact_number')
+    = form.text_field :contact_number, placeholder: t('property.input.contact_number'), class: 'form-control'
+
+.row
+  .form-group.col-md-2.col-sm-2.col-xs-12
+    %label
+      = t('property.input.floor_number')
+    = form.text_field :floor_number, placeholder: t('property.input.floor_number'), class: 'form-control'
+  #cities.form-group.col-md-2.col-sm-2.col-xs-12
+    %label#door_name_label
+      = t('property.input.unit_number')
+    = form.text_field :door_name, placeholder: t('property.input.enter_number'), class: 'form-control'
+  .form-group.col-md-6.col-sm-6.col-xs-12
+    %label
+      = t('property.input.address')
+      *
+    = form.text_field :locality, placeholder: t('property.input.address'), class: 'form-control'
+  .form-group.col-md-2.col-sm-2.col-xs-12
+    %label
+      = t('property.input.zip')
+      *
+    = form.text_field :zip, placeholder: t('property.input.zip'), class: 'form-control'

@@ -1,0 +1,22 @@
+.col-md-6.col-sm-12.col-xs-12.float-left.connect-us
+  .float-right
+    %ul.register-field
+      %li
+        = link_to t('button.login'), new_user_session_path, class: 'btn btn-outline-primary'
+  .main-auth-block.signup-blockf
+    = render 'devise/shared/navbar'
+    .tab-content
+      #home.container.tab-pane.active.auditor-field
+        %h2.login-f
+          = t('button.resend_confirmation')
+        #response_message
+        = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, id: 'resend_confirmation_button' }) do |f|
+          .form-group
+            = f.email_field :email, placeholder: t('devise.input.email'), class: 'form-control', required: true
+            = image_tag asset_pack_path('packs/images/envelop-icon.png')
+          .authnbtn-f
+            %button.btn.btn-primary.float-right{type: "submit"}
+              = t('button.resend_confirmation')
+      = render 'devise/shared/advertisement'
+      = render 'devise/shared/tab_pane'
+  = render 'devise/shared/footer'

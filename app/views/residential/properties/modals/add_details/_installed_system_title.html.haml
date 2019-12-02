@@ -1,0 +1,20 @@
+%h4.electricity-consumption-heading
+  B.
+  = t('energy_data.installed_system')
+  .add-details
+    %a.btn.icon-btn.btn-success{"data-target" => "#installed_system_modal", "data-toggle" => "modal", href: 'javascript:void(0)'}
+      %span.glyphicon.btn-glyphicon.glyphicon-plus.img-circle.text-success
+        = image_tag(asset_pack_path('packs/images/plus-icon.png'))
+      = t('energy_data.add_other_appliance')
+%p.energy-source.display-none
+  = t('energy_data.installed_renewable_energy_source')
+  = succeed "KW" do
+    %span.green 0
+.switch-field.display-none
+  .btnContainer
+    .btn.installed-system-view{ 'data-rel': 'list' }
+      = image_tag asset_pack_path('packs/images/list.png'), class: 'img-responsive'
+      = t('suggestions.label.list')
+    .btn.active.installed-system-view{ 'data-rel': 'grid' }
+      = image_tag asset_pack_path('packs/images/grid.png'), class: 'img-responsive'
+      = t('suggestions.label.grid')

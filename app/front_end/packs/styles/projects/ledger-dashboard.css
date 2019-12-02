@@ -1,0 +1,322 @@
+.margin-zero {
+  margin: 0;
+}
+
+.ledger-dashboard {
+  background: #dcdcde;
+  display: inline-block;
+  width: 100%;
+  padding: 30px 90px 0;
+  vertical-align: top;
+}
+
+.ledger-dashboard h4 {
+  font-family: 'Roboto';
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #2a2a31;
+  margin: 0;
+}
+
+.data-ledger {
+  display: inline-block;
+  padding-top: 12px;
+  vertical-align: top;
+}
+
+.data-ledger ul.nav {
+  border: 0;
+}
+
+.data-ledger ul.nav li {
+  padding-right: 40px;
+}
+
+.data-ledger ul.nav li a {
+  display: inline-block;
+  color: #757575;
+  border: 0;
+  vertical-align: top;
+}
+
+.data-ledger ul.nav li a:hover {
+  border: 0;
+}
+
+.data-ledger ul.nav li a.active {
+  border: 0;
+  color: #3db54a;
+  background: none;
+  border-bottom: 2px #3db54a solid;
+   transition: 0.25s;
+  transition-timing-function: ease-out;
+}
+
+.data-ledger ul.nav li a h5 {
+  float: left;
+  font-family: 'Roboto';
+  font-weight: 700;
+  padding-left: 6px;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 34px;
+}
+
+.data-ledger ul.nav li a span {
+  background: url(~packs/images/sprite-img.png);
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 34px;
+  float: left;
+}
+
+.data-ledger ul.nav li a.active .data {
+  background-position: 0 -41px;
+}
+
+.data-ledger ul.nav li a span.report {
+  background-position: -31px 0px
+}
+
+.data-ledger ul.nav li a.active .report {
+  background-position: -31px -41px;
+}
+
+.data-ledger ul.nav li a span.recommendation {
+  background-position: -64px 0px ;
+}
+
+.data-ledger ul.nav li a.active span.recommendation {
+  background-position: -64px -41px ;
+}
+
+.ledger-inner-details {
+  padding: 0 0 0 70px;
+}
+
+.ledger-inner-details ul {
+  border-bottom: 2px #dcdcde solid;
+}
+
+.ledger-inner-details .tab-content {
+  padding: 0 0 30px 0;
+}
+
+.inner-tabs-field {
+  background: #fff;
+}
+
+.inner-tabs-field ul.nav li a {
+  border-right: 2px #dcdcde solid;
+  border-radius: 0;
+  font-family: 'Roboto';
+  font-weight: 700;
+  color: #757575;
+  padding: 16px 39px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.inner-tabs-field ul.nav li:last-child a {
+  border: 0;
+}
+
+.inner-tabs-field ul.nav li a.active {
+  color: #3db54a;
+  background: none;
+}
+
+.ledger-conetnt-field ul {
+  border: 0;
+}
+
+.ledger-conetnt-field ul li {
+  background: #fff;
+  border-left: 1px #fba91a solid;
+  padding: 14px 0;
+  margin-bottom: 5px;
+}
+
+.ledger-conetnt-field ul li.active {
+  background: #ebf7ed;
+  border-left-color: #3db54a;
+  box-shadow: -2px 5px 25px -4px #888888;
+}
+
+.ledger-conetnt-field ul li a {
+  display: inherit;
+}
+
+.ledger-conetnt-field ul li p {
+ width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-family: 'Roboto';
+  font-weight: 400;
+  color: #40b64d;
+  text-overflow: ellipsis;
+  padding: 0 0 10px 0;
+  margin: 0;
+}
+
+.ledger-conetnt-field ul li p span {
+  color: #757575;
+}
+
+.fblock {
+  display: inline-block;
+  width: 100%;
+}
+
+.info-transaction h4 {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 18px;
+  color: #757575;
+  background: #dcdcde;
+  padding: 15px;
+  margin: 0;
+}
+
+.transaction-data {
+  background: #fff;
+  padding-bottom: 20px;
+}
+
+.transaction-data ul {
+  border: 0;
+  padding: 0 15px;
+}
+
+.transaction-data ul li{
+  border-bottom: 1px #dcdcde solid;
+  padding: 10px 0;
+  margin: 0;
+  font-family: 'Roboto';
+  font-weight: 400;
+}
+
+.transaction-data ul li:last-child {
+  border-bottom:0;
+}
+
+.transaction-data ul li span {
+  color: #757575;
+}
+
+.green-color {
+  color: #3db54a;
+}
+
+.grey-block {
+  background: #dcdcde;
+}
+
+.method-block {
+  padding: 15px;
+}
+
+.pb15{
+  padding-bottom: 15px;
+  display: inline-block;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .ledger-conetnt-field ul li p {
+    width: 167px;
+  }
+  .transaction-data ul li span {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
+  .ledger-conetnt-field ul li p {
+    width: 138px;
+  }
+  .transaction-data ul li .col-9 {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .transaction-data ul li span {
+    font-size: 12px;
+  }
+  .word-break{
+    width: 290px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .ledger-dashboard {
+    padding: 30px 10px 0;
+  }
+
+  .data-ledger ul.nav li {
+    padding: 0;
+  }
+
+  .data-ledger ul.nav li a {
+    padding: 4px 10px;
+  }
+
+  .data-ledger ul.nav li a h5 {
+    font-size: 12px;
+  }
+
+  .ledger-inner-details {
+    padding: 0;
+  }
+
+  .inner-tabs-field ul.nav li a {
+    font-size: 10px;
+    padding: 16px 13px;
+  }
+
+  .ledger-conetnt-field ul {
+    padding: 0 13px;
+  }
+
+  .ledger-conetnt-field ul li p {
+    width: 149px;
+  }
+
+  .word-break{
+    width: 290px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .ledger-inner-details {
+    padding: 0;
+  }
+   .word-break{
+    width: 290px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ledger-inner-details .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .ledger-inner-details .col-md-8 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .ledger-conetnt-field ul li p {
+    width: 141px;
+  }
+}

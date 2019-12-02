@@ -1,0 +1,24 @@
+.table-responsive
+  %table.table.table-bordered
+    %thead.thead-green-dark
+      %tr
+        %th= t('electricity_supplier.discount_off_plan.heading.retailer')
+        %th= t('electricity_supplier.discount_off_plan.heading.plan_name')
+        %th= t('electricity_supplier.discount_off_plan.heading.price')
+        %th= t('electricity_supplier.discount_off_plan.heading.contract_duration')
+    %tbody
+    - suppliers.each do |supplier|
+      - discount_off_plan = supplier.suppliers_plans.discount_off.order(:price)
+      - discount_off_plan.each_with_index do |plan, index|
+        %tr
+          - if index == 0
+            %td{ rowspan: discount_off_plan.count }
+              %span
+                = image_tag supplier.logo, class: 'img-responsive'
+              %p= supplier.name
+          %td= plan.name
+          - if plan.price.to_i == plan.price
+            %td.text-right= "#{plan.price.to_i} %"
+          - else 
+            %td.text-right= "#{plan.price} %"  
+          %td.text-right= plan.contract_duration

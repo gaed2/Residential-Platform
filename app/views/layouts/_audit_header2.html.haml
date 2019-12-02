@@ -1,0 +1,45 @@
+%header
+  / Sidebar navigation
+  #slide-out.side-nav.fixed
+    %ul.custom-scrollbar
+      %li
+        .logo-wrapper.waves-light
+          %a{:href => "#"}
+            %img.img-fluid.flex-center{:src => "images/gaed-logo.svg"}/
+      %li
+        %ul.collapsible.collapsible-accordion
+          %li
+            %a.collapsible-header.waves-effect
+              %img{:src => "images/meter.png"}/
+          %li
+            %a.collapsible-header.waves-effect
+              %img{:src => "images/data-img.png"}/
+          %li
+            %a.collapsible-header.waves-effect
+              %img{:src => "images/plus-img.png"}/
+    .sidenav-bg.mask-strong
+  %nav.navbar.fixed-top.navbar-toggleable-md.navbar-expand-lg.scrolling-navbar.double-nav
+    .float-left
+      %a.button-collapse.black-text{"data-activates" => "slide-out", :href => "#"}
+        %img{:src => "images/menu-mob-icon.png"}/
+    .breadcrumb-dn.mr-auto
+    .user-field.float-right
+      %ul
+        %li.user-profile-field
+          .user-image.float-left
+            %img{:src => "images/user.png"}/
+          %a#dropdownMenuButton.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :type => "button"} Rebecca Young
+          .dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
+            %a.dropdown-item{:href => "#"} My Profile
+            %a.dropdown-item{:href => "#"} Logout
+
+-#Old header
+%header.display-none
+  .logo
+    = link_to image_tag(asset_pack_path('packs/images/gaed-logo.svg'), class: 'img-responsive'), root_path
+  .user-field.float-right
+    %ul
+      %li
+        = image_tag user_avatar(current_user.avatar), class: 'width-30'
+        %span
+          = current_user.full_name

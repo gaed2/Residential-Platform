@@ -1,0 +1,41 @@
+.form-field-wrapper.row
+  .subheading-field
+    %h4
+      = t('energy_data.energy_data')
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('energy_data.current_electricity_supplier')
+      *
+    = select_tag 'current_electricity_supplier_id', options_for_select(ElectricitySupplier.order('name').collect{ |supplier| [supplier.name, supplier.id]}, @property&.current_electricity_supplier_id || ElectricitySupplier.default_supplier_id), {include_blank: false, class: 'form-control height-45'}
+  .form-group.col-md-4.col-sm-4.col-xs-12#supplier_plan_container
+    %label
+      = t('energy_data.current_plan')
+    - if @property&.suppliers_plan_id
+      = select_tag 'suppliers_plan_id', options_for_select(@property.current_electricity_supplier.suppliers_plans.order('name').collect{|plan| [plan.name, plan.id]}, @property.suppliers_plan_id), class: 'form-control height-45'
+    - else
+      = select_tag 'suppliers_plan_id', options_for_select([]), class: 'form-control height-45'
+  .form-group.col-md-4.col-sm-4.col-xs-12#supplier_electricity_rate
+    %label
+      = t('energy_data.rate')
+    = text_field_tag 'suppliers_electricity_rate_id', @property&.supplier_electricity_rate || Constant::SP_GROUP_ELECTRICITY_RATE, class: 'form-control height-45', disabled: true
+  .switch-block.switch-main-block
+    .form-group.col-md-4.col-sm-4.col-xs-12
+      %p
+        = t('energy_data.did_you_change_supplier')
+      %span.switch.switch-sm
+        %input#switch-sm.switch{type: "checkbox", checked: @property&.is_supplier_changed}/
+        %label{for: "switch-sm"}
+  .time-wrapper.row.width-100p#different_suppliers{class: @property&.is_supplier_changed ? '' : 'display-none'}
+    = form_tag '', id: 'supplier_form', class: 'width-100p' do 
+      .form-group.col-md-4.col-sm-4.col-xs-12
+        %label
+          = t('button.from')
+        #datetimepicker6.input-group.date
+          = text_field_tag 'different_supplier_from', @property&.different_supplier_from&.strftime(Constant::SUPPLIER_DATE_FORMAT), class: 'form-control datepicker'
+          = link_to image_tag(asset_pack_path('packs/images/date-img.png')), 'javascript:void(0)', class: 'input-group-addon'
+      .form-group.col-md-4.col-sm-4.col-xs-12
+        %label
+          = t('button.to')
+        #datetimepicker7.input-group.date
+          = text_field_tag 'different_supplier_to', @property&.different_supplier_to&.strftime(Constant::SUPPLIER_DATE_FORMAT), class: 'form-control datepicker'
+          = link_to image_tag(asset_pack_path('packs/images/date-img.png')), 'javascript:void(0)', class: 'input-group-addon'

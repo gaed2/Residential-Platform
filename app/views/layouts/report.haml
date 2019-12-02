@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title= t('title')
+    = csrf_meta_tags
+    -# TODO Required for chart
+    -#= javascript_include_tag "http://code.jquery.com/jquery-1.10.0.min.js"
+    -#= javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"
+    = stylesheet_link_tag "application", media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "application", media: 'all', 'data-turbolinks-track': 'reload'
+    = wicked_pdf_stylesheet_link_tag "report"
+    = javascript_include_tag wicked_pdf_asset_base64("library/highcharts")
+    = javascript_include_tag wicked_pdf_asset_base64("pie_chart")
+    = javascript_include_tag wicked_pdf_asset_base64("bar_graph")
+    = javascript_include_tag wicked_pdf_asset_base64("annual_projected_saving")
+    = javascript_include_tag wicked_pdf_asset_base64("energy_saving_breakdown")
+    = javascript_include_tag wicked_pdf_asset_base64("solar_saving_graph")
+
+  %body{ onload: 'show_graphs(); show_charts();show_annual_report(); show_energy_saving_breakdown(); loadSolarSavingGraph();' }
+    = yield

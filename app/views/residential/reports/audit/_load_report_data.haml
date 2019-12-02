@@ -1,0 +1,12 @@
+:javascript
+  window.serverData = {}
+  window.serverData['plans'] = #{@best_plan.to_json.html_safe}
+  window.serverData['energy_consumptions'] = #{@property.energy_data.ordered_by_date.select(:month, :energy_consumption).to_json.html_safe}
+  window.serverData['electricity_consumption_equipments'] = #{@property.electricity_consumption_equipments.select(:name, :electricity_consumption).to_json.html_safe}
+  window.serverData['per_year_saving_with_solar'] = #{@per_year_saving_with_solar.to_json.html_safe}
+  window.serverData['per_year_saving_with_retailer_switch'] = #{@per_year_saving_with_retailer_switch.to_json.html_safe}
+  window.serverData['current_yearly_bills'] = #{@current_yearly_bills.to_json.html_safe}
+  window.serverData['projected_bills_with_gaed'] = #{@projected_bills_with_gaed.to_json.html_safe}
+  window.serverData['energy_breakdown'] = #{@energy_breakdown.to_json.html_safe}
+  window.serverData['has_dryer'] = #{@property.has_dryer.to_json.html_safe}
+  window.serverData['is_landed'] = #{@property.is_landed?.to_json.html_safe}

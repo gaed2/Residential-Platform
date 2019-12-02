@@ -1,0 +1,15 @@
+.main-pdf-section
+  .front-page
+    = render 'residential/reports/front_page'
+  .table-of-content.nobreak
+    = render 'residential/reports/table_of_content'
+  .introduction.nobreak
+    = render 'residential/reports/introduction'
+  .data-analysis.nobreak
+    = render 'residential/reports/data_analysis_and_findings'
+  .recommendation
+    = render 'residential/reports/recommendations'
+  .conclusion
+    = render 'residential/reports/conclusion'
+
+= render 'residential/reports/audit/load_report_data'

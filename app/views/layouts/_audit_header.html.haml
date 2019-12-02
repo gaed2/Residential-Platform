@@ -1,0 +1,13 @@
+%header
+  .logo
+    = link_to image_tag(asset_pack_path('packs/images/gaed-logo.svg'), class: 'img-responsive'), root_path
+  .user-field.float-right
+    %ul
+      %li.user-profile-field
+        .user-image.float-left
+          = image_tag user_avatar(current_user.avatar), class: 'header-profile-img'
+        %a#dropdownMenuButton.dropdown-toggle.username-font{"data-toggle" => "dropdown", href: 'javascript:void(0)'}
+          = current_user.full_name
+        .dropdown-menu#menu_items{"aria-labelledby" => "dropdownMenuButton"}
+          = link_to t('button.my_profile'), profile_path, class: 'dropdown-item'
+          = link_to t('button.logout'), destroy_user_session_path, method: :delete, class: 'dropdown-item'

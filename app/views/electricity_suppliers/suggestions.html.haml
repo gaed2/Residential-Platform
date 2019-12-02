@@ -1,0 +1,15 @@
+/ Main layout
+%main.audit_report-block.pb-zero
+  = render 'suggestions_header', property: @property
+%main.middle-profile-block.suggestion-header
+  .text-left
+    .audit-report
+      %h4= t('suggestions.label.basic_information')
+      = form_with url: suggestions_electricity_suppliers_path, method: :post, id: 'search-form' do |f|
+        = render 'search_bar', f: f, electricity_suppliers: @electricity_suppliers, property: @property
+    .suggested-result
+      = render 'table_data', suggested_plans: @suggested_plans
+    .authnbtn-f
+      = link_to t('button.back'), :back, class: 'btn btn-back'
+
+= javascript_pack_tag 'javascripts/suppliers_plans/search'

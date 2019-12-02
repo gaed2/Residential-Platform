@@ -1,0 +1,38 @@
+.form-field-wrapper.row
+  .subheading-field
+    %h4
+      = t('property.label.has_solar_pv')
+    .switch-block
+      .form-group.col-md-4.col-sm-4.col-xs-12
+        %p
+          = t('property.label.solar_pv_is_available')
+        %span.switch.switch-sm
+          %input#has-solar.switch{type: "checkbox", checked: @property&.has_solar_pv}/
+          %label{for: "has-solar"}
+
+  .form-group.col-md-4.col-sm-4.col-xs-12.solar-fields{class: @property&.has_solar_pv ? 'display-none' : ''}
+    %label
+      = t('property.label.roof_length')
+      *
+    .row
+      %div.col-8.padding-right-0
+        = form.text_field :roof_length, placeholder: t('property.input.enter_number'), class: 'form-control before-unit-input'
+      %div.col-4.padding-left-0
+        = form.select :roof_length_unit, Constant::LENGTH_UNIT_ONLY, {}, class: 'form-control unit-select'
+  .form-group.col-md-4.col-sm-4.col-xs-12.solar-fields{class: @property&.has_solar_pv ? 'display-none' : ''}
+    %label= t('property.label.roof_breadth')
+    *
+    .row
+      %div.col-8.padding-right-0
+        = form.text_field :roof_breadth, placeholder: t('property.input.enter_number'), class: 'form-control before-unit-input'
+      %div.col-4.padding-left-0
+        = form.select :roof_breadth_unit, Constant::LENGTH_UNIT_ONLY, {}, class: 'form-control unit-select'
+
+  .form-group.col-md-4.col-sm-4.col-xs-12.solar-fields{class: @property&.has_solar_pv ? '' : 'display-none'}
+    %label= t('property.label.solar_power_consumption')
+    *
+    .row
+      %div.col-8.padding-right-0
+        = form.text_field :solar_power_consumption, placeholder: t('property.input.enter_number'), class: 'form-control before-unit-input'
+      %div.col-4.padding-left-0
+        = form.select :solar_power_consumption_unit, Constant::ELECTRICITY_UNIT, {}, class: 'form-control unit-select'

@@ -1,0 +1,61 @@
+CommitMsg:
+  ALL:
+    requires_files: false
+    quiet: false
+
+  EmptyMessage:
+    enabled: true
+    description: 'Check for empty commit message'
+    quiet: true
+
+  TrailingPeriod:
+    enabled: true
+    description: 'Check for trailing periods in subject'
+
+PreCommit:
+  ALL:
+    problem_on_unmodified_line: report
+    requires_files: true
+    required: false
+    quiet: false
+
+  AuthorEmail:
+    enabled: true
+    description: 'Check author email'
+    requires_files: false
+    required: true
+    quiet: true
+    pattern: '^[^@]+@.*$'
+
+  AuthorName:
+    enabled: true
+    description: 'Check for author name'
+    requires_files: false
+    required: true
+    quiet: true
+
+  MergeConflicts:
+    enabled: true
+    description: 'Check for merge conflicts'
+    quiet: true
+    required_executable: 'grep'
+    flags: ['-IHn', "^<<<<<<<[ \t]"]
+
+
+  RailsSchemaUpToDate:
+    enabled: true
+    description: 'Check if database schema is up to date'
+    include:
+      - 'db/migrate/*.rb'
+      - 'db/schema.rb'
+
+  TrailingWhitespace:
+    enabled: true
+    description: 'Check for trailing whitespace'
+    required_executable: 'grep'
+    flags: ['-IHn', "[ \t]$"]
+    include: '**/*.rb'
+
+  RuboCop:
+    enabled: true
+    command: ['bundle', 'exec', 'rubocop'] # Invoke within Bundler context

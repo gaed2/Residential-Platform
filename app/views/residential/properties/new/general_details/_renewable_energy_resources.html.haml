@@ -1,0 +1,9 @@
+.form-group.col-md-4.col-sm-4.col-xs-12.renewable-energy-sources{'data-renewable-energy' => 0}
+  %label
+    = t('property.label.others')
+  .other-field-blocks.row.width-100p
+    .col-11.pr-0
+      = form.select :other_consumptions, Constant::ENERGY_RENEWABLE_SOURCES, {prompt: t('property.label.select_source')}, class: 'form-control unit-select'
+    .col-md-1.col-sm-1.col-xs-1.add-field-b
+      %a.btn.btn-primary.add_other_renewable.width-46
+        +

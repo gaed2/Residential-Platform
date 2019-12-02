@@ -1,0 +1,20 @@
+.error.response-error
+.general-details.audit-steps.display-none#step_3
+  .checklist-heading
+    %h2
+      = t("energy_checklist.checklist_for_energy_saving")
+  %form{role: "form"}
+    .tab-content
+      #stepper-step-2.tab-pane.in.active{role: "tabpanel"}
+        = render 'residential/properties/new/energy_save_checklist/checklist'
+        = render 'residential/properties/new/energy_save_checklist/others'
+        .authnbtn-f
+          %button.btn.btn-primary.float-right.energy_checklist_preview_button.display-none{type: "button"}
+            = t('button.preview')
+          %button.btn.btn-primary.float-right.save-draft{type: "submit", 'data-step' => 3}
+            = t('button.save_as_draft')
+          %button.btn.btn-primary.float-right.next-step{type: "submit", 'data-next_tab' => '#step_2', 'data-current_tab' => '#step_3', 'data-action' => properties_path, 'data-step' => 3}
+            = t('button.next')
+          %button.btn.btn-default.float-right.next-step.back-btn{type: "submit", 'data-next_tab' => '#step_2', 'data-current_tab' => '#step_3'}
+            = t('button.back')
+= render 'residential/properties/modals/other_consumptions'

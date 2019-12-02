@@ -1,0 +1,98 @@
+.upload-field-block{style: 'margin-left: 25px'}
+  .row
+    = form_tag '#', id: 'utility_bills_form' do
+      .col-md-12.col-sm-12.col-xs-12
+        .row
+          .subheading-field
+            %h4
+              = t('energy_data.provide_the_following')
+          .bill-select
+            %label
+              = t('energy_data.label.utility_bills')
+            = select_tag 'bill_type', options_for_select(Constant::UTILITY_BILLS_TYPE), {class: 'form-control height-45'}
+          .form-group.col-md-12.col-sm-12.col-xs-12.select-fields
+            .file.btn.btn-lg.btn-default.upload-doc
+              = image_tag(asset_pack_path('packs/images/upload-icon.png'))
+              %input{name: "file1", type: "file", id: 'utility_bill_file', class: 'utility_bills'}/
+            #utility_bills_container
+              - @property&.past_year_utility_bills.each_with_index do |utility_bill, index|
+                - dataTarget = index + 1
+                .field-upload-img.PastYearUtilityBill{'data-bill' => dataTarget, 'data-category' => utility_bill.category&.downcase, 'data-id' => utility_bill.id}
+                  = image_tag utility_bill.file, class: 'document-img-preview utility_images', 'data-bill' => dataTarget, id: "utility_bill_file_#{index}_preview"
+                  = image_tag asset_pack_path('packs/images/remove-icon.png'), class: 'file-remove-icon document-remove-icon cursor-pointer', 'data-bill' => dataTarget,
+                                                          'data-id' => utility_bill.id,
+                                                          'data-target' => 'PastYearUtilityBill'
+
+:javascript
+  document.getElementById('utility_bill_file').addEventListener('change', readURL, true);
+  // TODO
+  //document.getElementById('electrical_schematic_file').addEventListener('change', readURL2, true);
+  //document.getElementById('equipment_list_file').addEventListener('change', readURL3, true);
+  function readURL(){
+      billPreview('utility_bill_file')
+  }
+  function readURL2(){
+      imagePreview('electrical_schematic_file')
+  }
+  function readURL3(){
+      imagePreview('equipment_list_file')
+  }
+
+  function billPreview(target){
+    let validFileExtensions = ["image/jpg", "image/jpeg", "image/bmp", "image/gif", "image/png"];
+    var file = document.getElementById(target).files[0];
+    let validFile = $.inArray(file.type, validFileExtensions) !== -1
+    if(!validFile){
+      toastr.error('File extension not valid');
+      return false;
+    }
+    var reader = new FileReader();
+    reader.onloadend = function(){
+      let bill_count = $(".utility_images").length
+      let dataTarget = 1
+      if($(".utility-files").length > 0 )
+        dataTarget = parseInt($(".utility-files").last().data('bill')) + 1
+      let clone = $("#utility_bill_file").clone().attr('id', dataTarget).data('bill', dataTarget).addClass('display-none')
+      let category = $("#bill_type").val().toLowerCase()
+      data = `<div class= 'field-upload-img utility-files' data-bill=${dataTarget} data-category="${category}">`+
+               `<img src=${reader.result} class ='document-img-preview utility_images' id="utility_bill_file_${bill_count}_preview" data-bill=${dataTarget} />`+
+               `<img src=${serverData.remove_icon_source} class='file-remove-icon'  data-bill=${dataTarget} />`+
+             "</div>"
+      $("#utility_bills_container").append(data)
+      $(".field-upload-img[data-bill=" +dataTarget+"]").append(clone)
+    }
+    if(file){
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function imagePreview(target){
+    var file = document.getElementById(target).files[0];
+    var reader = new FileReader();
+    reader.onloadend = function(){
+      $("#"+target+"_preview").attr('src', reader.result)
+      $("#"+target+"_remove").removeClass('display-none')
+    }
+    if(file){
+      reader.readAsDataURL(file);
+    }
+  }
+
+  $(document).on('click', '.file-remove-icon', function (event) {
+    let dataTarget = $(this).data('bill')
+    if(dataTarget){
+      $(".field-upload-img[data-bill=" +dataTarget+"]").remove()
+    }
+    else{
+      $(this).addClass('display-none')
+      let id = $(this).attr('id')
+      let currentTarget = id.split('_remove')[0]
+      $("#"+currentTarget+"_preview").attr('src', '')
+      $("#"+currentTarget).val('')
+    }
+  })
+
+
+
+
+

@@ -1,0 +1,30 @@
+:javascript
+  window.serverData = {}
+  window.serverData['plans'] = #{@plans.to_json.html_safe}
+  window.serverData['property_id'] = #{@property.id.to_json.html_safe}
+  window.serverData['total_bill'] = #{@property.avg_monthly_electricity_bill}
+
+%main.audit_report-block.padding-bottom-10
+  = render 'residential/reports/audit_report_header', property: @property
+  .col-md-12.switch-btn
+    .btnContainer
+      .btn.graph-btn.active{ 'data-rel': 'retailer' }
+        = t('suggestions.label.retailer')
+      .btn.graph-btn{ 'data-rel': 'chart' }
+        = t('suggestions.label.chart')
+
+  .retailer-table-field
+    .row
+      .col-md-12.col-sm-12.col-xs-12.retailer#best_plans
+        = render 'electricity_suppliers/recommendations/best_plans'
+      .col-md-12.col-sm-12.col-xs-12.chart
+        %h2.estimate-heading
+          = t('retailers.estimated_monthly_bill')
+        .chart-container
+= form_tag '', class: 'search-plan-form' do
+  = text_field_tag 'search_plan', '', placeholder: t('button.search'), class: 'form-control search-plan-input pull-right'
+  = submit_tag t('button.search'), class: 'btn display-none'
+.recommendation-title.compare-plan-title
+  = t('retailers.compare_plan')
+= render 'electricity_suppliers/recommendations/compare_plans'
+= javascript_pack_tag 'javascripts/suppliers_plans/retailer'

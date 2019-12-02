@@ -1,0 +1,490 @@
+en:
+  title: Gaedkeeper
+  success: Success
+  failure: Failure
+  not_found: Not found
+  price_unit: Cents/kWh
+  size_unit: Sq, Ft.
+  energy_unit: kWh
+  electricity_unit: kWh
+  no_plan_available: No Plans Available
+  no_property_available: No property available
+  no_draft_available: No draft available
+  record_not_found: Record not found
+  invalid_token: Invalid Authencity token. Please try again later
+  no_data_available: No data available
+  generating_report: Generating Report....
+  are_you_sure: Are you sure?
+  data_tab_is_missing: Data tab is missing
+  deleted_successfully: Deleted successfully
+  nav_bar:
+    dashboard: Dashboard
+    plans: Plans
+    add_property: Add Property
+    draft_properties: Draft Properties
+  admin:
+    user:
+      block: Block
+      unblock: Unblock
+      update_status:
+        success: Status updated successfully
+  footer:
+    copyright: Copyright © 2019 Gaedkeeper
+    privacy_policy: Privacy Policy
+    terms_and_conditions: Terms and Conditions
+  button:
+    submit: Submit
+    login: Login
+    sign_up: Sign Up
+    sign_out: Sign Out
+    update: Update
+    next: Next
+    save_as_draft: Save as Draft
+    back: Back
+    save: Save
+    cancel: Cancel
+    yes: Yes
+    no: No
+    others: Others
+    logout: Logout
+    my_profile: My Profile
+    provider_suggestion: Provider Suggestion
+    view_audit_report: View Audit Report
+    recommendation: Recommendation
+    energy_retailer:  Energy Retailer
+    view_report: View Report
+    add_details: Add details
+    from: From
+    ac_from: Air-conditioning is used From
+    to: To
+    generate_report: Generate Report
+    energy_recommendation: Energy recommendation
+    retailer_recommendation: Retailer recommendation
+    recommendations: Recommendations
+    retailer_list: Retailer list
+    retailer_proposed: Retailer proposed
+    view_ledger: View ledger
+    resend_confirmation: Resend confirmation instructions
+    save_next: Save & Next
+    save_close: Save & Close
+    back: Back
+    energy_saving: Energy saving
+    add: Add
+    remove: Remove
+    preview: preview
+    set: Set
+    confirm: Confirm
+    add_more: Add More
+    search: Search
+    compare: Compare
+    remove_avatar: Remove
+    update_image: Edit
+  menu_item:
+    auditor: Auditor
+    consumer: Consumer
+    energy_provider: Energy Provider
+  devise:
+    confirmation_email_sent: Confirmation email sent
+    confirmation_not_received: Click here if you didn't get confirmation link
+    not_registered: Not Registered?
+    connect_with_us: Connect with us
+    forgot_password: Forgot Password?
+    change_your_password: Change your password
+    please_enter_email: Please enter the email address registered on your account.
+    already_registered: Already Registered?
+    sign_up: Sign up
+    password_reset_link_sent: Password reset link has been sent to your registered email address
+    you_agree_accept: By Login, you agree to accept the
+    terms_of_services: Terms of services
+    privacy_policy: Privacy Policy
+    menu1: Menu 1
+    menu2: Menu 2
+    menu1_para: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    menu2_para: Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+    input:
+      email: Email
+      first_name: First Name
+      last_name: Last Name
+      contact_number: Contact Number
+      password: Password
+      old_password: Old Password
+      confirm_password: Confirm Password
+      new_password: New Password
+      confirm_new_password: Confirm New Password
+  user:
+    general: GENERAL
+    email_not_found: Email not found
+    avatar_is_missing: Avatar is missing
+    incorrect_first_name_format: Incorrect first name format
+    incorrect_last_name_format: Incorrect last name format
+    email_already_exist: Email has been already taken
+    email_or_password_invalid: Email or password invalid
+    please_confirm_email_address: Please confirm your email address
+    profile: Profile
+    profile_updated: Profile Updated Successfully
+    blocked_message: Your account has been blocked. Please contact %{admin_email} for further assistance
+    incorrect_current_password: Please enter correct current password
+    reset_password_successfully: Password changed successfully Login again!
+  property:
+    listing:
+      housing_type: Housing types
+      avg_monthly_consumption: Average monthly consumption
+      energy_unit: (in kilowatt-hours, kWh)
+      last_assessment_on: Last assessment on
+    added:
+      success: User property added successfully
+    deleted_successfully: Property deleted successfully
+    draft_saved: Draft saved successfully
+    energy_checklist: Energy Audit Checklist for Homes
+    general_information: General Information
+    energy_sources: Energy Sources
+    energy_per_year: / Year, kWh
+    gas_per_year: / Year, Cubic metre
+    occupants_details: Occupants Details
+    room_details: Room Details
+    home_details: Home Details
+    how_many_people: "How many people live in the home:"
+    how_many_rooms: "How many rooms in the home:"
+    occupancy_tooltip: Atleast someone stays at home for sure
+    average_appliance_consumption: Average appliance consumption
+    typical_average_appliance_consumption: Typical average appliance consumption
+    appliance: Appliance
+    minimum: Minimum
+    maximum: Maximum
+    standby: Standby
+    other_names: Other Name(s)
+    input:
+      owner_name: Owner Name
+      contact_email: Contact Email
+      contact_number: Contact Number
+      address: Address
+      zip: Zip
+      state: State
+      city: City
+      region: Region
+      floor_number: Floor Number
+      room_number: Room
+      door_number: Door Number
+      house_number: House Number
+      unit_number: Unit Number
+      enter_number: Enter Number
+      start_time: Start Time
+      end_time: End Time
+      full_time_occupancy: Full time occupancy
+      full_time_occupancy_info: Full time occupancy info
+      ac_unit: No. of Air Conditioners Installed
+      ac_temperature: Average A/C temperature
+      ac_in_use: Number of AC in use
+      ac_time_usage: AC time usage(hours)
+      select_month: Months
+      select_year: Years
+      enter_years: Enter Years
+      daily_dryer_usage: Average hours per day
+    label:
+      adults: Adults
+      senior_citizens: Senior Citizens
+      children: Children
+      bedrooms: Bedrooms
+      bathrooms: Bathrooms
+      floors: Floors
+      roof_length: Roof Length
+      roof_breadth: Roof Breadth
+      avg_room_size: Average room size
+      dining_room_size: Dining Room size
+      living_room_size: Living Room size
+      total_house_size: Total house size (or built up) area
+      floor_to_ceiling_height: Floor to Ceiling Height
+      at_home_time: All/Most occupants will be at home from
+      occupants_time: Occupancy time
+      electricity: Electricity
+      natural_gas: Natural Gas
+      others: Others (Renewables, Generators etc)
+      energy_source_used: Energy Sources Used
+      water_used: Water Used
+      duration_of_stay: Duration of stay
+      has_ac: Are there Air-Conditioners installed
+      has_dryer: Has Dryer
+      ac_is_available: Air-conditioning is available
+      dryer_is_available: Dryer is available
+      has_solar_pv: Has Solar PV
+      solar_pv_is_available: Solar PV is available
+      select_source: Select Source
+      how_many_persons: How many persons?
+      number_of_people: Number of people
+      persons_always_at_home: Persons always at home
+      solar_power_consumption: Solar power consumption
+      dryer_availability_unit: Hours
+      dryer_label: How often is the dryer used
+    steps:
+      general_details: General Details
+      energy_data: Energy Data
+      checklist: Checklist
+      engergy_checklist: Checklist for Energy</br>Savings measures
+      water_consumption_chart: Chart & Graph
+      average_consumption: Average consumption
+    updated:
+      success: User property updated successfully
+  energy_data:
+    delete_error: Can not be deleted
+    electricity_consumption: Electricity Consumption
+    add_other_appliance: Add other appliance
+    installed_system: Installed systems
+    equipment_available: Equipment available (as above)
+    year_installed: Year installed
+    installed_renewable_energy_source: "Installed renewable energy source (total): Renewable"
+    location: Location
+    master_bedroom: Master Bedroom
+    current_electricity_supplier: Current Electricity Supplier
+    current_plan: Current Plan
+    electricity_rate: Electricity Rate
+    change_to_different_supplier: Changed to a different supplier
+    any_change_to_different_supplier: Any change to a different supplier in the
+    did_you_change_supplier: Did you change supplier in the past year?
+    energy_data: Energy Data
+    provide_the_following: Provide the following
+    electrical: Electrical
+    equipment_available_detail: Equipment available
+    roof_details: Roof Details
+    label:
+      utility_bills: Utility bills for the past year
+      electrical_distribution: Electrical Distribution Schematic Diagram (SLD)
+      equipment_list: Equipment list and Specification (Indicated above or to provide
+    cost:
+      greator_than_zero: Cost must be greater than or equal to 0.0
+    consumption:
+      greator_than_zero: Energy consumption must be greater than or equal to 0.0
+    rate: Electricity Rate(cents)
+    select_location: Location
+    select_rating: Rating
+    select_year: Year
+    installed_system_heading:
+      year_of_purchase: Year of purchase
+      consumption_kwh: Consumption kWh
+  energy_checklist:
+    checklist_for_energy_saving: Checklist for Energy Saving Measures
+    air_conditioning: Air Conditioning
+    is_ac_optimized: Is the AC system running at optimised/manufacturers
+    others: Others
+    equipment_maintenances: Equipment Maintenance
+    frequency_for_maintenance: What is the frequency for maintenance?  Any upgrading
+    consumption_kwh: Consumption (kWh)
+    power_kwh: Power (kw)
+    cost_sgd: Cost ($ SGD)
+    month_year: Month / Year
+    chart: Household Water Consumption
+    upgrade: Last upgraded
+    frequency: Frequency
+  equipments:
+    name:
+      cannot_blank: Equipment name can't blank
+    type:
+      cannot_blank: Equipment type can't blank
+  category:
+    select_category: Select Category
+    select_sub_category: Select SubCategory
+  checklist:
+    question:
+      cannot_blank: Question can't blank
+    answer:
+      cannot_blank: Answer can't blank
+    enter_supplier_name: Enter Supplier Name
+    enter_answer: Enter answer
+  equipment_maintenances:
+    name:
+      cannot_blank: Name can't blank
+    frequency:
+      greator_than_zero: Frequency must be greater than or equal to 0.0
+  renewable_energy_source:
+    name:
+      cannot_blank: Name can't blank
+    energy_source:
+      cannot_blank: Type can't blank
+    source_name: Source Name
+    unit: Unit
+  suggestions:
+    label:
+      basic_information: Basic Information
+      consumer_type: Consumer Type
+      housing_type: Housing Type
+      average_monthly_consumption: Avg. Monthly Consumption (kWh)
+      preferences: Preferences
+      list: List
+      grid: Grid
+      chart: Chart
+      retailer: Retailer
+      type: Type of residential category
+      current_retailer: Current retailer
+      current_monthly_bill: Current monthly bill
+      avg_monthly_bill: Avg. monthly bill
+    placeholder:
+      residential: Residential
+      hdb2_room: HDB 2-Room
+      consumption_value: 2.00
+    more_detail_btn: More Detail
+    table:
+      heading:
+        retailer: Retailer
+        price_plan: Price Plan
+        type: Type
+        electricity_rate: Electricity Rate
+        peak_electricity_rate: Peak Electricity Rate
+        peak_off_electricity_rate: Peak Off Electricity Rate
+        estimated_monthly_bill: Estimated monthly bill
+        contract_duration: Contract Duration
+        plan_type: Plan Type
+      visit_website: Visit Website
+    please_select_plan_type: Please Select Plan type
+    please_select_retailer: Please Select Retailer
+  electricity_supplier:
+    suggestions: Provider Suggestion
+    heading:
+      fixed_price_plan: Best Fixed Price Plans Across OEM Retailers
+      discount_off_plan: Best Discount Off Regulated Tariff Plans Across OEM Retailers
+      peak_and_off_peak_plan: Peak and off-peak plans
+      best_suggested_plans: Best suggested plans
+    fixed_price_plan:
+      heading:
+        retailer: Retailer
+        plan_name: Name of Plan
+        price: Price(cents/kWh)
+        contract_duration: Contract Duration (In Months)
+    discount_off_plan:
+      heading:
+        retailer: Retailers
+        plan_name: Name of Plan
+        price: Electricity rates are X % off the regulated tariff
+        contract_duration: Contract Duration (In Months)
+    peak_and_off_peak_plan:
+      heading:
+        company: Company
+        peak: Peak
+        off_peak: Off Peak
+      not_offer_peak_plan: Does not offer peak plans
+      not_offer_off_peak_plan: Does not offer off-peak plans
+  reports:
+    capital_improvements: Capital Improvements
+    analysis_of_improvements: Analysis of improvements
+    capital_improvements_desc: Install Smart plugs and power meter to monitor the energy usage of the appliances.
+    operations_and_maintenance: Operations and Maintenance
+    operations_and_maintenance_desc: Since all the bulbs are fluorescent, it is recommended to change them to LED bulbs when replacing the used bulbs
+    water_conservation: Water Conservation Measures (WCMs)
+    water_conservation_desc1: Retrofit existing cisterns to reduce the amount of water when flushing
+    water_conservation_desc2: Replace all taps with a WELS 3 standard tap.
+    water_conservation_desc3: "Alternative : Install water saving inserts in all the taps. With these measures in place, it is estimated to reduce water use by 30%"
+    energy_conservation: Energy Conservation Measures (ECMs)
+    energy_conservation_ac: Air conditioners consume the most electricity in the home. The current Air conditioning system is an old non-inverter set and it is recommended to upgrade to a newer inverter unit that has lower running costs.
+    energy_conservation_tv: The TV is an old plasma model that consumes a lot of electricity even when on standby. It is recommended to upgrade to a Backlit LED TV
+    energy_conservation_fridge: The Refrigerator is an older model that is only rated 1 star.It is recommended to replace it with a fridge with inverter cooling technology
+    energy_heater: The AC/water heater/washing machine is only rated 1-2 star. It is recommended to replace it with 4-5 star rating having higher efficiency to save cost and reduce greenhouse emission gas.
+    total_energy_consumed: The total energy consumed for the past %{month} data was
+    local_electricity_rate: Current retailer electricity rate was
+    total_cost_energy_consumed: Total cost of energy consumed for the past %{month} data was
+    not_enough_information: “Not enough information given, showing average HDB data”
+    hotest_month: This was attributed to it being a very hot month.
+    operations_and_maintenances:
+      install_smart_home: Install Smart home and  plugs meter to monitor the energy usage of the appliances.(Saves around $30 a month or 10%)
+      apply_dark_tint: Apply dark tint to windows
+      adhere_to_appliance: Adhere to appliance manual to optimise efficient use.
+      energy_saving_tactics: Employ Energy Saving tactics, if not already in practice
+      use_the_fan: a. Use the Fan instead of Air-conditioner (Saves around $34 a month or 12%)
+      switch_all_power_socket: b. Switch off all power at the socket after use. (Saves around $2.50 a month or 1%)
+      use_thermos_flask: c. Use a thermos flask instead of a kettle to reheat water (Saves around $25 a month or 8%)
+      turn_off_heater: d. Turn off the electric water heater immediately after shower (Saves around $10 a month or 5%)
+      when_purchasing_appliance: e. When purchasing appliances, the more Energy Ticks the better
+      switch_to_fan: f. If you need to air condition the room, switch to fan after a short while (Saves around $28 a month or 10%)
+      set_ac_temperature: g. Set the temperature of the air conditioner at 24°C or higher (Saves around $2.50 or 1% monthly)
+    water_conservations:
+      retrofit_cisterns: Retrofit existing cisterns to one with a WELS 2 or 3 rating to reduce the amount of water when flushing.
+      replace_taps: Replace all taps with a WELS 2 or 3 standard tap or Install water saving inserts in all the taps.
+      replace_top_loader_machine: Replace top loader washing machine to front loader with at least 2 WELS rating and 4 tick energy rating as it uses up to 50% less water
+    energy_conservations:
+      upgrade_ac: It is recommended to upgrade to a newer unit (More Energy Ticks) that has lower running costs. A 5-Tick rating can save around $25 a month (or 10%). Recommendation is available on the platform.
+      upgrade_tv: It is recommended to upgrade to a 5-Tick Energy rated TV. Recommendation is available on the platform
+      upgrade_fridge: It is recommended to replace it with a fridge with inverter cooling technology with 5-Tick Energy rating with savings around $25 a month (or 10%). Recommendation is available on the platform
+      upgrade_washing_machine: It is recommended to replace with a front loader type washing machine, depending on model. It saves up to 200 kWh per year (or 1.5%). Recommendation is available on the platform
+    solar_pv:
+      obstructed_roof_space: Estimated roof capacity
+      unobstructed_roof_space: Unobstructed Roof Space
+      install_solar: Install Solar PV System on the roof.
+      output_parameters: OUTPUT PARAMETERS
+      unit: UNIT
+      output: OUTPUT
+      available_roof_space: Available Roof Space for Solar
+      min: Min.
+      max: Max.
+      estimated_system_size: Estimated System Size(Rated Capacity)
+      est_daily_energy_generated: Est. Daily Energy Generated
+      est_monthly_energy_generated: Est. Monthly Energy Generated
+      est_yearly_energy_generated: Est. Yearly Energy Generated
+      est_system_cost: Est. System Cost
+      est_payback_period: Est. Payback Period
+      years: Years
+      est_roi: Est. ROI
+    conclusion:
+      title: Conclusion
+      description: The report shows that the individual recommended approach provides the optimum results in providing the best way to make the building and facility energy efficient, including cost savings.
+      brief_analysis: Brief Overall summary of analysis
+      bill_breakdown: A breakdown on the savings on each individual implementation compared with the current bill.
+      saving_description: The savings are only estimated as the replacements are up to the occupant’s preference. There are multitude of brands that have similar specifications which the occupant can choose from.
+      basic_recommendation: Our basic recommendation is for the minimum specification which is at least a 4-star rating for the appliances and WELS 2 for taps and cisterns.
+  retailers:
+    retailer_name: Retailer Name
+    price_plan: Name of Price Plan of retailer
+    type_of_plan: Type of Plan
+    contact_duration: Contract duration
+    current_regulated_rate: Current Retailer Rate (Cents/kWh)
+    electricity_rate: Electricity Rate
+    estimated_bill: Estimated Monthly Electricity Bill (SGD)
+    early_termination_charges: Early Termination Charges
+    customer_note1: An amount equivalent to the sum paid as Security Deposit by the Customer.
+    customer_note2: (50% of the average monthly bill based on the last 3 months bills) x (number of unfulfilled contract months)
+    customer_note3: An amount equivalent to the sum paid as Security Deposit by the Customer.
+    other_fee_and_charges: Other fee and charges
+    selection_of_retailer: Selection of Retailer based on minimum bill
+    saving_per_month: Saving per month
+    estimated_monthly_bill: Estimated Monthly Electricity Bill (SGD)
+    average_monthly_saving: Average monthly saving
+    compare_plan: Compare plan with recommendations
+    top_three_recommendations: Top 3 Recommendations
+    best_recommendations: Best Recommendations
+  modals:
+    electricity_consumption: Electricity consumption
+    current_electricity_supplier: Current Electricity Supplier
+    renewable_energy_source: Renewable Energy Source
+    enter_supplier_name: Enter Supplier Name
+    master_bedroom: Master Bedroom
+    location: Location
+    installed_systems: Installed systems
+    equipment_available: Equipment available (as above)
+    year_installed: Year installed
+    year_of_purchase: Year of purchase
+    others_consumption: Others consumption
+    equipment_appliance: Equipment / Appliance
+    last_upgraded: Last upgraded
+    ac: Air Conditioning system
+    dryer: Dryer
+    frequency: Frequency
+    enter_details: Enter Details
+    upgrade: Upgrade (include Date)
+    type_of_model: Type of Model
+    star_rating: Star rating
+    quantity: Quantity
+    rated_kw: Rated kw
+    enter_appliance_name: Enter appliance name
+    enter_equipment_name: Enter equipment name
+    consumption_kwh: Consumption kWh
+    change_password: Change password
+  ledgers:
+    tx: TX#
+    transaction_information: Transaction Information
+    txn_hash: "TxnHash"
+    tx_receipt_status: "TxReceipt Status:"
+    input_data: "Input Data:"
+    ledger_dashboard: Ledger Dashboard
+    data: DATA
+    report: Report
+    recommendation: Recommendation
+    general: General
+    energy_data: Energy Data
+    provided_document: Provided Document
+    checklist: Checklist

@@ -1,0 +1,644 @@
+a,a:hover {
+  text-decoration: none;
+}
+
+
+.logo {
+  width: 100px;
+}
+
+.white-background:after{
+  background: #fff;
+}
+.header-overwrite{
+  background-color: #fff;
+  color: #424242;
+}
+.gray-background{
+  background: #f5f6f8;
+}
+.white-background{
+  background: #fff;
+}
+.username-font{
+  color: #424242 !important;
+  text-decoration: none !important;
+}
+.provider-suggestion-btn, .audit-report-btn{
+  padding: 7px 20px;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-top: 8px;
+  text-transform: capitalize;
+  width: 70%;
+}
+
+.user-image img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  border: 2px #1a9c37 solid;
+}
+
+main.property-details {
+  padding-top: 67px;
+  padding-bottom: 65px;
+}
+.duration {
+  font-size: 10px;
+}
+.no-record {
+  text-align: center;
+  font-size: 15px;
+}
+
+.modal-backdrop {
+  background-color: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+.header-profile-img{
+  border-radius: 50%;
+  height: 100%;
+  width: 100%
+}
+
+.audit-category-field {
+  display: flex;
+}
+
+.audit-category-field .adderss-box,.audit-category-field .top-bar-inner,.audit-category-field .btn-bar {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.audit-category-field .btn-bar {
+  align-items: flex-end;
+}
+.audit-category-field .top-bar-inner {
+  width: 100%;
+}
+
+.audit-category-field .top-bar-inner,.audit-category-field .btn-bar {
+   flex-direction: column;
+}
+
+.view-sheet {
+  justify-content: flex-end;
+}
+
+
+.left-footer-field {
+  float: left;
+}
+
+.right-footer-field {
+  float: right;
+}
+
+.subcategory-error{
+  margin-bottom: 5px;
+}
+
+.pagination{
+  padding-right: 30px;
+  float: right;
+}
+
+.pagination a{
+  color: #000000;
+  padding: 5px 13px;
+}
+
+.pagination span{
+  color: #000000;
+  padding: 5px;
+}
+
+.current{
+  background: #1a9c37;
+  padding: 5px 12px;
+  font-style: normal;
+  border-radius: 5px;
+  color: white;
+}
+
+/*Grid view end */
+.switch-field .btn.active {
+  background-color: #24a449;
+  color: white;
+}
+
+.switch-field {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+}
+
+.graph-btn {
+  border: 1px solid #24a449;
+  background: none;
+  outline: none;
+  padding: 10px;
+  color: #24a449;
+  padding: 8px 4px;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.graph-btn.active {
+  border: 1px solid #24a449;
+  background: #24a449;
+  color: #fff;
+}
+
+.switch-field .btn {
+  border: none;
+  background: #000;
+  outline: none;
+  padding: 8px 4px;
+  color: #fff;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.retailer-bill-margin{
+  margin: 0 0 10px;
+}
+
+.switch-field .btn img {
+  max-width: 23%;
+}
+
+.property-data{
+  cursor: pointer;
+}
+
+/*Grid view*/
+
+.property-diagram{
+  max-width: 100%;
+  height: 200px;
+}
+
+.image-container{
+  width: 100%;
+  height: 230px;
+}
+
+.upload-report-img h3{
+  min-height: 50px;
+}
+
+.copyright{
+  z-index: 999;
+}
+
+.switch-field .btnContainer {
+  float: right;
+  border: 0;
+}
+
+.break-word{
+  word-break: break-word;
+}
+
+.retailer-table{
+  overflow-x: hidden;
+}
+
+body .button-block-f .btn{
+  color: #1a9c37 !important;
+  background: none !important;
+  border: 1px solid #1a9c37 !important;
+}
+
+body .button-block-f .btn:hover{
+  color: #fff !important;
+  background: #1a9c37 !important;
+}
+
+#loading {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+  opacity: 0.7;
+  background-color: #fff;
+  z-index: 99;
+  text-align: center;
+}
+
+#loading-image {
+  position: absolute;
+  top: 100px;
+  left: 240px;
+  z-index: 100;
+}
+
+.consumption-field a{
+  width: 10%;
+}
+
+.installed-system-list .consumption-field a{
+  width: 30%;
+}
+
+.document-remove-icon{
+  max-width: 7%;
+  position: absolute;
+  top: 18px;
+  right: 17px;
+}
+
+.renewable-input-field{
+  width: 90%;
+  float: left;
+}
+
+.chart-section{
+  background: white;
+  text-align: center;
+  width: 48%;
+  margin-bottom: 2%;
+  margin-right: 2%;
+  float: left;
+}
+
+
+.chart-section:last-child {
+   width: 100%;
+   float: none;
+ }
+
+
+.report-block table #installed_system_list_view_container tr td:first-child{
+  width: 20%;
+}
+.bill-select{
+  padding: 0 15px;
+}
+#energy_month-error{
+  position: absolute;
+  bottom: -18px;
+  left: 16px;
+  font-size: 12px;
+}
+.text-overflow{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.highcharts-root{
+  height: 400px;
+  width: 100%;
+}
+
+#averageApplianceConsumption .highcharts-root{
+  height: auto;
+  width: 100%;
+}
+
+#averageApplianceConsumption .highcharts-container{
+  height: auto !important;
+  background: white;
+  width: 100% !important;
+}
+
+.highcharts-container{
+  height: 400px !important;
+}
+
+@media screen and (max-width: 767px) {
+  .audit-category-field,.audit-category-field .adderss-box, .audit-category-field .top-bar-inner, .audit-category-field .btn-bar{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  body .adderss-box span {
+    display: inline-block;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .adderss-box span img {
+    max-width: 100%;
+    width: auto;
+  }
+
+  .report-details .container-fluid {
+    padding: 0;
+  }
+
+  .copyright h3 {
+    text-align: center;
+  }
+  .retailer-table{
+    overflow-x: auto;
+  }
+
+.copyright .left-footer-field,.copyright .right-footer-field {
+  float: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+main.fixed-price-block {
+  padding-left: 0;
+}
+
+table.table thead th {
+  vertical-align: middle;
+}
+
+.energy-source {
+  padding: 12px 0 0 12px;
+}
+
+.add-details, .more-detail {
+    display: table;
+    margin: 0 auto;
+  }
+
+  .energy-report .fblock {
+    width: 100%;
+  }
+
+  .energy-report .fblock span:first-child {
+    width: 70%;
+  }
+  .energy-report .fblock span:last-child {
+    width: 30%;
+    text-align: right;
+  }
+
+  main.property-details{
+    padding-bottom: 115px;
+  }
+
+  .property-tab {
+    width: 46%;
+    padding-bottom: 14px;
+    float: left;
+  }
+
+  .highcharts-container {
+    height: 230px !important;
+  }
+
+  .highcharts-root {
+    width: 38%;
+    height: auto;
+  }
+  .chart-section {
+    width: 100%;
+    float: none;
+    margin-right: 0;
+  }
+
+  .row-category-block {
+    padding: 15px !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  main.fixed-price-block {
+    padding-left: 0;
+  }
+
+  .chart-section{
+    width: 100%;
+
+  }
+
+  .custom-width {
+    max-width: 100%;
+  }
+
+  .row-category-block {
+    padding: 0px !important;
+  }
+}
+
+.property-details .tab-pane {
+  display: none;
+  padding: 40px 20px;
+}
+
+.property-details .tab-pane.active {
+  display: block;
+}
+
+.report-tabs ul li.active a{
+  background: none;
+  border: none;
+  color: #3db54a;
+  border-bottom: 2px solid #3db54a;
+}
+
+
+.btn-primary:hover {
+  background: none;
+  border-color: #24a449;
+  color: #fff;
+}
+
+body .authnbtn-f button {
+  padding: 7px 30px;
+}
+
+
+.authnbtn-f button.btn-primary:focus {
+  background: #24a449 !important;
+  box-shadow: 0 0 0 0.2rem rgba(36, 164, 73, .5) !important;
+}
+
+body .category-field-section .authnbtn-f button:hover,
+body .general-details .authnbtn-f button:hover,
+body .category-field-section .authnbtn-f button:active,
+body .general-details .authnbtn-f button:active,
+body .user-full-form .authnbtn-f button:hover,
+body .user-full-form .authnbtn-f button:active, {
+ background: none !important;
+ border-color: #24a449 !important;
+ color: #24a449;
+ border-width: 2px;
+ box-shadow: 0 0 0 0.2rem rgba(36, 164, 73, .5);
+}
+
+.modal-content .authnbtn-f button {
+  padding: 6px 26px;
+}
+
+.no-plans {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+input.form-control:focus {
+  border-color: #32b454;
+  box-shadow: 0 0 0 0.2rem rgba(50,180,84,.25);
+}
+
+html body .suggestion-header {
+  padding-top: 0;
+}
+
+body .pb-zero {
+  padding-bottom: 0;
+}
+
+.unit-select{
+  height: 45px !important;
+  border-radius: 0;
+  font-size: 13px;
+}
+
+.before-unit-input {
+  border-right: 0px;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.modal-content .authnbtn-f button:last-child,
+.modal-content .authnbtn-f button:last-child:focus {
+  background: none;
+  color: #b6bbc9;
+  border-color: #b6bbc9;
+}
+
+.field-upload-img {
+  position: relative;
+  width: 190px;
+  margin: 19px 21px 0 0;
+  height: 190px;
+  display: inline-block;
+}
+
+.field-upload-img .file-remove-icon {
+  max-width: 20px;
+  position: absolute;
+  top: -21px;
+  right: -10px;
+}
+
+.document-img-preview {
+  max-width: 100%;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.form-field-wrapper input:focus {
+  box-shadow: none;
+}
+
+.form-field-wrapper select:focus {
+  box-shadow: none;
+}
+
+.consumption-block {
+  padding: 0 16px;
+}
+.assessment-text{
+  font-size: 12px;
+  font-weight: 400;
+  color: #727272;
+}
+.special-td{
+  width: 11.85% !important;
+  padding: 10px !important;
+}
+.special-select{
+  margin: 0 auto;
+}
+.add-more-system-link{
+  font-size: 12px;
+  color: #28a745;
+  text-decoration: underline;
+  float: left;
+}
+.blue-background{
+  background: #5b9bd5;
+  border: 1px solid #5b9bd5;
+}
+.table-block table,.table-block table td,.table-block table th {
+  border: 1px #a0a0a0 solid;
+}
+.table-block table td,.table-block table th {
+  padding: 8px;
+  font-size: 12px;
+}
+.upgrade_paragraph{
+  font-weight: 600 !important;
+}
+.report-title {
+  font-weight: 500 !important;
+  color: #2e74b5 !important;
+  font-size: 20px !important;
+}
+.compare-plan{
+  color: #212529;
+  border: 1px solid #e2dddd;
+}
+.search-plan-input{
+  width: 30%;
+  margin-right: 16px
+}
+#annualProjectSaving{
+  height: 300px !important;
+}
+#annualProjectSaving .highcharts-root{
+  height: 300px !important;
+  width: 1000px !important;
+}
+.recommended-plan{
+  background: #78c378 !important;
+}
+.table.table-striped td{
+  font-size: 14px;
+  width: 10%;
+}
+.table.table-striped th{
+  font-size: 14px;
+  width: 10%;
+}
+.compare-plan-selected{
+  background: #ececa4 !important;
+  font-weight: bold !important;
+}
+.recommendation-title{
+  padding: 20px 0px 5px 0px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.compare-plan-title{
+  margin-left: 85px;
+  width: 50% !important
+}
+.property-tab{
+  white-space: nowrap;
+}
+
+
+.row-category-block {
+  padding: 0 90px;
+}
+
+.btn-chart {
+  display: inline-block;
+  width: 100%;
+  margin-top: 15px;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .highcharts-root {
+    width: 56% !important;
+  }
+}

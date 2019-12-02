@@ -1,0 +1,47 @@
+.form-field-wrapper.row
+  .subheading-field
+    %h4
+      = t('property.energy_sources')
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.electricity')
+      = t('property.energy_per_year')
+      *
+    .row
+      %div.col-12
+        = form.text_field :electricity_consumption, class: 'form-control'
+        = form.hidden_field :electricity_consumption_unit, value: Constant::ELECTRICITY_UNIT
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.water_used')
+      = t('property.gas_per_year')
+      *
+    .row
+      %div.col-8.padding-right-0
+        = form.text_field :water_consumption, class: 'form-control before-unit-input'
+      %div.col-4.padding-left-0
+        = form.select :water_unit, Constant::WATER_UNIT, {}, class: 'form-control unit-select'
+
+  .form-group.col-md-4.col-sm-4.col-xs-12
+    %label
+      = t('property.label.natural_gas')
+      = t('property.gas_per_year')
+    .row
+      %div.col-8.padding-right-0
+        = form.text_field :natural_gas_consumption, class: 'form-control before-unit-input'
+      %div.col-4.padding-left-0
+        = form.select :natural_gas_unit, Constant::GAS_UNIT, {}, class: 'form-control unit-select'
+
+  = render 'residential/properties/new/general_details/renewable_energy_resources', form: form
+- @property&.renewable_energy_sources&.each_with_index do |renewal_energy_source, index|
+  - dataTarget = index + 1
+  .form-field-wrapper.renewable_energy_data.row{'data-renewable-energy'=> dataTarget, 'data-id' => renewal_energy_source.id }
+    .form-group.col-md-4.col-sm-4.col-xs-12
+      .row
+        .col-12.padding-right-0
+          = text_field_tag '', renewal_energy_source.name, class: "form-control renewable_source_name", 'data-renewable-energy'=> dataTarget
+    .form-group.col-md-4.col-sm-4.col-xs-12
+      .row
+        .col-12.padding-right-0
+          = text_field_tag '', renewal_energy_source.unit, class: "form-control renewable_source_unit", 'data-renewable-energy'=> dataTarget      
+    = link_to image_tag(asset_pack_path('packs/images/delete.png')), 'javascript:void(0)', class: 'pull-right height-40 renewable-source-delete', 'data-renewable-energy' => dataTarget  

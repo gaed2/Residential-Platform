@@ -1,0 +1,81 @@
+.table-responsive.checklist-field
+  %table.table
+    %thead
+      %tr
+        %th= t('energy_data.current_electricity_supplier')       
+        %th= t('energy_data.current_plan')
+        %th= t('energy_data.electricity_rate')
+        %th= t('energy_data.change_to_different_supplier')
+    %tbody
+      %tr
+        %td= property.current_electricity_supplier&.name || '-'
+        %td= property.suppliers_plan&.name || '-'
+        %td= property.supplier_electricity_rate ? "$#{(property.supplier_electricity_rate/100).round(2)}" : '-'
+        %td= property.current_supplier_duration || '-'
+.table-responsive.checklist-field
+  - if property.energy_data.count > 0
+    %table.table
+      %thead
+        %tr
+          %th
+            A. #{t('energy_data.electricity_consumption')}
+          %th= t('energy_checklist.cost_sgd')
+          %th= t('energy_checklist.month_year')
+          %th= t('energy_checklist.consumption_kwh')
+      %tbody
+        - property.energy_data.ordered_by_date.each_with_index do |energy_datum, index|
+          %table-responsive
+          %tr
+            %td= "#{Constant::MONTHS[energy_datum.month - 1][0]}/#{energy_datum.year}" if Constant::MONTHS[energy_datum.month - 1] if energy_datum.month
+            %td= "$#{energy_datum.cost}"
+            %td= "#{energy_datum.month}/#{energy_datum.year}"
+            %td= energy_datum.energy_consumption.to_f
+  - if property.electricity_consumption_equipments.count > 0
+    %table.table
+      %thead
+        %tr
+          %th
+            B. #{t('energy_data.installed_system')}
+          %th= t('energy_data.equipment_available_detail')
+          %th= t('energy_data.year_installed')
+          %th= t('energy_data.installed_system_heading.consumption_kwh')
+          %th= t('energy_data.location')
+      %tbody
+        - property.electricity_consumption_equipments.each_with_index do |equipment, index|
+          %tr
+            %td= (index + 1)
+            %td= equipment.name
+            %td= equipment.year_installed
+            %td= equipment.electricity_consumption
+            %td= equipment.location
+.electricity-supp.installed-energy
+  .row
+    - property.past_year_utility_bills.each do |utility_bill|
+      .upload-report-img.col-md-4.col-sm-4.col-xs-12.PastYearUtilityBill{'data-id' => utility_bill.id}
+        .img-thumbnail
+          %h3
+            = t('energy_data.label.utility_bills')
+            = "(#{utility_bill.category})" if utility_bill.category
+          = image_tag asset_pack_path('packs/images/remove-icon.png'), class: 'document-remove-icon cursor-pointer display-none',
+                                                                      'data-id' => utility_bill.id,
+                                                                      'data-target' => 'PastYearUtilityBill'
+          .image-container
+            = image_tag utility_bill.file.url, class: 'property-diagram'
+    - if property.electrical_distribution_schematic_diagram.present?
+      .upload-report-img.col-md-4.col-sm-4.col-xs-12.electrical_distribution_schematic_diagram{'data-id' => property.id}
+        .img-thumbnail
+          %h3.max-width-90p= t('energy_data.label.electrical_distribution')
+          = image_tag asset_pack_path('packs/images/remove-icon.png'), class: 'document-remove-icon cursor-pointer',
+                                                                       'data-id' => property.id,
+                                                                       'data-target' => 'electrical_distribution_schematic_diagram'
+          .image-container
+            = image_tag property.electrical_distribution_schematic_diagram&.url, class: 'property-diagram'
+    - if property.equipment_list_and_specification.present?
+      .upload-report-img.col-md-4.col-sm-4.col-xs-12.equipment_list_and_specification{'data-id' => property.id}
+        .img-thumbnail
+          %h3.max-width-90p= t('energy_data.label.equipment_list')
+          = image_tag asset_pack_path('packs/images/remove-icon.png'), class: 'document-remove-icon cursor-pointer',
+                                                                       'data-id' => property.id,
+                                                                       'data-target' => 'equipment_list_and_specification'
+          .image-container
+            = image_tag property.equipment_list_and_specification&.url, class: 'property-diagram'

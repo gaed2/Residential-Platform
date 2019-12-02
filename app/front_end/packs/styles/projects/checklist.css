@@ -1,0 +1,362 @@
+header {
+  display: inline-block;
+  width: 100%;
+  background: #fff;
+}
+
+
+html body {
+  font-family: 'Roboto';
+  background: #f5f6f8;
+}
+
+.logo {
+  float: left;
+  border-right: 2px #f5f6f8 solid;
+  padding: 10px;
+}
+
+.user-field {
+  padding: 15px 27px;
+}
+
+.user-field ul {
+  padding: 0;
+  margin: 0;
+}
+
+.user-field ul li {
+  list-style-type: none;
+}
+
+.user-field ul li span {
+  padding-left: 10px;
+  color: #2a2a31;
+  font-size: 16px;
+  font-family: roboto;
+}
+
+.general-details {
+  padding: 65px;
+}
+
+.subheading-field {
+  display: inline-block;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.subheading-field h4 {
+  font-weight: 700;
+  font-size: 17px;
+  padding-bottom: 10px;
+  font-family: 'Roboto';
+}
+
+.authnbtn-f {
+  display: table;
+  margin: 49px auto 0;
+}
+
+.authnbtn-f button.btn-primary {
+  background: #24a449;
+  border-radius: 30px;
+  border-color: #24a449;
+  padding: 15px 50px;
+  font-size: 19px;
+  border-width: 2px;
+  margin-left: 30px;
+}
+
+.authnbtn-f button.btn-default {
+  background: none;
+  border-radius: 30px;
+  color: #b6bbc9;
+  border-color: #b6bbc9;
+  padding: 15px 50px;
+  font-size: 19px;
+  border-width: 2px;
+}
+
+.authnbtn-f button:hover {
+ background: none;
+ border-color: #24a449;
+ color: #24a449;
+ border-width: 2px;
+}
+
+.checklist-heading {
+  background: #f5f6f8;
+  position: relative;
+}
+
+.checklist-heading h2 {
+  color: #3db54a;
+  text-transform: uppercase;
+  font-family: 'Roboto';
+  font-weight: 700;
+  background: #f5f6f8;
+  font-size: 22px;
+}
+
+.checklist-heading h2:after {
+  width: 71%;
+  height: 1px;
+  background: #b6bbc9;
+  position: absolute;
+  content: '';
+  display: inline-block;
+  top: 23px;
+  padding: 0;
+  right: -20px;
+}
+
+.pt30 {
+  padding-top: 30px;
+}
+
+.energy-managemnets {
+  padding: 0 15px;
+  display: inline-block;
+  width: 100%;
+}
+
+
+
+.radio-btn {
+  display: inline-block;
+  width: 64%;
+  line-height: 50px;
+  padding: 0 15px;
+}
+
+.radio-btn input[type= "text"] {
+  height: 45px;
+  border-radius: 5px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  color: #2a2a31;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  line-height: 20px;
+}
+
+input[type="radio"] + label span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: -1px 4px 0 6px;
+  vertical-align: middle;
+  cursor: pointer;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+input[type="radio"] + label span {
+  background-color: none;
+  border:2px #aeaeae solid;
+}
+
+input[type="radio"]:checked + label span {
+  background-color: #3db54a;
+}
+
+input[type="radio"] + label span,
+input[type="radio"]:checked + label span {
+  -webkit-transition: background-color 0.4s linear;
+  -o-transition: background-color 0.4s linear;
+  -moz-transition: background-color 0.4s linear;
+  transition: background-color 0.4s linear;
+  float: left;
+  margin-right: 10px;
+}
+
+
+.radio-one {
+  float: left;
+  padding: 0 75px 0 0;
+}
+
+.consumption-block {
+  padding: 30px 0 0;
+}
+
+.consumption-block .img-thumbnail{
+  height: 150px;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.consumption-block .img-thumbnail > div {
+  padding-bottom: 20px;
+}
+
+.consumption-field .kwh-f{
+  width: 80%;
+  float: left;
+}
+
+.consumption-field a {
+  float: right;
+  width: 20%;
+  padding-top: 16px;
+}
+
+
+.consumption-block .img-thumbnail span {
+  color: #8d9099;
+  font-size: 12px;
+}
+
+.consumption-block .img-thumbnail h2 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.consumption-field {
+  display: inline-block;
+  width: 100%;
+}
+
+.consumption-field a img {
+  float: right;
+}
+
+.add-details a {
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.green {
+  color: #24a449;
+  font-family: roboto;
+  font-weight: 700;
+  padding: 0 10px;
+}
+
+
+.other-consumption-modal .modal-dialog {
+  max-width: 704px;
+}
+
+.other-consumption-modal .modal-header {
+  display: inline-block;
+  width: 100%;
+}
+
+.other-consumption-modal .modal-header h4 {
+  font-family: roboto;
+  font-weight: 700;
+}
+
+.other-consumption-modal .modal-content {
+  border-radius: 25px;
+  padding: 25px;
+}
+
+.other-consumption-modal .time-wrapper {
+  width: 100%;
+  padding: 0 15px;
+}
+
+.other-consumption-modal .time-wrapper .form-group {
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.other-consumption-modal .time-wrapper .form-group input {
+  height: 45px;
+}
+
+.other-consumption-modal .modal-content .authnbtn-f {
+  margin: 9px auto;
+}
+
+.other-consumption-modal .time-wrapper .form-group {
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.other-consumption-modal input {
+  height: 45px;
+}
+
+.time-wrapper a {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    z-index: 999;
+}
+
+
+.frequency-details textarea {
+  height: 150px;
+  resize: none;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+  .radio-one {
+    padding: 0 38px 0 0;
+  }
+
+  .checklist-heading h2:after {
+    width: 59%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .general-details {
+    padding: 15px;
+  }
+
+  .checklist-heading h2:after {
+    display: none;
+  }
+
+  .radio-one {
+    padding: 0 16px  0 0;
+  }
+
+  .radio-btn {
+    width: 100%;
+  }
+
+ .radio-btn .col-6 {
+  max-width: 100%;
+ }
+
+ .other-consumption-modal .authnbtn-f button.btn {
+  padding: 15px 36px;
+ }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+   .general-details {
+    padding: 15px;
+  }
+
+  .checklist-heading h2:after {
+    display: none;
+  }
+
+  .radio-one {
+    padding: 0 16px  0 0;
+  }
+
+  .radio-btn {
+    width: 100%;
+  }
+
+  .consumption-block {
+    max-width: 100%;
+  }
+}

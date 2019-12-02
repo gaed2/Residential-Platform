@@ -1,0 +1,12 @@
+#delete_confirmation.modal.electricty-consumption-modal.fades{"aria-hidden" => "true", "aria-labelledby" => "modalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{role: "document", style: 'width: 400px'}
+    .modal-content
+      .modal-header.text-center
+        %h4#modalLabel.modal-title
+          = t('are_you_sure')
+      .modal-body      
+      .authnbtn-f
+        %button.btn.btn-primary.float-right#delete_confirm_button{type: "submit"}
+          = t('button.confirm')
+        %button.btn.btn-primary.float-right{type: "submit", 'data-dismiss' => "modal"}
+          = t('button.cancel')

@@ -1,0 +1,147 @@
+%h2.table-content 1. Introduction
+
+%h3.table-content
+  .inner-content-no 1.1
+  Objectives of Assessment
+.object-assetment
+  %p The objective of this Energy Assessment, is primarily to study the energy consumption of your home and assess the viability of implementing an energy efficiency upgrade.
+  %p
+    This objective will be achieved by:
+
+  %ul.assessment-block
+    %li
+      Identifying a suitable energy performance indicator for existing and target energy use to quantify the potential for energy savings. This also help assess the impact of the energy
+      conservation measures in achieving this potential and provide a sense-check of calculations.
+    %li
+      Identifying a suite of measures, including savings, which together are of sufficient scale
+      suitable for implementation. Where appropriate, non-energy savings, such as water or
+      maintenance, will also be quantified.
+    %li
+      Identifying essential requirements to be incorporated (such as replacement of washing
+      machine).
+    %li
+      Identifying other benefits, including installing of solar PV systems, which has proven to assist in reducing costs of electricity consumption.
+    %li Identify any potential technical, financial or other risks as defined by customer.
+
+  .nobreak
+    %h3.table-content
+      .inner-content-no 1.2
+      Brief Description of Building / Facility
+    = image_tag image_url(asset_pack_path("packs/images/#{@property.building_image}")), class: 'house-img'
+    %p.located-home
+      The home is located at
+      %b  #{ @property.full_address}.
+      %br
+      - floor_number = "#{@property.floor_number.present? ? ' located on floor number <b>'+@property.floor_number.to_s+'</b>.' : '.' }"
+      - if @property.one_room?
+        The Housing Development Board (HDB) unit is a
+        %b #{@property.category_name}
+        apartment#{floor_number.html_safe}
+        %br
+        %b It has a built-up of #{@property.house_area}.
+        It has
+        %b 1
+        bedroom, a living area, kitchen and
+        %b 1
+        toilet/bathrooms
+
+      - elsif @property.two_or_more_rooms?
+        The Housing Development Board (HDB) unit is a
+        %b #{@property.category_name}
+        apartment#{floor_number.html_safe}
+        %br
+        %b
+          It has a built-up of #{@property.house_area}.
+        It has
+        %b #{@property.total_rooms - 1}
+        bedrooms, a living area, kitchen and
+        %b #{@property.bathrooms || 'X'}
+        toilet/bathrooms
+
+      - elsif @property.executive?
+        The Housing Development Board (HDB) unit is an
+        %b #{@property.category_name}
+        apartment#{floor_number.html_safe}
+        %br
+        %b
+          It has a built-up of #{@property.house_area}.
+        It has
+        %b #{@property.bedrooms}
+        bedrooms, a living area, kitchen and
+        %b #{@property.bathrooms}
+        toilet/bathrooms
+
+      - elsif @property.maisonette?
+        The Housing Development Board (HDB) unit is a 2 storey
+        %b #{@property.category_name}
+        apartment#{floor_number.html_safe}
+        %br
+        %b
+          It has a built-up of #{@property.house_area}.
+        It has #{@property.bedrooms} bedrooms, a living area, kitchen and #{@property.bathrooms} toilet/bathrooms
+      - elsif @property.condo?
+        This private unit is a
+        %b #{@property.category_name}
+        apartment#{floor_number.html_safe}
+        %br
+        %b
+          It has a built-up of #{@property.house_area}.
+        It has
+        %b #{@property.bedrooms}
+        bedrooms, a living area, kitchen and
+        %b #{@property.bathrooms}
+        toilet/bathrooms
+      - else
+        The private housing unit is a
+        %b #{@property.floors}
+        storey house.
+        %br
+        %b
+          It has a built-up of #{@property.house_area}.
+        It has
+        %b #{@property.bedrooms}
+        bedrooms, a living area , kitchen and
+        %b #{@property.bathrooms}
+        toilet/bathrooms
+
+    - if @property.full_time_occupancy
+      - full_time = "There are <b>#{@property.people_at_home}</b> occupants always in the house."
+  .nobreak
+    %h3.table-content
+      .inner-content-no 1.3
+      Occupancy and Use Schedules
+    %p
+      There are a total of
+      %b #{@property.total_no_of_people}
+      persons living in the house. 
+      - if @property.at_home_time.present?
+        = "All/Most occupants will be at home<b>#{@property.at_home_time}</b>.".html_safe
+      #{full_time&.html_safe}
+    - if @property.has_ac
+      %p
+        There are
+        %b #{@property.ac_units.to_i}
+        units of Air-conditioner(s) in the house. They are normally set at
+        %b #{@property.ac_temperature.to_i} &#8451;
+        and are turned on from
+        %b #{@property.ac_usage_time}
+    - if @property.duration_of_stay.present?
+      %p
+        Its been
+        %b #{@property.duration_of_stay}
+        since they have been living in this address.
+
+    %h3.table-content
+      .inner-content-no 1.4
+      Scope of Assessment
+    %p Air conditioning is widely used in hot & humid countries like Malaysia and Singapore. In hot and humid climates, the energy consumed by air-conditioning typically comprises the bulk of total energy consumption in a building.
+
+    %p This figure below displays the breakdown.
+
+    .graph
+      #householdEnergyPieChart{ width: '1000', height: '500' }
+  .nobreak
+    %p The equipment studied for this report were the air-conditioning systems, the lighting systems, appliances used in the washroom, living room and kitchen, and any potential air leakages.
+    %p A breakdown of water use is also identified.
+    .graph
+      #householdWaterPieChart{ width: '1000', height: '500' }
