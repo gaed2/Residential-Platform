@@ -18,8 +18,13 @@
 config/application.yml
 
 .byebug_history
+
+# Ignore public uploads
 /public/packs
 /public/packs-test
+/public/uploads
+
+
 /node_modules
 yarn-debug.log*
 .yarn-integrity
@@ -27,3 +32,6 @@ yarn-debug.log*
 .ruby-version
 .ruby-gemset
 
+
+# Ignore application configuration
+/config/application.yml
