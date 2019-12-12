@@ -245,7 +245,7 @@ GEM
     pg (1.1.4)
     powerpack (0.1.2)
     public_suffix (3.0.3)
-    puma (3.12.0)
+    puma (3.12.2)
     raabro (1.1.6)
     rack (2.0.6)
     rack-protection (2.0.5)
@@ -413,7 +413,7 @@ DEPENDENCIES
   overcommit
   paranoia (~> 2.2)
   pg (>= 0.18, < 2.0)
-  puma (~> 3.7)
+  puma (~> 3.12)
   rails (~> 5.1.6)
   rubocop
   sass-rails (~> 5.0)
