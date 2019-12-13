@@ -29,9 +29,9 @@ config/application.yml
 yarn-debug.log*
 .yarn-integrity
 
-.ruby-version
 .ruby-gemset
-
 
 # Ignore application configuration
 /config/application.yml
+/deployment/staging-values.yaml
+
