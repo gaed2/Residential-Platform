@@ -11,15 +11,56 @@
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
 default: &default
-  ADMIN_EMAIL: <user_email>
-  ADMIN_PASSWORD: <user_password>
+  STORAGE: fog #file
+
+  # SMTP
+  DEFAULT_COUNTRY: 'Singapore'
+  SMTP_ADDRESS: ''
+  SMTP_PORT: ''
+  SMTP_DOMAIN: ''
+  SMTP_USERNAME: ''
+  SMTP_PASSWORD: ''
+  MAILER_SENDER: ''
+  MAILER_HOST: 'http://localhost:3000'
+
+  # Admin account
+  ADMIN_EMAIL: ''
+  ADMIN_PASSWORD: ''
+
+  # DATABASE
+  DB_NAME: 'gaedkeeper_development2'
+  DB_USERNAME: 'postgres'
+  DB_PASSWORD: 'postgres'
+  DB_HOST: 'localhost'
+  DB_PORT: '5432'
+
+  # FOG Configurations
+  UPLOADER_STORAGE_PATH: 'fog'
+  FOG_PROVIDER: fog/google
+  PROVIDER: Google
+  ACCESS_KEY: ''
+  SECRET_KEY: ''
+  AWS_REGION: ''
+  FOG_HOST: ''
+  FOG_ENDPOINT: ''
+  FOG_DIR: 'gaedkeeper-bucket'
+  FOG_PUBLIC: ''
+  FOG_MAX_AGE: ''
+  GOOGLE_PROJECT: 'gaed-keeper'
+  GOOGLE_CLIENT_EMAIL: ''
+  GOOGLE_JSON_KEY_LOCATION: ''
+
+
+  REDIS_DB_NAME: ''
+  REDIS_PASSWORD: ''
+  NODE_BASE_URL: 'http://localhost:3001'
+  REDIS_URL: 'redis://127.0.0.1:6379'
 
 test:
   <<: *default
 
 development:
   <<: *default
-
+  
 staging:
   <<: *default
-  
