@@ -38,16 +38,57 @@
                 = link_to t('button.view_report'), generate_reports_path(property_id: property.id, format: :pdf), target: '_blank', class: 'btn btn-3d btn-blue audit-report audit-report-btn'
                 = link_to t('button.retailer_proposed'), suggestions_electricity_suppliers_path(property_id: property.id), class: 'btn btn-3d btn-blue audit-report audit-report-btn'
     - else
-      %p{class: 'font-size-25'}
-        = t('no_property_available')
+      .row-field-block
+        .border
+          %p{class: 'font-size-25'}
+            = t('no_property_available')
     = will_paginate @properties
-      
-    .row-field-block
-      .container-fluid
-        .col-sm-12
-          %h4 Top 3 Fixed Plans
 
-    .row-field-block
-      %h4 Top 3 Non-Fixed Plans
+  .row-field-block
+    %h2 Top3 Residential Suppliers
+    %p Click on the plan name for details:
+    %ul.nav.nav-tabs
+      %li.nav-item
+        %button.nav-link.active{:rel => "fixed_price"} Fixed Price
+      %li.nav-item
+        %button.nav-link{:rel => "discount_price"} Discount Off Tariff
+      %li.nav-item
+        %button.nav-link{:rel => "peakoffpeak_price"} Peak  Off Peak
+
+    #myTabContent.tab-content
+      #fixed_price.tab-pane.active
+        %h5 Fixed Price Plans
+        = render 'top3_fixed_plans'
+      #discount_price.tab-pane
+        %h5 Discount Price Plans
+        = render 'top3_discount_plans'
+      #peakoffpeak_price.tab-pane
+        %h5 Peak  Off Peak Plans
+        = render 'top3_peakoffpeak_plans'
+
+:javascript
+  $(function() {
+
+    $('button').on('click', function(){
+      //figure out which panel to show
+      $('button.nav-link.active').removeClass('active');
+      $(this).addClass('active');
+      var nameToShow = $(this).attr('rel');
+      //alert(nameToShow);
+      // hide current panel
+      $('.tab-pane.active').slideUp(300, showNextPanel);
+
+      function showNextPanel(){
+        //alert(nameToShow);
+        $(this).removeClass('active');
+        $('#'+nameToShow).slideDown(300, function(){
+          $(this).addClass('active');
+        });
+      };
+      // show new panel
+    });
+
+  });  
 
 
+        
