@@ -57,14 +57,11 @@
 
     #myTabContent.tab-content
       #fixed_price.tab-pane.active
-        %h5 Fixed Price Plans
-        = render 'top3_fixed_plans'
+        = render 'top3_plans', {title: "Top3 Fixed Plans:", plans: @fixed_plans}
       #discount_price.tab-pane
-        %h5 Discount Price Plans
-        = render 'top3_discount_plans'
+        = render 'top3_plans', {title: "Top3 Discount Plans:", plans: @discounted_plans}
       #peakoffpeak_price.tab-pane
-        %h5 Peak  Off Peak Plans
-        = render 'top3_peakoffpeak_plans'
+        = render 'top3_plans', {title: "Top3 Peak-Off Peak Plans:", plans: @discounted_plans}
 
 :javascript
   $(function() {

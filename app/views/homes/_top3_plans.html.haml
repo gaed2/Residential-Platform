@@ -1,0 +1,21 @@
+.container-fluid
+  %h5= title
+  .row
+    .col-sm-4
+      .card
+        .card-body
+          %h5.card-title=image_tag plans[0].electricity_supplier.logo
+          %p.card-text= plans[0].name
+          %a.btn.btn-primary{:href => "#"} Price1
+    .col-sm-4
+      .card
+        .card-body
+          %h5.card-title=image_tag plans[1].electricity_supplier.logo
+          %p.card-text= plans[1].name
+          %a.btn.btn-primary{:href => "#"} Price2
+    .col-sm-4
+      .card
+        .card-body
+          %h5.card-title=image_tag plans[2].electricity_supplier.logo
+          %p.card-text= plans[2].name
+          %a.btn.btn-primary{:href => "#"} Price3
