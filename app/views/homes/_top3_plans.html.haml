@@ -1,0 +1,19 @@
+.container-fluid
+  %br
+  %h5= title
+  %br
+  .row
+    - plans.each do |plan|
+      .col-sm-4
+        .card
+          .card-body
+            %h5.card-title.text-center=image_tag plan.electricity_supplier.logo
+            %p.card-text.text-center= plan.name
+            - if plan.plan_type == "fixed"
+              %h3.text-center= plan.price
+              %p.text-sm-center cents/kWh
+            - elsif plan.plan_type == "discount_off"
+              %h3.text-center= "#{plan.price}%"
+              %p.text-sm-center off tariff
+            - else
+              %p peak to peak plan?
