@@ -50,6 +50,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'guard', '~> 2.14'
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
 end
 
 group :development do
