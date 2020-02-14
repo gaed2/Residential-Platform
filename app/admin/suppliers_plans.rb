@@ -2,6 +2,8 @@ ActiveAdmin.register SuppliersPlan do
   active_admin_import
   permit_params :name, :contract_duration, :plan_type, :price, :price_type, :electricity_supplier_id
 
+  index download_links: [:csv]
+
   collection_action :autocomplete_suppliers_plan_name, method: :get do
     return if params[:term].length < Constant::MINIMUM_CHARACTER_FOR_SEARCH
     plan_names = SuppliersPlan.select(:name).by_name(params[:term])
