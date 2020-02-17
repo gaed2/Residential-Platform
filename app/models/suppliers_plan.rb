@@ -7,6 +7,8 @@ class SuppliersPlan < ApplicationRecord
 
   has_many :properties
 
+  validates_uniqueness_of :name, scope: [:plan_type, :contract_duration]
+
   def price_in
     return '%' if percentage?
     I18n.t('price_unit')
