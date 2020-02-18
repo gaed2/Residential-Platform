@@ -4,6 +4,16 @@ ActiveAdmin.register SuppliersPlan do
 
   index download_links: [:csv]
 
+  csv do
+    column :id
+    column(:supplier) { |supplier| supplier.electricity_supplier.name}
+    column :name
+    column :plan_type
+    column :price
+    column :contract_duration
+    column :tariff_allow
+  end
+
   collection_action :autocomplete_suppliers_plan_name, method: :get do
     return if params[:term].length < Constant::MINIMUM_CHARACTER_FOR_SEARCH
     plan_names = SuppliersPlan.select(:name).by_name(params[:term])
