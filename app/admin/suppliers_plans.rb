@@ -6,11 +6,12 @@ ActiveAdmin.register SuppliersPlan do
 
   csv do
     column :id
-    column(:supplier) { |supplier| supplier.electricity_supplier.name}
-    column :name
+    column("Retailer") { |supplier| supplier.electricity_supplier.name}
+    column("Plan Name") { |supplier| supplier.name }
     column :plan_type
     column :price
-    column :contract_duration
+    column :price_type
+    column("Contract Duration") { |supplier| supplier.contract_duration }
     column :tariff_allow
   end
 
@@ -22,21 +23,50 @@ ActiveAdmin.register SuppliersPlan do
 
   collection_action :do_import, method: :post do
     csv_file = params[:active_admin_import_model][:file].read
+
+    if csv_file.empty?
+      flash[:alert] = "File is empty"
+      redirect_back(fallback_location: import_admin_suppliers_plans_path) and return
+    end
+
+    imported_file_header = CSV.parse(csv_file, headers: true).headers
+    
+    if imported_file_header[1] != "Retailer"
+      flash[:alert] = "Retailer column not found. Please use file from CSV link"
+      redirect_back(fallback_location: import_admin_suppliers_plans_path) and return
+    end
+
     CSV.parse(csv_file, headers: true) do |row|
       electricity_supplier = ElectricitySupplier.find_by(name: row['Retailer'])
+      
+      if electricity_supplier.nil?
+        flash[:alert] = "Failed to find Supplier"
+        redirect_back(fallback_location: import_admin_suppliers_plans_path) and return
+      end
+
       next unless electricity_supplier
       supplier_plan_params = {
                                name: row['Plan Name'],
+                               plan_type: SuppliersPlan.plan_types[row['Plan type']],
+                               price_type: SuppliersPlan.price_types[row['Price type']],
+                               tariff_allow: row['Tariff allow'],
                                contract_duration: row['Contract Duration'],
                                price: row['Price'],
                                electricity_supplier_id: electricity_supplier.id
                              }
-      supplier_plan = SuppliersPlan.find_or_initialize_by(name: row['Plan Name'])
+      supplier_plan = SuppliersPlan.find_or_initialize_by(name: row['Plan Name'],
+                                                          plan_type: row['Plan type'],
+                                                          contract_duration: row['Contract duration'])
       supplier_plan.assign_attributes(supplier_plan_params)
-      supplier_plan.save
+
+      if supplier_plan.valid?
+        supplier_plan.save!
+        redirect_to admin_suppliers_plans_path, notice: "Import success!"
+      else
+        redirect_to import_admin_suppliers_plans_path, alert: "Import failure. Please check file format"
+      end
+
     end
-    flash[:notice] = "CSV imported successfully!"
-    redirect_to action: :index
   end
 
   filter :name_contains, input_html: {
