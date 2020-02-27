@@ -36,37 +36,36 @@ ActiveAdmin.register SuppliersPlan do
       redirect_back(fallback_location: import_admin_suppliers_plans_path) and return
     end
 
-    CSV.parse(csv_file, headers: true) do |row|
+    CSV.parse(csv_file, headers: true).each do |row|
       electricity_supplier = ElectricitySupplier.find_by(name: row['Retailer'])
       
       if electricity_supplier.nil?
-        flash[:alert] = "Failed to find Supplier"
+        flash[:alert] = "Failed to find Supplier, please check Retailer column"
         redirect_back(fallback_location: import_admin_suppliers_plans_path) and return
       end
 
-      next unless electricity_supplier
+      supplier_plan = SuppliersPlan.find_by_id(row['Id'].to_i) || SuppliersPlan.new
       supplier_plan_params = {
-                               name: row['Plan Name'],
+                               name: row['Plan name'],
                                plan_type: SuppliersPlan.plan_types[row['Plan type']],
                                price_type: SuppliersPlan.price_types[row['Price type']],
                                tariff_allow: row['Tariff allow'],
-                               contract_duration: row['Contract Duration'],
+                               contract_duration: row['Contract duration'],
                                price: row['Price'],
                                electricity_supplier_id: electricity_supplier.id
                              }
-      supplier_plan = SuppliersPlan.find_or_initialize_by(name: row['Plan Name'],
-                                                          plan_type: row['Plan type'],
-                                                          contract_duration: row['Contract duration'])
       supplier_plan.assign_attributes(supplier_plan_params)
 
       if supplier_plan.valid?
         supplier_plan.save!
-        redirect_to admin_suppliers_plans_path, notice: "Import success!"
       else
-        redirect_to import_admin_suppliers_plans_path, alert: "Import failure. Please check file format"
+        redirect_to import_admin_suppliers_plans_path, alert: "Import failure. Please check file format" and return
       end
 
     end
+
+    redirect_to admin_suppliers_plans_path, notice: "Import success!"
+
   end
 
   filter :name_contains, input_html: {
